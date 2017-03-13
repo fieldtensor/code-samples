@@ -186,7 +186,8 @@ Show Volume Optimization
 <img src="/shadow.png" width="45%"/>
 <img src="/shadow-volume.png" width="45%"/>
 <br>
-(left) Shadows in final rendering/ (right) Shadow volume debug visualization
+(Left) Shadows in final rendering
+/ (Right) Debug visualization of shadow volumes
 </p>
 
 **[shadow.vs]**
