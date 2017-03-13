@@ -241,12 +241,12 @@ This is a python script which exports model files from Blender into a custom
 file format suitable for our WebGL project. The project had to run on mobile
 phones over slow cellular connections, so the model file format was
 implemented in binary and highly optimized to reduce file size. Examples of
-optimized included: 
+optimizations included: 
 
- Using RGB color triplets composed of 3 unsigned bytes, as opposed RGBA color
+* Using RGB color triplets composed of 3 unsigned bytes, as opposed RGBA color
 quadruplets composed of 4 floating point. 
 
- Using a half-float polar representation for surface normals to trim their size
+* Using a half-float polar representation for surface normals to trim their size
 to just 8 bytes each, down from 24 bytes each. Surface normals could have even
 been theoretically eliminated from the file format altogether, at the expense
 of slightly longer load times.
