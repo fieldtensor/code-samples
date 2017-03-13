@@ -131,7 +131,7 @@ of a 3D scene, as can be seen below. The first image shows a model without
 ambient occlusion. The second image shows that same model after a pass through
 ao-bake.cpp. 
 
-3D Water, Plane Waves and Fresnel Effect
+3D Water (Plane Waves and Fresnel Effect)
 ----------------------------------------
 
 This vertex shader simulates a wavy ocean surface for a 3D beach scene. Eight
