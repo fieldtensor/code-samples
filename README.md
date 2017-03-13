@@ -20,7 +20,7 @@ A Balanced Binary Search Tree
 ---------------------------
 
 <p align="center">
-<img src="/avl.png" width="30%"/>
+<img src="/avl.png" width="50%"/>
 </p>
 
 <a href="/AVLTree.hpp">[AVLTree.hpp]</a>
