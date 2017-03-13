@@ -153,7 +153,7 @@ called the Fresnel effect. The shader takes it into account with the following
 lines of simple vector math:
 
     // The R0 refecltivity constant is determined by empircal expimrents with
-    // water.
+    // water. The value given here is taken from optics references.
     
     const float R0 = 0.625;
     
