@@ -180,7 +180,7 @@ truly three dimensional and alive.
 -----------------------------------------
 
 <p align="center">
-<img style="border: 1px solid black;" src="/water.png" width="70%" />
+<img src="/water.png" width="70%" />
 </p>
 
 <a href="/water.vs">[water.vs]</a>
@@ -252,7 +252,7 @@ Export Script for 3D Models in Blender
 --------------------------------------
 
 <p align="center">
-<img style="border: 1px solid black;" src="/blender.png" width="80%" />
+<img src="/blender.png" width="80%" />
 </p>
 
 <a href="/blender-export.py">[blender-export.py]</a>
@@ -281,7 +281,7 @@ IO Stress Tester for RAID Systems
 ---------------------------------
 
 <p align="center">
-<img style="border: 1px solid black;" src="/io.png" width="50%" />
+<img src="/io.png" width="50%" />
 </p>
 
 <a href="/cio.cpp">[cio.cpp]</a>
@@ -303,6 +303,10 @@ incorrect usage to compare the performance profiles.
 <a name="vec"></a>
 3D Vector Class in x86-64 Assembly Language
 --------------------------------------------
+
+<p align="center">
+<img src="/asm.png" width="50%" />
+</p>
 
 <a href="/Vec3.hpp">[Vec3.hpp]</a><br>
 <a href="/Vec3D-x86-64-sysv.s">[Vec3D-x86-64-sysv.s]</a>
