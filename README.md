@@ -277,7 +277,7 @@ incorrect usage to compare the performance profiles.
 
 
 <a name="vec"></a>
-3D Vector Class in x86-64 Assembler Language
+3D Vector Class in x86-64 Assembly Language
 --------------------------------------------
 
 <a href="/Vec3.hpp">[Vec3.hpp]</a><br>
