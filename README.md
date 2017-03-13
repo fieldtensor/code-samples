@@ -77,7 +77,7 @@ algebra.
 
 The most interesting thing about this class is that it is implemented in a way
 that will never trigger the JavaScript garbage collector. A stack of matrices
-is kept around and re-used in perpetuity. For example, when the user multiples
+is kept around and reused in perpetuity. For example, when the user multiples
 two matrices a spare matrix is taken from a preexisting existing pool and used
 to store the result. Matrices are created but never destroyed.
 
