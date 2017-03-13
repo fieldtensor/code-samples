@@ -136,8 +136,8 @@ ambient occlusion. The second image shows that same model after a pass through
 ao-bake.cpp. 
 
 <div style="text-align:center">
-<img src="/rocks-ao-off.png" width="400" height="300"/>
-<img src="/rocks-ao-on.png" width="400" height="300"/>
+<img src="/rocks-ao-off.png" width="350" height="262.5"/>
+<img src="/rocks-ao-on.png" width="350" height="262.5"/>
 </div>
 
 3D Water (Plane Waves and Fresnel Effect)
