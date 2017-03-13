@@ -6,7 +6,7 @@ Balanced Binary Search Tree
 
 **[AVLTree.hpp]**
 
-This is a balanced binary search tree, useful for implementing key-value maps
+This is a balanced binary search tree useful for implementing key-value maps
 and sets in C++. The specific flavor of BST in this source file is
 Adelson-Velsky & Landis (AVL). As data is inserted into the tree the code
 rebalances nodes to keep it shallow and easy to search. The maximum depth of
