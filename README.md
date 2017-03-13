@@ -179,6 +179,10 @@ truly three dimensional and alive.
 3D Water (Plane Waves and Fresnel Effect)
 -----------------------------------------
 
+<p align="center">
+<img src="/water.png" width="20%"/>
+</p>
+
 <a href="/water.vs">[water.vs]</a>
 
 This vertex shader simulates a wavy ocean surface for a 3D beach scene. Eight
