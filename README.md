@@ -352,7 +352,7 @@ HTML Parsing (Server Side C++)
 -------------------------------------
 
 <p align="center">
-<img src="/dom.gif" width="65%" />
+<img src="/dom.gif" width="45%" />
 </p>
 
 <a href="/HTMLParser.hpp">[HTMLParser.hpp]</a><br>
