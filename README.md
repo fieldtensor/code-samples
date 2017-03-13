@@ -1,7 +1,7 @@
 Table of Contents
 =================
 
-Balanced Binary Search Tree 
+A Balanced Binary Search Tree 
 ---------------------------
 
 **[AVLTree.hpp]**
@@ -82,11 +82,56 @@ creating, destroying, and re-creating several thousand mathematical
 temporaries 90 times per second would be a big mistake. 
 
 
-A Matrix Class
---------------
+An Octree Implementation
+------------------------
 
 **[Octree.hpp]**
 <br>
 **[Octree.cpp]**
+
+This class implements a common type of eight-way 3D space partitioning called
+an Octree. I used this Octree to accelerate the ray tracer in my ambient
+occlusion implementation. The naive implementation of the ray tracer would
+take about 48 hours to bake occlusions on large models. With the Octree in
+place the baking time was cut down to just an hour or two.
+
+The octree works by placing the entire 3D scene into a large cube. This cube
+in then split vertically, horizontally, and depth wise into 8 smaller cubes.
+Each of this smaller cubes is then split into 8 yet smaller cubes. These are
+then split again into 8 more cubes each, etc... Eventually the process
+terminates when the cubes are small enough, or they are just too many (the
+number of cubes increases at the extremely fast exponential rate of 8^n, where
+n is the number of subdivisions).
+
+Once the splitting geometry in the scene is assigned to each of the cubes,
+vertex by vertex. The ray tracer can then use this whole structure as a kind
+of spatial index. We first check which cubes a ray intersects, and then we
+gather up the geometry from those cubes and intersect the ray further with
+that geometry. The geometry that lives in cubes which the ray does not
+intersect is never considered, and this is where the tremendous performance
+acceleration comes from.
+
+
+An Octree Implementation
+------------------------
+
+**[ao-bake.cpp]**
+
+This code implements pre-computed ambient occlusion to enhance the realism of
+a 3D scene in OpenGL. A custom ray tracer is used to detect the nooks and
+crannies of 3D models. For example, consider a groove in a screw. If we try to
+shoot a random ray out of a screw's groove it probably won't escape to the
+outside world. It will more likely hit the sides of the groove. We can detect
+this, and we take it to mean that less light should penetrate into the groove.
+The groove is given less ambient light from within the system's fragment
+programs, and appears more dark on screen.
+
+The darkening of nooks and crannies in this way greatly enhances the realism
+of a 3D scene, as can be seen below. The first image shows a model without
+ambient occlusion. The second image shows that same model after a pass through
+ao-bake.cpp. 
+
+Shading 3D Water with the Fresnel Effect
+----------------------------------------
 
 
