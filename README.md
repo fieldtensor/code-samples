@@ -6,7 +6,7 @@ Table of Contents
 * [A Matrix Class](#mat)
 * [An Octree Implementation](#oc)
 * [Ambient Occlusion (Ray Tracing Method)](#ao)
-* [3D Water (Plane Waves and Fresnel Effect)](#water)
+* [3D Water (Plane Waves and The Fresnel Effect)](#water)
 * [Show Volume Optimization](#shadow)
 * [Export Script for 3D Models in Blender](#export)
 * [IO Stress Tester for RAID Systems](#io)
@@ -176,8 +176,8 @@ truly three dimensional and alive.
 
 
 <a name="water"></a>
-3D Water (Plane Waves and Fresnel Effect)
------------------------------------------
+3D Water (Plane Waves and The Fresnel Effect)
+---------------------------------------------
 
 <p align="center">
 <img src="/water.png" width="70%" />
