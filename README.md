@@ -330,6 +330,10 @@ general.
 Unicode Processing (UTF-8 and UTF-16)
 -------------------------------------
 
+<p align="center">
+<img src="/utf8.png" width="65%" />
+</p>
+
 <a href="/Unicode.hpp">[Unicode.hpp]</a><br>
 <a href="/Unicode.cpp">[Unicode.cpp]</a>
 
