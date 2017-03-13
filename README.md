@@ -37,6 +37,10 @@ search for large n.
 A Quaternion Class
 ------------------
 
+<p align="center">
+<img src="/quat.png" width="50%"/>
+</p>
+
 <a href="/Quat.js">[Quat.js]</a>
 
 Quaternions are somewhat obscure 4 dimensional entities that see little use in
