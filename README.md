@@ -111,7 +111,7 @@ that geometry. The geometry that lives in cubes which the ray does not
 intersect is never considered, and this is where the tremendous performance
 acceleration comes from.
 
-<div style="text-align:center">
+<div style="width: 100%; text-align:center;">
 ![Octree](/octree.png)
 </div>
 
@@ -135,7 +135,7 @@ of a 3D scene, as can be seen below. The first image shows a model without
 ambient occlusion. The second image shows that same model after a pass through
 ao-bake.cpp. 
 
-<div style="text-align:center">
+<div style="width: 100%; text-align:center;">
 <img src="/rocks-ao-off.png" width="350" height="262.5"/>
 <img src="/rocks-ao-on.png" width="350" height="262.5"/>
 </div>
