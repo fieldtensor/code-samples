@@ -180,7 +180,7 @@ truly three dimensional and alive.
 -----------------------------------------
 
 <p align="center">
-<img src="/water.png" width="50%"/>
+<img src="/water.png" width="70%"/>
 </p>
 
 <a href="/water.vs">[water.vs]</a>
