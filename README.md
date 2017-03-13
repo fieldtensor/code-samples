@@ -180,7 +180,7 @@ truly three dimensional and alive.
 -----------------------------------------
 
 <p align="center">
-<img style="border: 1px solid black;" src="/water2.png" width="70%" />
+<img style="border: 1px solid black;" src="/water.png" width="70%" />
 </p>
 
 <a href="/water.vs">[water.vs]</a>
@@ -250,6 +250,10 @@ with a fine toothed comb to confirm that the result was real.
 <a name="export"></a>
 Export Script for 3D Models in Blender 
 --------------------------------------
+
+<p align="center">
+<img style="border: 1px solid black;" src="/blender.png" width="60%" />
+</p>
 
 <a href="/blender-export.py">[blender-export.py]</a>
 
