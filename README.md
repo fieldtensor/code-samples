@@ -38,7 +38,7 @@ A Quaternion Class
 ------------------
 
 <p align="center">
-<img src="/quat.png" width="50%"/>
+<img src="/quat.png" width="30%"/>
 </p>
 
 <a href="/Quat.js">[Quat.js]</a>
