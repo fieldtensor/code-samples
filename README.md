@@ -1,7 +1,9 @@
 Table of Contents
 =================
 
-A Balanced Binary Search Tree 
+[A Balanced Binary Search Tree](#bst)
+
+<a name="bst"></a>A Balanced Binary Search Tree 
 ---------------------------
 
 **<a href="/AVLTree.hpp">[AVLTree.hpp]</a>**
