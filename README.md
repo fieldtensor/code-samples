@@ -423,7 +423,7 @@ maybe a good deal of type-o's and grammatical errors.
 <a href="/taylor-series.pdf">Taylor Series</a> &mdash;
 <a href="/taylor-series.tex">(TeX Source)</a><br>
 
-<a href="/dot-product.pdf">Dot Product</a> &mdash;
+<a href="/dot-product.pdf">Dot Products</a> &mdash;
 <a href="/dot-product.tex">(TeX Source)</a><br>
 
 <a href="/cross-product.pdf">Cross Products</a> &mdash;
