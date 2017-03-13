@@ -19,6 +19,10 @@ Table of Contents
 A Balanced Binary Search Tree 
 ---------------------------
 
+<p align="center">
+<img src="/avl.png" width="60%"/>
+</p>
+
 <a href="/AVLTree.hpp">[AVLTree.hpp]</a>
 
 This is a balanced binary search tree which is useful for implementing
