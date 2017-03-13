@@ -248,7 +248,7 @@ quadruplets composed of 4 floats.
 
 * Using a half-float polar representation for surface normals to trim their size
 to just 8 bytes each, down from 24 bytes each. Surface normals could have even
-been theoretically eliminated from the file format altogether, at the expense
+been theoretically eliminated from the file format altogether at the expense
 of slightly longer load times.
 
 The project ran out of funding and we were not able to optimized the file
