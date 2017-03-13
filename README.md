@@ -182,7 +182,7 @@ lines of simple vector math:
 Show Volume Optimization
 ------------------------
 
-<p align="center">
+<p style="text-align: center;">
 <div style="width: 45%; display: inline-block;"> 
 <img src="/shadow.png" width="45%"/>
 <!--<br>
