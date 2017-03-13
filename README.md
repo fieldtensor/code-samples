@@ -85,13 +85,13 @@ temporaries 90 times per second would be a big mistake.
 An Octree Implementation
 ------------------------
 
-**[Octree.hpp]**
-<br>
-**[Octree.cpp]**
-
 <p align="center">
 <img src="/octree.png">
 </p>
+
+**[Octree.hpp]**
+<br>
+**[Octree.cpp]**
 
 This class implements a common type of eight-way 3D space partitioning called
 an Octree. I used this Octree to accelerate the ray tracer in my ambient
@@ -118,12 +118,12 @@ acceleration comes from.
 Ambient Occlusion (Ray Tracing Method)
 --------------------------------------
 
-**[ao-bake.cpp]**
-
 <p align="center">
 <img src="/rocks-ao-off.png" width="45%"/>
 <img src="/rocks-ao-on.png" width="45%"/>
 </p>
+
+**[ao-bake.cpp]**
 
 This code implements pre-computed ambient occlusion to enhance the realism of
 a 3D scene in OpenGL. A custom ray tracer is used to detect the nooks and
