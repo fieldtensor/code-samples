@@ -54,13 +54,14 @@ the other on a four dimensional hypersphere. With a rotation matrix such an
 interpolation is impossible without suffering malformed rotations or a large
 computational burden.
 
-The file Quat.js is my implementation of the Quaternions in JavaScript, for
-WebGL code. The mathematics in this file is not copied from textbooks or the
-internet. I rederive all of it from scratch on paper to better understand how
-quaternions work. It happens to also be difficult to find detailed
-explanations for how quaternions work, because they are somewhat obscure and
-not covered well by the mathematical community. I'm currently in the process
-of writing up a long article on the subject for my website.
+The file <a href="/Quat.js">Quat.js</a> is my implementation of the
+Quaternions in JavaScript, for WebGL code. The mathematics in this file is not
+copied from textbooks or the internet. I rederive all of it from scratch on
+paper to better understand how quaternions work. It happens to also be
+difficult to find detailed explanations for how quaternions work, because they
+are somewhat obscure and not covered well by the mathematical community. I'm
+currently in the process of writing up a long article on the subject for my
+website.
 
 
 <a name="mat"></a>
