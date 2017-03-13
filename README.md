@@ -76,10 +76,13 @@ anyone with graphics programming experience, or experience with linear
 algebra.
 
 The most interesting thing about this class is that it is implemented in a way
-that will never trigger the JavaScript garbage collector. A stack of matrices
-is kept around and reused in perpetuity. For example, when the user multiples
-two matrices a spare matrix is taken from a preexisting existing pool and used
-to store the result. Matrices are created but never destroyed.
+that will never trigger the JavaScript garbage collector. A stack of spare
+matrices is kept around and reused in perpetuity. When a matrix is no longer
+needed it is returned to the stack (as opposed to being collected by the
+JavaScript GC). For example, when the user multiples two matrices a spare
+matrix is taken from a preexisting existing pool and used to store the result.
+New matrices can be created but but are always returned the pool instead of
+being destroyed.
 
 This is an important technique because it prevents the JavaScript garbage
 collector from ever running. In a VR application, for example, every frame has
