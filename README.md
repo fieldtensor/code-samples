@@ -184,14 +184,14 @@ Show Volume Optimization
 
 <p align="center">
 <div width="45%" style="display: inline-block;"> 
-<img src="/shadow.png" width="45%"/>
+<!--<img src="/shadow.png" width="45%"/>
 <br>
-Shadows in final rendering
+Shadows in final rendering-->
 </div>
 <div width="45%" style="display: inline-block;">
 <img src="/shadow-volume.png" width="45%"/>
-<br>
-Debug visualization of shadow volumes
+<!--<br>
+Debug visualization of shadow volumes-->
 </div>
 <br>
 
