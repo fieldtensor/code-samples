@@ -1,19 +1,19 @@
 Table of Contents
 =================
 
-[A Balanced Binary Search Tree](#bst)
-[A Balanced Binary Search Tree](#quat)
-[A Balanced Binary Search Tree](#mat)
-[A Balanced Binary Search Tree](#oc)
-[A Balanced Binary Search Tree](#ao)
-[A Balanced Binary Search Tree](#water)
-[A Balanced Binary Search Tree](#shadow)
-[A Balanced Binary Search Tree](#export)
-[A Balanced Binary Search Tree](#io)
-[A Balanced Binary Search Tree](#ao)
-[A Balanced Binary Search Tree](#vec)
-[A Balanced Binary Search Tree](#unicode)
-[A Balanced Binary Search Tree](#html)
+* [A Balanced Binary Search Tree](#bst)
+* [A Quaternion Class](#quat)
+* [A Matrix Class](#mat)
+* [An Octree Implementation](#oc)
+* [Ambient Occlusion (Ray Tracing Method)](#ao)
+* [3D Water (Plane Waves and Fresnel Effect)](#water)
+* [Show Volume Optimization](#shadow)
+* [Export Script for 3D Models in Blender](#export)
+* [IO Stress Tester for RAID Systems](#io)
+* [3D Vector Class in x86-64 Assembler Language](#vec)
+* [Unicode Processing (UTF-8 and UTF-16)](#unicode)
+* [HTML Parsing (Server Side C++)](#html)
+* [Mathematics and Physics Notes](#notes)
 
 <a name="bst"></a>
 A Balanced Binary Search Tree 
@@ -341,6 +341,7 @@ special syntax related to maintaining professional grade typesetting quality,
 and some more special syntax related to rendering mathematics.
 
 
+<a name="notes"></a>
 Mathematics and Physics Notes
 -----------------------------
 
