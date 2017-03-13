@@ -317,31 +317,97 @@ and some more special syntax related to rendering mathematics.
 Mathematics and Physics Notes
 -----------------------------
 
-<a href="/HTMLParser.hpp">Angular Acceleration</a> &mdash;
-<a href="/HTMLParser.hpp">(TeX Source)</a>
+<a href="/angular-acceleration.pdf">angular-acceleration</a>&mdash;
+<a href="/angular-acceleration.tex">(TeX Source)</a><br>
 
-./angular-acceleration.pdf
-./angular-velocity-vector.pdf
-./cosh-and-sinh.pdf
-./cross-product.pdf
-./derivative-of-arctan.pdf
-./derivatives-of-sin-cos-arcsin-and-arccos.pdf
-./dot-product.pdf
-./double-pendulum.pdf
-./energy-wells.pdf
-./euler-angles.pdf
-./euler-lagrange-equation.pdf
-./fourier-series.pdf
-./perspective-projection.pdf
-./polar-vector-derivatives.pdf
-./rigid-body-properties.pdf
-./rotation-about-a-vector.pdf
-./spherical-coordinates.pdf
-./surface-integrals.pdf
-./taylor-series.pdf
-./tensor-of-inertia.pdf
-./transport-theorem.pdf
-./vector-curl.pdf
-./vector-projection-operators.pdf
-./volume-integrals.pdf
 
+<a href="/angular-velocity-vector.pdf">angular-velocity-vector</a>&mdash;
+<a href="/angular-velocity-vector.tex">(TeX Source)</a><br>
+
+
+<a href="/cosh-and-sinh.pdf">cosh-and-sinh</a>&mdash;
+<a href="/cosh-and-sinh.tex">(TeX Source)</a><br>
+
+
+<a href="/cross-product.pdf">cross-product</a>&mdash;
+<a href="/cross-product.tex">(TeX Source)</a><br>
+
+
+<a href="/derivative-of-arctan.pdf">derivative-of-arctan</a>&mdash;
+<a href="/derivative-of-arctan.tex">(TeX Source)</a><br>
+
+
+<a href="/derivatives-of-sin-cos-arcsin-and-arccos.pdf">derivatives-of-sin-cos-arcsin-and-arccos</a>&mdash;
+<a href="/derivatives-of-sin-cos-arcsin-and-arccos.tex">(TeX Source)</a><br>
+
+
+<a href="/dot-product.pdf">dot-product</a>&mdash;
+<a href="/dot-product.tex">(TeX Source)</a><br>
+
+
+<a href="/double-pendulum.pdf">double-pendulum</a>&mdash;
+<a href="/double-pendulum.tex">(TeX Source)</a><br>
+
+
+<a href="/energy-wells.pdf">energy-wells</a>&mdash;
+<a href="/energy-wells.tex">(TeX Source)</a><br>
+
+
+<a href="/euler-angles.pdf">euler-angles</a>&mdash;
+<a href="/euler-angles.tex">(TeX Source)</a><br>
+
+
+<a href="/euler-lagrange-equation.pdf">euler-lagrange-equation</a>&mdash;
+<a href="/euler-lagrange-equation.tex">(TeX Source)</a><br>
+
+
+<a href="/fourier-series.pdf">fourier-series</a>&mdash;
+<a href="/fourier-series.tex">(TeX Source)</a><br>
+
+
+<a href="/perspective-projection.pdf">perspective-projection</a>&mdash;
+<a href="/perspective-projection.tex">(TeX Source)</a><br>
+
+
+<a href="/polar-vector-derivatives.pdf">polar-vector-derivatives</a>&mdash;
+<a href="/polar-vector-derivatives.tex">(TeX Source)</a><br>
+
+
+<a href="/rigid-body-properties.pdf">rigid-body-properties</a>&mdash;
+<a href="/rigid-body-properties.tex">(TeX Source)</a><br>
+
+
+<a href="/rotation-about-a-vector.pdf">rotation-about-a-vector</a>&mdash;
+<a href="/rotation-about-a-vector.tex">(TeX Source)</a><br>
+
+
+<a href="/spherical-coordinates.pdf">spherical-coordinates</a>&mdash;
+<a href="/spherical-coordinates.tex">(TeX Source)</a><br>
+
+
+<a href="/surface-integrals.pdf">surface-integrals</a>&mdash;
+<a href="/surface-integrals.tex">(TeX Source)</a><br>
+
+
+<a href="/taylor-series.pdf">taylor-series</a>&mdash;
+<a href="/taylor-series.tex">(TeX Source)</a><br>
+
+
+<a href="/tensor-of-inertia.pdf">tensor-of-inertia</a>&mdash;
+<a href="/tensor-of-inertia.tex">(TeX Source)</a><br>
+
+
+<a href="/transport-theorem.pdf">transport-theorem</a>&mdash;
+<a href="/transport-theorem.tex">(TeX Source)</a><br>
+
+
+<a href="/vector-curl.pdf">vector-curl</a>&mdash;
+<a href="/vector-curl.tex">(TeX Source)</a><br>
+
+
+<a href="/vector-projection-operators.pdf">vector-projection-operators</a>&mdash;
+<a href="/vector-projection-operators.tex">(TeX Source)</a><br>
+
+
+<a href="/volume-integrals.pdf">volume-integrals</a>&mdash;
+<a href="/volume-integrals.tex">(TeX Source)</a><br>
