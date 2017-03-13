@@ -135,13 +135,17 @@ The groove is given less ambient light from within the system's fragment
 programs, and appears more dark on screen.
 
 The darkening of nooks and crannies in this way greatly enhances the realism
-of a 3D scene, as can be seen below. The first image shows a model without
-ambient occlusion. The second image shows that same model after a pass through
-ao-bake.cpp. 
+of a 3D scene. For example, the images above show a rocky outcrop. The first
+image shows the 3D model without ambient occlusion. The second image shows
+that same model after it has been passed through ao-bake.cpp. Notice how the
+shading on the first images look flat and homogeneous, while the shading on
+the second image look truly three dimensional and alive. 
 
 
 3D Water (Plane Waves and Fresnel Effect)
 -----------------------------------------
+
+**[water.vs]**
 
 This vertex shader simulates a wavy ocean surface for a 3D beach scene. Eight
 plane waves of different amplitude and frequency are superimposed to give the
@@ -173,3 +177,29 @@ lines of simple vector math:
     
     // Compute T, the reflection coefficient.
     float T = 1.0 - R;
+
+
+Show Volume Optimization
+------------------------
+
+<p align="center">
+<img src="/shadow.png" width="45%"/>
+<img src="/shadow-volume.png" width="45%"/>
+</p>
+
+**[shadow.vs]**
+
+This source file is the vertex shader component of a larger shadow volumes
+implementation. The major of the work of implementing shadow volumes goes into
+constructing a special 3D model file with edge-face connectivity information,
+and then using that information in the CPU at runtime to extrude out the
+shadow volumes.
+
+The vertex shader for the shadow volumes is itself very simple. If you open
+the file you'll see that there isn't much to look at. However, I was able to
+come up with an optimization for this vertex shader which reduced the
+rendering time of shadows on our project from 4.2 ms to just 0.3 ms, which is
+a dramatic drop from 25% of a single frame to just 2% of a single frame. The
+performance improvement was so large and surprising that I benchmarked it
+multiple times and went over the timing code with a fine toothed comb to
+confirm the result.
