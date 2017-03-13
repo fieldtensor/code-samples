@@ -379,6 +379,10 @@ mathematics.
 Notes on Mathematics and Physics
 --------------------------------
 
+<p align="center">
+<img src="/athens.png" width="60%" />
+</p>
+
 These are PDFs of some of my notes on mathematics and physics (along with
 their source files in TeX). Whenever I learn a new piece of mathematics or
 physics I find it useful to type out textbook style notes as if trying to
