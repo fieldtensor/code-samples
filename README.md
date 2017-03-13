@@ -36,9 +36,9 @@ A Quaternion Class
 <a href="/Quat.js">[Quat.js]</a>
 
 Quaternions are somewhat obscure 4 dimensional entities that see little use in
-academic mathematics and physics. However, quaternions are able to represent
-3D rotations in a compact and computationally efficient way, and so they are
-used pervasively by 3D graphics systems. There is no commercial game engine in
+modern mathematics and physics. However, quaternions are able to represent 3D
+rotations in a compact and computationally efficient way, and so they are used
+pervasively by 3D graphics systems. There is no commercial game engine in
 existence that does not include a quaternion implementation.
 
 To to give a quick summary, Quaternions are a four dimensional generalization
