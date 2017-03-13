@@ -144,12 +144,13 @@ Ambient Occlusion (Ray Tracing Method)
 
 This code implements pre-computed ambient occlusion to enhance the realism of
 3D scenes in OpenGL. A custom ray tracer is used to detect the nooks and
-crannies of 3D models. For example, consider a groove in a screw. If we try to
-shoot a random ray out of a screw's groove it probably won't escape to the
-outside world. It will more likely hit the sides of the groove. We can detect
-this, and we take it to mean that less light should penetrate into the groove.
-The groove is given less ambient light from within the system's fragment
-programs, and appears more dark on screen.
+crannies of 3D models, and those nooks and crannies are then shaded more
+darkly than the surrounding geometry. For example, consider a groove in a
+screw. If we try to shoot a random ray out of a screw's groove it probably
+won't escape to the outside world. It will more likely hit the sides of the
+groove. We can detect this, and we take it to mean that less light should
+penetrate into the groove. The groove is given less ambient light from within
+the system's fragment programs, and appears more dark on screen.
 
 The darkening of nooks and crannies in this way greatly enhances the realism
 of a 3D scene. For example, the images above show a rocky outcrop. The first
