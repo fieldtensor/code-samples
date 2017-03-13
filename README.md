@@ -121,6 +121,15 @@ Ambient Occlusion (Ray Tracing Method)
 <p align="center">
 <img src="/rocks-ao-off.png" width="45%"/>
 <img src="/rocks-ao-on.png" width="45%"/>
+<br>
+<i>(Left)</i> Ambient Occlusion Off (nooks not shaded)
+&mdash;
+<i>(Right)</i> Ambient Occlusion On (nooks shaded)
+</p>
+
+<p align="center">
+<img src="/.png" width="45%"/>
+<img src="/rocks-ao-on.png" width="45%"/>
 </p>
 
 **[ao-bake.cpp]**
