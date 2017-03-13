@@ -72,8 +72,8 @@ A Matrix Class
 
 This file contains my implementation of a 4x4 matrix in JavaScript, for use
 with WebGL code. The contents and methods of this class should be familiar to
-anyone with even rudimentary graphics programming experience, or experience
-with linear algebra.
+anyone with graphics programming experience, or experience with linear
+algebra.
 
 The most interesting thing about this class is that it is implemented in a way
 that will never trigger the JavaScript garbage collector. A stack of matrices
