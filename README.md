@@ -281,7 +281,7 @@ IO Stress Tester for RAID Systems
 ---------------------------------
 
 <p align="center">
-<img style="border: 1px solid black;" src="/io.png" width="60%" />
+<img style="border: 1px solid black;" src="/io.png" width="50%" />
 </p>
 
 <a href="/cio.cpp">[cio.cpp]</a>
