@@ -6,7 +6,7 @@ Table of Contents
 <a name="bst"></a>A Balanced Binary Search Tree 
 ---------------------------
 
-**<a href="/AVLTree.hpp">[AVLTree.hpp]</a>**
+<a href="/AVLTree.hpp">[AVLTree.hpp]</a>
 
 This is a balanced binary search tree useful for implementing key-value maps
 and sets in C++. The specific flavor of BST in this source file is
