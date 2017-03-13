@@ -380,7 +380,7 @@ Notes on Mathematics and Physics
 --------------------------------
 
 <p align="center">
-<img src="/athens.png" width="50%" />
+<img src="/athens.png" width="45%" />
 </p>
 
 These are PDFs of some of my notes on mathematics and physics (along with
