@@ -344,12 +344,12 @@ Mathematics and Physics Notes
 -----------------------------
 
 These are PDFs of some of my notes on mathematics and physics (along with
-their source files in TeX). As I learn a new piece of mathematics or physics I
-find it useful to type out textbook style notes as if trying to explain the
-subject to a new student. In the process of trying to teach something I often
-realize that I don't understand it as well as I thought I did. In this way I
-uncover the gaps in my knowledge and eventually come to a more complete
-understanding. 
+their source files in TeX). Whenever I learn a new piece of mathematics or
+physics I find it useful to type out textbook style notes as if trying to
+explain the subject to a new student. In the process of trying to teach
+something I often realize that I don't understand it as well as I thought I
+did. In this way I uncover the gaps in my knowledge and eventually come to a
+more complete understanding. 
 
 These notes do not represent the totality of what I understand about
 mathematics and physics. They're just a cherry picked selection of a few
