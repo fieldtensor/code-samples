@@ -182,20 +182,12 @@ lines of simple vector math:
 Show Volume Optimization
 ------------------------
 
-<p style="text-align: center;">
-<div style="width: 45%; display: inline-block; background-color: green;"> 
-<img src="/shadow.png" style="width: 45%;"/>
-<!--<br>
-Shadows in final rendering-->
-</div>
-<div style="width: 45%; display: inline-block; background-color: green;">
-<img src="/shadow-volume.png" style="width: 45%;"/>
-<!--<br>
-Debug visualization of shadow volumes-->
-</div>
+<p align="center">
+<img src="/shadow.png" width="45%"/>
+<img src="/shadow-volume.png" width="45%"/>
 <br>
-
-
+(Left) Shadows in final rendering
+/ (Right) Debug visualization of shadow volumes
 </p>
 
 **[shadow.vs]**
