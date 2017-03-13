@@ -136,6 +136,9 @@ ao-bake.cpp.
 ![AO Off](/rocks-ao-off.png)
 ![AO On](/rocks-ao-on.png)
 
+<img src="/rocks-ao-off.png" width="400" height="400">AO Off</img>
+<img src="/rocks-ao-on.png" width="400" height="400">AO On</img>
+
 3D Water (Plane Waves and Fresnel Effect)
 -----------------------------------------
 
