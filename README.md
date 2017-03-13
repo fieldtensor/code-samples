@@ -351,6 +351,10 @@ There are also functions for the encoding process.
 HTML Parsing (Server Side C++)
 -------------------------------------
 
+<p align="center">
+<img src="/dom.gif" width="65%" />
+</p>
+
 <a href="/HTMLParser.hpp">[HTMLParser.hpp]</a><br>
 <a href="/HTMLParser.cpp">[HTMLParser.cpp]</a>
 
