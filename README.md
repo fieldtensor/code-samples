@@ -317,8 +317,7 @@ and some more special syntax related to rendering mathematics.
 Mathematics and Physics Notes
 -----------------------------
 
-**Angular Acceleration**
-<a href="/HTMLParser.hpp">(PDF)</a> &mdash;
+<a href="/HTMLParser.hpp">Angular Acceleration</a> &mdash;
 <a href="/HTMLParser.hpp">(TeX Source)</a>
 
 ./angular-acceleration.pdf
