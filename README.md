@@ -197,17 +197,45 @@ Show Volume Optimization
 
 **[shadow.vs]**
 
-This source file is the vertex shader component of a larger shadow volumes
-implementation. The major of the work of implementing shadow volumes goes into
-constructing a special 3D model file with edge-face connectivity information,
-and then using that information in the CPU at runtime to extrude out the
-shadow volumes.
+This source file is the vertex shader component of a shadow volumes
+implementation. Most of the code for implementing shadow volumes goes into
+extracting edge-face connectivity information from the 3D model file and then
+using that information at runtime to extrude out the shadow volumes. The
+vertex shader component for shadow volumes is itself very simple. If you open
+the file you'll see that there isn't much to look at.
 
-The vertex shader for the shadow volumes is itself very simple. If you open
-the file you'll see that there isn't much to look at. However, I was able to
-come up with an optimization for this vertex shader which reduced the
-rendering time of shadows on our project from 4.2 ms to just 0.3 ms, which is
-a dramatic drop from 25% of a single frame to just 2% of a single frame. The
-performance improvement was so large and surprising that I benchmarked it
-multiple times and went over the timing code with a fine toothed comb to
-confirm the result.
+However, I was able to come up with an optimization for this vertex shader
+which reduced the rendering time of shadows on our project from 4.2 ms to just
+0.3 ms. At 60 FPS this is a drop from 25% of a single frame to just 2% of a
+single frame, which is dramatic. The performance improvement was so large and
+surprising that I benchmarked it multiple times and went over the timing code
+with a fine toothed comb to confirm the result.
+
+
+Export Script for 3D Models in Blender 
+--------------------------------------
+
+**<a href="/blender-export.py">[blender-export.py]</a>**
+
+This is an export script which exports model files from Blender into a custom
+file format suitable for our WebGL project. The project had to run on mobile
+phones over slow cellular connections, so the model file was implemented in
+binary and highly optimized to reduce file size. Examples of optimized
+included: 
+
+* Using RGB color triplets composed of 3 unsigned bytes, as opposed RGBA color
+quadruplets composed of 4 floating point. 
+
+* Using a half-float polar representation for surface normals to trim their size
+to just 8 bytes each, down from 24 bytes each. Surface normals could have even
+been theoretically eliminated from the file format altogether, at the expense
+of slightly longer load times.
+
+Unfortunately the project ran out of funding, and we were not able to
+optimized this file format as much as desired just for budget reasons. The
+loading time nonetheless came out acceptable.
+
+Export Script for 3D Models in Blender 
+--------------------------------------
+
+**[export.py]**
