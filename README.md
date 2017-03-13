@@ -280,6 +280,10 @@ nonetheless came out acceptable.
 IO Stress Tester for RAID Systems
 ---------------------------------
 
+<p align="center">
+<img style="border: 1px solid black;" src="/io.png" width="60%" />
+</p>
+
 <a href="/cio.cpp">[cio.cpp]</a>
 
 While at Columbia I did a small amount of research work on the Large Hadron
