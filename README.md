@@ -113,9 +113,10 @@ The octree works by placing the entire 3D scene into a large cube. This cube
 in then split vertically, horizontally, and depth wise into 8 smaller cubes.
 Each of these smaller cubes is then split into 8 yet smaller cubes. These are
 then split again into 8 more cubes each, etc... Eventually the process
-terminates when the cubes are small enough, or they are just too many (the
-number of cubes increases at the extremely fast exponential rate of 8^n, where
-n is the number of subdivisions).
+terminates when the cubes are small enough, or when there are just too many.
+The number of cubes increases at the extremely fast exponential rate of 8^n,
+where n is the number of subdivisions, so only a few subdivisions are ever
+needed.
 
 Once the splitting geometry in the scene is assigned to each of the cubes,
 vertex by vertex. The ray tracer can then use this whole structure as a kind
