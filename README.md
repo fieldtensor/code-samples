@@ -111,9 +111,9 @@ that geometry. The geometry that lives in cubes which the ray does not
 intersect is never considered, and this is where the tremendous performance
 acceleration comes from.
 
-<div style="width: 100%; text-align:center;">
-![Octree](/octree.png)
-</div>
+<p align="center">
+<img src="/octree.png">
+</p>
 
 
 Ambient Occlusion (Ray Tracing Method)
@@ -135,10 +135,10 @@ of a 3D scene, as can be seen below. The first image shows a model without
 ambient occlusion. The second image shows that same model after a pass through
 ao-bake.cpp. 
 
-<div style="width: 100%; text-align:center;">
+<p align="center">
 <img src="/rocks-ao-off.png" width="350" height="262.5"/>
 <img src="/rocks-ao-on.png" width="350" height="262.5"/>
-</div>
+</p>
 
 3D Water (Plane Waves and Fresnel Effect)
 -----------------------------------------
