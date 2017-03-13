@@ -13,7 +13,7 @@ Table of Contents
 * [3D Vector Class in x86-64 Assembler Language](#vec)
 * [Unicode Processing (UTF-8 and UTF-16)](#unicode)
 * [HTML Parsing (Server Side C++)](#html)
-* [Mathematics and Physics Notes](#notes)
+* [Notes on Mathematics and Physics](#notes)
 
 <a name="bst"></a>
 A Balanced Binary Search Tree 
@@ -376,8 +376,8 @@ mathematics.
 
 
 <a name="notes"></a>
-Mathematics and Physics Notes
------------------------------
+Notes on Mathematics and Physics
+--------------------------------
 
 These are PDFs of some of my notes on mathematics and physics (along with
 their source files in TeX). Whenever I learn a new piece of mathematics or
