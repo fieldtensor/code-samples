@@ -311,8 +311,8 @@ range (0x0000000000, 0x10FFFFFFFF) by packing them into streams of octets or
 words. Some bits of every byte are used for encoding metadata about the
 encoding while other bits are used for encoding the character's actual value.
 These functions do bit twiddling to extract the metadata, unpacking the
-character payload, and deliver a simple stream of Unicode characters to the
-caller. There are also functions for the reverse encoding process.
+character payload, and deliver a stream of Unicode characters to the caller.
+There are also functions for the encoding process.
 
 
 <a name="html"></a>
