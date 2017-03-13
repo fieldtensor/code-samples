@@ -41,18 +41,18 @@ rotations in a compact and computationally efficient way, and so they are used
 pervasively by 3D graphics systems. There is no commercial game engine in
 existence that does not include a quaternion implementation.
 
-To to give a quick summary, Quaternions are a four dimensional generalization
-of the ordinary two dimensional complex numbers. A complex numbers have one
-real part and one imaginary part, while a quaternion has one real part and
-three complex parts. Quaternions follow an especially complicated
-multiplication rule, form which they derive all of their mathematical and
-computational power. A quaternion is able to represent a 3D rotation in just 4
-numbers, which is more compact than a 3x3 matrix with 9 numbers. Moreover, it
-is possible to cleanly interpolate between two quaternions, and thus between
-two rotational states. This is accomplished by rotating one quaternion into
-the other on a four dimensional hypersphere. With a rotation matrix such an
-interpolation is impossible to do without suffering malformed rotations or a
-large computational burden on the FPU. 
+To to give a quick summary, quaternions are a higher dimensional
+generalization of the ordinary two dimensional complex numbers. A complex
+numbers have one real part and one imaginary part, while a quaternion has one
+real part and three complex parts. Quaternions follow an especially
+complicated multiplication rule, form which they derive all of their
+mathematical and computational power. A quaternion is able to represent a 3D
+rotation in just 4 numbers, which is more compact than a 3x3 matrix with 9
+numbers. Moreover, it is possible to cleanly interpolate between two
+quaternions, and thus between two rotational states. This is accomplished by
+rotating one quaternion into the other on a four dimensional hypersphere. With
+a rotation matrix such an interpolation is impossible to do without suffering
+malformed rotations or a large computational burden on the FPU. 
 
 The file Quat.js is my implementation of the Quaternions in JavaScript, for
 WebGL code. The mathematics in this file is not copied from textbooks or the
