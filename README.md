@@ -103,8 +103,8 @@ An Octree Implementation
 <a href="/Octree.hpp">[Octree.hpp]</a><br>
 <a href="/Octree.cpp">[Octree.cpp]</a>
 
-This class implements a common type of eight-way 3D space partitioning called
-an Octree. I used this Octree to accelerate the ray tracer in my ambient
+This class implements a common type of eight-way space partitioning called an
+Octree. I used this Octree to accelerate the ray tracer in my ambient
 occlusion implementation. The naive implementation of the ray tracer would
 take about 48 hours to bake occlusions on large models. With the Octree in
 place the baking time was cut down to just an hour or two.
