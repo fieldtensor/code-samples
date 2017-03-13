@@ -89,6 +89,10 @@ An Octree Implementation
 <br>
 **[Octree.cpp]**
 
+<p align="center">
+<img src="/octree.png">
+</p>
+
 This class implements a common type of eight-way 3D space partitioning called
 an Octree. I used this Octree to accelerate the ray tracer in my ambient
 occlusion implementation. The naive implementation of the ray tracer would
@@ -111,15 +115,15 @@ that geometry. The geometry that lives in cubes which the ray does not
 intersect is never considered, and this is where the tremendous performance
 acceleration comes from.
 
-<p align="center">
-<img src="/octree.png">
-</p>
-
-
 Ambient Occlusion (Ray Tracing Method)
 --------------------------------------
 
 **[ao-bake.cpp]**
+
+<p align="center">
+<img src="/rocks-ao-off.png" width="45%"/>
+<img src="/rocks-ao-on.png" width="45%"/>
+</p>
 
 This code implements pre-computed ambient occlusion to enhance the realism of
 a 3D scene in OpenGL. A custom ray tracer is used to detect the nooks and
@@ -135,10 +139,6 @@ of a 3D scene, as can be seen below. The first image shows a model without
 ambient occlusion. The second image shows that same model after a pass through
 ao-bake.cpp. 
 
-<p align="center">
-<img src="/rocks-ao-off.png" width="45%"/>
-<img src="/rocks-ao-on.png" width="45%"/>
-</p>
 
 3D Water (Plane Waves and Fresnel Effect)
 -----------------------------------------
