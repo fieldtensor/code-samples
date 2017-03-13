@@ -264,8 +264,8 @@ IO Stress Tester for RAID Systems
 
 While at Columbia I did a small amount of research work on the Large Hadron
 Collider. While on that project I also helped install and manage a small
-distributed computing cluster with 10 high powered DELL servers, and an
-attached RAID controller with 50 terabytes of capacity.
+distributed computing cluster composed of 10 rack mounted servers and a RAID
+controller with 50 terabytes of capacity.
 
 At one point we experienced performance bottlenecks on the RAID system. We
 suspected that they were due to inefficiencies in the IO code some of third
