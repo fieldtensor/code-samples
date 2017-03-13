@@ -152,7 +152,7 @@ waves (photons) behave at the boundary between the air the water. This is
 called the Fresnel effect. The shader takes it into account with the following
 lines of simple vector math:
 
-    // This R0 refecltivity constant is determined by empircal expimrents with
+    // The R0 refecltivity constant is determined by empircal expimrents with
     // water.
     
     const float R0 = 0.625;
