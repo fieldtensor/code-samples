@@ -143,7 +143,7 @@ Ambient Occlusion (Ray Tracing Method)
 <a href="/ao-bake.cpp">[ao-bake.cpp]</a>
 
 This code implements pre-computed ambient occlusion to enhance the realism of
-a 3D scene in OpenGL. A custom ray tracer is used to detect the nooks and
+3D scenes in OpenGL. A custom ray tracer is used to detect the nooks and
 crannies of 3D models. For example, consider a groove in a screw. If we try to
 shoot a random ray out of a screw's groove it probably won't escape to the
 outside world. It will more likely hit the sides of the groove. We can detect
