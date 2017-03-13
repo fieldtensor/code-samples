@@ -217,11 +217,11 @@ Export Script for 3D Models in Blender
 
 **<a href="/blender-export.py">[blender-export.py]</a>**
 
-This is an export script which exports model files from Blender into a custom
+This is a pythons script which exports model files from Blender into a custom
 file format suitable for our WebGL project. The project had to run on mobile
-phones over slow cellular connections, so the model file was implemented in
-binary and highly optimized to reduce file size. Examples of optimized
-included: 
+phones over slow cellular connections, so the model file format was
+implemented in binary and highly optimized to reduce file size. Examples of
+optimized included: 
 
 * Using RGB color triplets composed of 3 unsigned bytes, as opposed RGBA color
 quadruplets composed of 4 floating point. 
@@ -231,11 +231,118 @@ to just 8 bytes each, down from 24 bytes each. Surface normals could have even
 been theoretically eliminated from the file format altogether, at the expense
 of slightly longer load times.
 
-Unfortunately the project ran out of funding, and we were not able to
-optimized this file format as much as desired just for budget reasons. The
-loading time nonetheless came out acceptable.
+The project ran out of funding and we were not able to optimized the file
+format as much as desired, just for time and budget reasons. The loading time
+nonetheless came out acceptable.
 
-Export Script for 3D Models in Blender 
---------------------------------------
+IO Stress Tester for RAID Systems
+---------------------------------
 
-**[export.py]**
+**<a href="/cio.cpp">[cio.cpp]</a>**
+
+While at Columbia I did a small amount of research work on the Large Hadron
+Collider. While on that project I also helped install and manage a small
+distributed computing cluster with 10 high powered DELL servers, and an
+attached RAID controller with 50 terabytes of capacity.
+
+At one point we experienced performance bottlenecks on the RAID system. We
+suspected that they were due to inefficiencies in the IO code some of third
+party software from CERN. I wrote a small program, cio.cpp, to stress test the
+RAID system and determine it's maximum IO capacity. We needed to write a
+custom stress test program instead of using an existing one because we
+suspected that our issues were due to incorrect uses of the POSIX fsync()
+function. We needed to mimic that incorrect usage and compare against the
+results.
+
+
+3D Vector Class in x86-64 Assembler Language
+--------------------------------------------
+
+**<a href="/Vec3.hpp">[Vec3.hpp]</a>**
+**<a href="/Vec3D-x86-64-sysv.s">[Vec3D-x86-64-sysv.s]</a>**
+
+This is a 3D vector class for use in C++. It includes dot produces, cross
+products, vector addition, and all of that other usual stuff. The file <a
+href="/Vec3.hpp">Vec3.hpp</a> contains an implementation of the class in C++,
+while the file <a href="/Vec3D-x86-64-sysv.s">Vec3D-x86-64-sysv.s</a> contains
+an implementation of the very same class in pure x86-64 assembler language.
+
+I wrote an implementation in assembler because I wanted to learn how to use
+Intel's SIMD instructions. The SIMD op codes are not normally accessible from
+C, and they allow for the parallel computations of vector dot products in the
+same batch of CPU clock cycles. For numerically intensive code the SIMD op
+codes can provide tremendous performance boosts. This class does not actually
+make use of the full power of SIMD, but it did teach me how to use it general.
+
+
+Unicode Processing (UTF-8 and UTF-16)
+-------------------------------------
+
+**<a href="/Unicode.hpp">[Unicode.hpp]</a>**
+**<a href="/Unicode.cpp">[Unicode.cpp]</a>**
+
+These files contain collections of functions which encode and decode Unicode
+in UTF-8, UTF-16, or UTF-32. UTF-8 and UTF-16 encode Unicode characters in the
+range (0x0000000000, 0x10FFFFFFFF) by packing them into streams of octets or
+words. Some bits of every byte are used for encoding metadata about the
+encoding while other bits are used for encoding the character's actual value.
+These functions do bit twiddling to extract the metadata, unpacking the
+character payload, and deliver a simple stream of Unicode characters to the
+caller. There are also functions for the reverse encoding process.
+
+
+HTML Parsing (Server Side C++)
+-------------------------------------
+
+**<a href="/HTMLParser.hpp">[HTMLParser.hpp]</a>**
+**<a href="/HTMLParser.cpp">[HTMLParser.cpp]</a>**
+
+My <a href="http://patrick-rutkowski.com">personal website</a> is written in a
+C++ based web framework which I created myself. At the core of the framework
+is the idea that HTML should be constructed as a DOM tree and then text-ified
+before final output the client. This is in contrast to the text base
+cut-and-paste approach used by may Perl/Python based systems, and PHP. Having
+the HTML represented as a searchable and re-arrangeable DOM tree makes many
+programming tasks much more intuitive.
+
+The HTML parser in these files walks through HTML source code and delivers a
+stream of tags and attributes to the caller. The API is in the spirit of the
+Expat XML parser. Other code not listed here uses this parser to build a
+DOM-like tree of tags and text. The parser can also handle a custom macro
+language used to facilitate the creation of dynamic content, as well as some
+special syntax related to maintaining professional grade typesetting quality,
+and some more special syntax related to rendering mathematics.
+
+
+Mathematics and Physics Notes
+-----------------------------
+
+**Angular Acceleration**
+<a href="/HTMLParser.hpp">(PDF)</a> &mdash;
+<a href="/HTMLParser.hpp">(TeX Source)</a>
+
+./angular-acceleration.pdf
+./angular-velocity-vector.pdf
+./cosh-and-sinh.pdf
+./cross-product.pdf
+./derivative-of-arctan.pdf
+./derivatives-of-sin-cos-arcsin-and-arccos.pdf
+./dot-product.pdf
+./double-pendulum.pdf
+./energy-wells.pdf
+./euler-angles.pdf
+./euler-lagrange-equation.pdf
+./fourier-series.pdf
+./perspective-projection.pdf
+./polar-vector-derivatives.pdf
+./rigid-body-properties.pdf
+./rotation-about-a-vector.pdf
+./spherical-coordinates.pdf
+./surface-integrals.pdf
+./taylor-series.pdf
+./tensor-of-inertia.pdf
+./transport-theorem.pdf
+./vector-curl.pdf
+./vector-projection-operators.pdf
+./volume-integrals.pdf
+
