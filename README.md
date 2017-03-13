@@ -292,9 +292,10 @@ an implementation of the very same class in pure x86-64 assembler language.
 I wrote an implementation in assembler because I wanted to learn how to use
 Intel's SIMD instructions. The SIMD op codes are not normally accessible from
 C, and they allow for the parallel computations of vector dot products in the
-same batch of CPU clock cycles. For numerically intensive code the SIMD op
-codes can provide tremendous performance boosts. This class does not actually
-make use of the full power of SIMD, but it did teach me how to use it general.
+same batch of CPU clock cycles. For numerically intensive code the SIMD can
+provide tremendous performance boosts. This class does not actually make use
+of the full power of the instruciton set, but it did teach me how to use it
+general.
 
 
 <a name="unicode"></a>
