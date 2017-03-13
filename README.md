@@ -4,7 +4,7 @@ Table of Contents
 Balanced Binary Search Tree 
 ---------------------------
 
-*AVLTree.hpp*
+**AVLTree.hpp**
 
 
 iasdf
