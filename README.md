@@ -252,7 +252,7 @@ Export Script for 3D Models in Blender
 --------------------------------------
 
 <p align="center">
-<img style="border: 1px solid black;" src="/blender.png" width="60%" />
+<img style="border: 1px solid black;" src="/blender.png" width="80%" />
 </p>
 
 <a href="/blender-export.py">[blender-export.py]</a>
