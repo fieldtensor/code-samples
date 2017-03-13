@@ -29,10 +29,6 @@ is log(n+1), where n is the number of nodes. The lookup speed is therefore
 O(log(n+1)) in the worst case, which is tremendously better than a linear
 search for large n.
 
-I also have an interesting mathematical proof of the correctness of the
-balancing procedure somewhere in my hand written notes, but I can't find it at
-the moment.
-
 <a name="quat"></a>
 A Quaternion Class
 ------------------
