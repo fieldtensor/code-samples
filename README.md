@@ -55,7 +55,7 @@ interpolation is impossible without suffering malformed rotations or a large
 computational burden.
 
 The file <a href="/Quat.js">Quat.js</a> is my implementation of the
-Quaternions in JavaScript, for WebGL code. The mathematics in this file is not
+quaternions in JavaScript, for WebGL code. The mathematics in this file is not
 copied from textbooks or the internet. I rederive all of it from scratch on
 paper to better understand how quaternions work. It happens to also be
 difficult to find detailed explanations for how quaternions work, because they
