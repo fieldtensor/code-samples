@@ -131,7 +131,37 @@ of a 3D scene, as can be seen below. The first image shows a model without
 ambient occlusion. The second image shows that same model after a pass through
 ao-bake.cpp. 
 
-Shading 3D Water with the Fresnel Effect
+3D Water, Plane Waves and Fresnel Effect
 ----------------------------------------
 
+This vertex shader simulates a wavy ocean surface for a 3D beach scene. Eight
+plane waves of different amplitude and frequency are superimposed to give the
+illusion of waves chaotically lapping around on the ocean's surfaces.
 
+This shader also implements another important aspect of water called the
+Fresnel effect. The surface of water appears transparent when you look
+straight down into it from on high, but appears reflective like a mirror when
+you look at it from the side an obtuse angle.
+
+For example, consider standing in a lake. If you look far away you will be
+able to see nearby trees reflected in the lake's surface. Yet if you look
+straight down at your feet you won't see your reflections, but rather you'll
+see through to the lake's muddy bottom. The fact that water is transpoart or
+reflective depending on the viewing angle is due to the way electromagnetic
+waves (photons) behave at the boundary between the air the water. This is
+called the Fresnel effect. The shader takes it into account with the following
+lines of simple vector math:
+
+```// This R0 refecltivity constant is determined by empircal expimrents with
+// water.
+
+const float R0 = 0.625;
+
+float omc = 1.0 - max(0.0, dot(toEye, norm));
+
+// Compute R, the reflection coefficient.
+float R = R0 + (1.0 - R0)*omc*omc*omc*omc*omc;
+
+// Compute T, the reflection coefficient.
+float T = 1.0 - R;
+```
