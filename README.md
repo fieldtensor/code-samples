@@ -351,7 +351,7 @@ something I often realize that I don't understand it as well as I thought I
 did. In this way I uncover the gaps in my knowledge and eventually come to a
 more complete understanding. 
 
-These notes do not represent the totality of what I understand about
+These notes do not represent the totality of what I know about
 mathematics and physics. They're just a cherry picked selection of a few
 subjects that I've had time to write about. I tried to keep the selection
 trimmed down to things which are relevant to graphics programming, either
