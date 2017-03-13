@@ -136,7 +136,7 @@ ambient occlusion. The second image shows that same model after a pass through
 ao-bake.cpp. 
 
 <p align="center">
-<img src="/rocks-ao-off.png" width="85%"/>
+<img src="/rocks-ao-off.png" width="45%"/>
 <img src="/rocks-ao-on.png" width="45%"/>
 </p>
 
