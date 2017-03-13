@@ -326,8 +326,8 @@ My <a href="http://patrick-rutkowski.com">personal website</a> is written in a
 C++ based web framework which I created myself. At the core of the framework
 is the idea that server-side construction of HTML should be done by using a
 DOM tree (which is then text-ified before output the client). This is in
-contrast to the textual cut-and-paste approach used by may Perl/Python based
-systems, and PHP. Having the HTML represented as a searchable and
+contrast to the textual cut-and-paste approach used by may Perl or Python
+based systems, and PHP. Having the HTML represented as a searchable and
 re-arrangeable DOM tree makes many programming tasks much more intuitive.
 
 The HTML parser in these files walks through HTML source code and delivers a
