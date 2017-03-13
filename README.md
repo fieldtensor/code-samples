@@ -334,9 +334,9 @@ The HTML parser in these files walks through HTML source code and delivers a
 stream of tags and attributes to the caller. The API is in the spirit of the
 Expat XML parser. Other code not listed here uses this parser to build a
 DOM-like tree of tags and text. The parser can also handle a custom macro
-language used to facilitate the creation of dynamic content, as well as some
-special syntax related to maintaining professional grade typesetting quality,
-and some more special syntax related to rendering mathematics.
+language, as well as some special syntax related to maintaining professional
+grade typesetting quality, and some more special syntax related to rendering
+mathematics.
 
 
 <a name="notes"></a>
