@@ -88,15 +88,8 @@ This is an important technique because it prevents the JavaScript garbage
 collector from ever running. In a VR application, for example, every frame has
 just 11 milliseconds to render. But when JavaScript's garbage collector runs
 it stops the program dead in order to do its cleanup work. This causes several
-frames to be dropped by the rendering loop and results in a visual stutter.
-When programming 3D applications in JavaScript it is tremendously important to
-keep all objects around and code in a GC-free style to prevent such
-stuttering.
-
-We can, of course, free large amounts of data in many other parts of a WebGL
-application. We don't want to leak memory to infinity in general. But
-creating, destroying, and re-creating several thousand mathematical
-temporaries 90 times per second would be a big mistake. 
+frames to be dropped by the rendering loop and results in a visual stutter. It
+is therefore best to avoid the garbage collector whenever possible.
 
 
 <a name="oc"></a>
