@@ -305,7 +305,7 @@ incorrect usage to compare the performance profiles.
 --------------------------------------------
 
 <p align="center">
-<img src="/asm.png" width="70%" />
+<img src="/asm.png" width="60%" />
 </p>
 
 <a href="/Vec3.hpp">[Vec3.hpp]</a><br>
