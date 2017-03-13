@@ -118,13 +118,13 @@ The number of cubes increases at the extremely fast exponential rate of 8^n,
 where n is the number of subdivisions, so only a few subdivisions are ever
 needed.
 
-Once the splitting geometry in the scene is assigned to each of the cubes,
-vertex by vertex. The ray tracer can then use this whole structure as a kind
-of spatial index. We first check which cubes a ray intersects, and then we
-gather up the geometry from those cubes and intersect the ray further with
-that geometry. The geometry that lives in cubes which the ray does not
-intersect is never considered, and this is where the tremendous performance
-acceleration comes from.
+Once the splitting is complete we take all of the geometry in the scene and
+assign it to the cubes, vertex by vertex. The ray tracer can then use this
+whole structure as a kind of spatial index. When doing a ray trace we first
+check which cubes a ray intersects. Then we gather up the geometry from those
+cubes and perform further intersection test. The geometry that lives in cubes
+which the ray does not intersect is never considered, and in this way we gain
+a tremendous performance boost.
 
 
 <a name="ao"></a>
