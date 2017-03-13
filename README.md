@@ -268,13 +268,12 @@ distributed computing cluster composed of 10 rack mounted servers and a RAID
 controller with 50 terabytes of capacity.
 
 At one point we experienced performance bottlenecks on the RAID system. We
-suspected that they were due to inefficiencies in the IO code some of third
-party software from CERN. I wrote a small program, cio.cpp, to stress test the
-RAID system and determine it's maximum IO capacity. We needed to write a
-custom stress test program instead of using an existing one because we
-suspected that our issues were due to incorrect uses of the POSIX fsync()
-function. We needed to mimic that incorrect usage and compare against the
-results.
+suspected that they were due to inefficiencies in the IO of some third party
+software from CERN. I wrote a small program, cio.cpp, to stress test the RAID
+system and determine it's maximum IO capacity. We needed to write a custom
+stress test program because we suspected that our issues were due to the
+incorrect uses of the POSIX fsync() function. We needed to mimic that
+incorrect usage to compare the performance profiles.
 
 
 <a name="vec"></a>
