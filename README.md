@@ -76,6 +76,10 @@ website.
 A Matrix Class
 --------------
 
+<p align="center">
+<img src="/matrix.png" width="20%"/>
+</p>
+
 <a href="/Mat4.js">[Mat4.js]</a>
 
 This file contains my implementation of a 4x4 matrix in JavaScript, for use
