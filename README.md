@@ -51,8 +51,8 @@ numbers, which is more compact than a 3x3 matrix with 9 numbers. Moreover, it
 is possible to cleanly interpolate between two quaternions, and thus between
 two rotational states. This is accomplished by rotating one quaternion into
 the other on a four dimensional hypersphere. With a rotation matrix such an
-interpolation is impossible to do without suffering malformed rotations or a
-large computational burden on the FPU. 
+interpolation is impossible without suffering malformed rotations or a large
+computational burden.
 
 The file Quat.js is my implementation of the Quaternions in JavaScript, for
 WebGL code. The mathematics in this file is not copied from textbooks or the
