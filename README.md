@@ -44,7 +44,7 @@ existence that does not include a quaternion implementation.
 To to give a quick summary, quaternions are a higher dimensional
 generalization of the ordinary (two dimensional) complex numbers. Complex
 numbers have one real part and one imaginary part, while a quaternion has one
-real part and three complex parts. Quaternions follow an especially
+real part and three imaginary parts. Quaternions follow an especially
 complicated multiplication rule, form which they derive all of their
 mathematical and computational power. A quaternion is able to represent a 3D
 rotation in just 4 numbers, which is more compact than a 3x3 matrix with 9
