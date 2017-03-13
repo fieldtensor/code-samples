@@ -184,7 +184,7 @@ Show Volume Optimization
 
 <p align="center">
 <div style="width:45%;"> 
-<img src="/shadow.png" style="width: 100%;"/>
+<img src="/shadow.png" style="width: 45%;"/>
 <br>
 Shadows in final rendering
 </div>
