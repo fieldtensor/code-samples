@@ -244,7 +244,7 @@ implemented in binary and highly optimized to reduce file size. Examples of
 optimizations included: 
 
 * Using RGB color triplets composed of 3 unsigned bytes, as opposed RGBA color
-quadruplets composed of 4 floating point. 
+quadruplets composed of 4 floats.
 
 * Using a half-float polar representation for surface normals to trim their size
 to just 8 bytes each, down from 24 bytes each. Surface normals could have even
