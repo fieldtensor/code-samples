@@ -149,17 +149,18 @@ darkly than the surrounding geometry.
 
 For example, consider a groove in a screw. If we try to shoot a random ray out
 of a screw's groove it probably won't escape to the outside world. It will
-more likely hit the sides of the groove. We can detect this, and we take it to
-mean that less light should penetrate into the groove. The groove is given
-less ambient light from within the system's fragment programs, and appears
-more dark on screen.
+more likely hit the sides of the groove. When we detect this situation in our
+ray tracer we take it to mean that less light should penetrate into the
+groove, because it is occluded by its surrounding walls. The groove is then
+given less ambient light from within the system's fragment programs and
+appears darker on screen.
 
-The darkening of nooks and crannies in this way greatly enhances the realism
-of a 3D scene. For example, the images above show a rocky outcrop. The first
-image shows the 3D model without ambient occlusion. The second image shows
-that same model after it has been passed through ao-bake.cpp. Notice how the
-shading on the first images look flat and homogeneous, while the shading on
-the second image look truly three dimensional and alive. 
+The darkening of nooks and crannies greatly enhances the realism of a 3D
+scene. The images above show an example. The first image shows a rocky outcrop
+without ambient occlusion. The second image shows that same outcrop after it
+has been passed through ao-bake.cpp. Notice how the shading on the first
+images look flat and homogeneous, while the shading on the second image look
+truly three dimensional and alive. 
 
 
 <a name="water"></a>
@@ -174,17 +175,17 @@ illusion of waves chaotically lapping around on the ocean's surfaces.
 
 This shader also implements another important aspect of water called the
 Fresnel effect. The surface of water appears transparent when you look
-straight down into it from on high, but appears reflective like a mirror when
-you look at it from the side an obtuse angle.
+straight down at it from on high, but appears reflective like a mirror when
+seen at an obtuse angle.
 
 For example, consider standing in a lake. If you look far away you will be
-able to see nearby trees reflected in the lake's surface. Yet if you look
-straight down at your feet you won't see your reflections, but rather you'll
-see through to the lake's muddy bottom. The fact that water is transpoart or
-reflective depending on the viewing angle is due to the way electromagnetic
-waves (photons) behave at the boundary between the air the water. This is
-called the Fresnel effect. The shader takes it into account with the following
-lines of simple vector math:
+able to see the clouds and nearby trees reflected in the lake's surface. Yet
+if you look straight down you'll see your feet through the surface of the
+water, and not your own reflection. The fact that water can be transparent or
+reflective under different conditions is due to the way electromagnetic waves
+(photons) behave when crossing the boundary between air the water. This whole
+thing is called the Fresnel effect. The shader takes it into account with the
+following lines of vector math:
 
     // The R0 refecltivity constant is determined by empircal expimrents with
     // water. The value given here is taken from optics references.
