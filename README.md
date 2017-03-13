@@ -4,7 +4,7 @@ Table of Contents
 A Balanced Binary Search Tree 
 ---------------------------
 
-**[AVLTree.hpp]**
+**<a href="/AVLTree.hpp">[AVLTree.hpp]</a>**
 
 This is a balanced binary search tree useful for implementing key-value maps
 and sets in C++. The specific flavor of BST in this source file is
@@ -21,7 +21,7 @@ the moment.
 A Quaternion Class
 ------------------
 
-**[Quat.js]**
+**<a href="/Quat.js">[Quat.js]</a>**
 
 Quaternions obscure 4 dimensional mathematical entities that see little use in
 academic mathematics and physics. However, quaternions are able to represent
@@ -54,7 +54,7 @@ of writing up a long article on the subject for my website.
 A Matrix Class
 --------------
 
-**[Mat4.js]**
+**<a href="/Mat4.js">[Mat4.js]</a>**
 
 This file contains my implementation of a 4x4 matrix in JavaScript, for use
 with WebGL code. The contents and methods of this class should be familiar to
@@ -89,9 +89,8 @@ An Octree Implementation
 <img src="/octree.png">
 </p>
 
-**[Octree.hpp]**
-<br>
-**[Octree.cpp]**
+**<a href="/Octree.hpp">[Octree.hpp]</a>**<br>
+**<a href="/Octree.cpp">[Octree.cpp]</a>**
 
 This class implements a common type of eight-way 3D space partitioning called
 an Octree. I used this Octree to accelerate the ray tracer in my ambient
@@ -127,7 +126,7 @@ Ambient Occlusion (Ray Tracing Method)
 <i>(Right)</i> Ambient Occlusion On (nooks shaded)
 </p>
 
-**[ao-bake.cpp]**
+**<a href="/ao-bake.cpp">[ao-bake.cpp]</a>**
 
 This code implements pre-computed ambient occlusion to enhance the realism of
 a 3D scene in OpenGL. A custom ray tracer is used to detect the nooks and
@@ -149,7 +148,7 @@ the second image look truly three dimensional and alive.
 3D Water (Plane Waves and Fresnel Effect)
 -----------------------------------------
 
-**[water.vs]**
+**<a href="/water.vs">[water.vs]</a>**
 
 This vertex shader simulates a wavy ocean surface for a 3D beach scene. Eight
 plane waves of different amplitude and frequency are superimposed to give the
@@ -195,7 +194,7 @@ Show Volume Optimization
 <i>(Right)</i> Debug visualization of shadow volumes
 </p>
 
-**[shadow.vs]**
+**<a href="/shadow.vs">[shadow.vs]</a>**
 
 This source file is the vertex shader component of a shadow volumes
 implementation. Most of the code for implementing shadow volumes goes into
@@ -258,7 +257,7 @@ results.
 3D Vector Class in x86-64 Assembler Language
 --------------------------------------------
 
-**<a href="/Vec3.hpp">[Vec3.hpp]</a>**
+**<a href="/Vec3.hpp">[Vec3.hpp]</a>**<br>
 **<a href="/Vec3D-x86-64-sysv.s">[Vec3D-x86-64-sysv.s]</a>**
 
 This is a 3D vector class for use in C++. It includes dot produces, cross
@@ -278,7 +277,7 @@ make use of the full power of SIMD, but it did teach me how to use it general.
 Unicode Processing (UTF-8 and UTF-16)
 -------------------------------------
 
-**<a href="/Unicode.hpp">[Unicode.hpp]</a>**
+**<a href="/Unicode.hpp">[Unicode.hpp]</a>**<br>
 **<a href="/Unicode.cpp">[Unicode.cpp]</a>**
 
 These files contain collections of functions which encode and decode Unicode
@@ -294,7 +293,7 @@ caller. There are also functions for the reverse encoding process.
 HTML Parsing (Server Side C++)
 -------------------------------------
 
-**<a href="/HTMLParser.hpp">[HTMLParser.hpp]</a>**
+**<a href="/HTMLParser.hpp">[HTMLParser.hpp]</a>**<br>
 **<a href="/HTMLParser.cpp">[HTMLParser.cpp]</a>**
 
 My <a href="http://patrick-rutkowski.com">personal website</a> is written in a
@@ -316,6 +315,21 @@ and some more special syntax related to rendering mathematics.
 
 Mathematics and Physics Notes
 -----------------------------
+
+These are PDFs of some of my notes on mathematics and physics (along with
+their source files in TeX). As I learn a new piece of mathematics or physics I
+find it useful to type out textbook style notes as if trying to explain the
+subject to a new student. In the process of trying to teach something I often
+realize that I don't understand it as well as I thought I did. In this way I
+uncover the gaps in my knoweldge and eventually come to a more complete
+understanding. 
+
+These notes do not represent the totality of what I understand about
+mathematics and physics. They're just a cherry picked selection of a few
+subjects that I've had time to write about. I tried to keep the selection
+trimmed down to things which are relevat to graphics programming, either
+directly or tangentally. I left out completey unrelated subjects like quantum
+mechanics or general relativity.
 
 <a href="/rotation-about-a-vector.pdf">Rotation about a Vector</a> &mdash;
 <a href="/rotation-about-a-vector.tex">(TeX Source)</a><br>
