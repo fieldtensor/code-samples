@@ -1,0 +1,308 @@
+\input ../paper.tex
+
+\papertitleND{The Cross Product}
+
+\paperheading{Summary}
+
+\noindent The cross product of $\sv a$ and $\sv b$ is defined as a vector
+which is perpendicular to both $\sv a$ and $\sv b$ with a length of $ab *
+\sin\theta$, where $\theta$ is the angle between $\sv a$ and $\sv b$.  The two
+vectors below both fit this definition. Both vectors have equal claim to
+calling themselves the result of $\sv a \x \sv b$ 
+$$
+\sv a \x \sv b =
+\[
+\matrix{%
+a_yb_z - a_zb_y \cr
+a_zb_x - a_xb_z \cr
+a_xb_y - a_yb_x \cr
+}
+\]
+\mskip40mu
+\sv a \x \sv b =
+\[
+\matrix{%
+a_zb_y - a_yb_z \cr
+a_xb_z - a_zb_x \cr
+a_yb_x - a_xb_y \cr
+}
+\]
+$$
+The cross product must have the property that
+$$
+\vlen{\sv a \x \sv b} = ab * \sin\theta
+$$
+The cross product obeys the following identity
+$$
+\sv a \x \(\sv b \x \sv c\)
+= \sv b \(\sv a * \sv c\) - \sv c \(\sv a * \sv b\)
+$$
+
+\paperheading{Discovery}
+
+\noindent Let us find the area of a parallelogram spanned by the vectors $\sv
+a$ and $\sv b$. We will think of $\sv a$ as the base of the parallelogram. The
+parallelogram's height will then be $h = b\sin\theta$, where $\theta$ is the
+angle between the $\sv a$ and $\sv b$. The parallelogram's area is
+$$
+A
+= ab*\sin\theta
+= ab*\sqrt{1 - \cos^2\theta}
+= \sqrt{\(ab\)^2 - \(\sv a * \sv b\)^2}
+$$
+Now let us separately expand out the terms $\(ab\)^2$ and
+$\(\sv a * \sv b\)^2$
+$$
+\eqalign{
+\(ab\)^2
+&=
+\( \cs a_x^2 +  \cs a_y^2 +  \cs a_z^2\)
+\( \cs b_x^2 +  \cs b_y^2 +  \cs b_z^2\) \cr
+&=
+\cs a_x^2 \cs b_x^2
++  \cs a_x^2 \cs b_y^2
++  \cs a_x^2 \cs b_z^2
++  \cs a_y^2 \cs b_x^2
++  \cs a_y^2 \cs b_y^2
++  \cs a_y^2 \cs b_z^2
++  \cs a_z^2 \cs b_x^2
++  \cs a_z^2 \cs b_y^2
++  \cs a_z^2 \cs b_z^2
+\cr
+\(\sv a * \sv b\)^2
+&=
+\(a_xb_x + a_yb_y + a_zb_z\)^2 \cr
+&=
+ \cs a_x^2 \cs b_x^2
++ 2a_xb_xa_yb_y
++ 2a_xb_xa_zb_z
++ \cs a_y^2 \cs b_y^2
++ 2a_yb_ya_zb_z
++ \cs a_z^2 \cs b_z^2
+}
+$$
+Subtracting these then gives
+$$
+\mathcramp{0.375}
+\displaylines{
+\(ab\)^2 - \mskip3mu\(\sv a * \sv b\)^2
+\cr
+\cs a_x^2 \cs b_y^2
++  \cs a_x^2 \cs b_z^2
++  \cs a_y^2 \cs b_x^2
++  \cs a_y^2 \cs b_z^2
++  \cs a_z^2 \cs b_x^2
++  \cs a_z^2 \cs b_y^2
+- 2 a_x b_x a_y b_y
+- 2 a_x b_x a_z b_z
+- 2 a_y b_y a_z b_z
+\cr
+\( \cs a_x^2 \cs b_y^2 - 2a_xb_xa_yb_y +  \cs a_y^2 \cs b_x^2\)
++ \( \cs a_x^2 \cs b_z^2 - 2a_xb_xa_zb_z +  \cs a_z^2 \cs b_x^2\)
++ \( \cs a_y^2 \cs b_z^2 - 2a_yb_ya_zb_z +  \cs a_z^2 \cs b_y^2\)
+\cr
+\(a_xb_y - a_yb_x\)^2
++\, \( a_x b_z - a_z b_x\)^2
++\, \( a_y b_z - a_z b_y\)^2
+}
+$$
+The above is the square of the area, and so the area itself is
+$$
+A =
+\sqrt{
+\(a_xb_y - a_yb_x\)^2 +
+\(a_x b_z - a_z b_x\)^2 +
+\(a_y b_z - a_z b_y\)^2}
+$$
+
+The form of this result suggests that we have discovered some underlying
+vector, and that its length is the area of the parallelogram spanned by $\sv
+a$ and $\sv b$. We have the values of this vector's components at hand, but we
+do not know which component should go on which axis, nor do we know the
+components' signs. Notice that when $x$ and $y$ components are present $z$ is
+left out, when $x$ and $z$ components are present $y$ is left out, and when
+$y$ and $z$ components are present $x$ is left out. In the spirit of this
+symmetry we will assign the term which mixes $x$ and $y$ to the $z$ direction,
+the term which mixes $x$ and $z$ to the $y$ direction, and the term which
+mixes $y$ and $z$ to the $x$ direction: We will call this new vector $\sv a \x
+\sv b$:
+$$
+\sv a \x \sv b = \[\matrix{
+\pm\(a_yb_z - a_zb_y\) \cr
+\pm\(a_zb_x - a_xb_z\) \cr
+\pm\(a_xb_y - a_yb_x\) \cr
+}\]
+$$
+
+For the moment we do not know whether to choose $a_yb_z - a_zb_y$ or $a_zb_y -
+a_yb_z$ for the $x$-axis component. There are eight possible ways of resolving
+the $\pm$ signs into a concrete $+$ or $-$. But which of these eight do we
+choose? None of them would break the formula for the area~$A$. However, It
+turns out that there are only two ultimately correct ways to resolve the $\pm$
+signs. This issue will be resolved fully in the next section.
+
+\vskip\baselineskip
+
+\noindent As a final note, observe that we began this whole analysis with $A =
+ab*\sin\theta$. Since we calculated the area to be $A = \vlen{\sv a \x \sv b}$
+we can state that $$\vlen{\sv a \x \sv b} = ab*\sin\theta$$
+
+\paperheading{Perpendicularity}
+
+We naturally want to know what the spatial orientation of $\sv a \x \sv b$ is
+in relation to $\sv a$~and~$\sv b$. It turns out that the cross product can be
+defined in a manner such that it is perpendicular to both $\sv a$ and $\sv b$.
+To demonstrate this for $\sv a$ we can take a dot product
+$$
+\sv a * \(\sv a \x \sv b\)
+=
+\pm\(a_xa_yb_z - a_xa_zb_y\)
+\pm\(a_ya_zb_x - a_ya_xb_z\)
+\pm\(a_za_xb_y - a_za_yb_x\)
+$$
+Notice that this dot product comes to 0 if we choose the signs as follows
+$$
+\sv a * \(\sv a \x \sv b\)
+=
+\(a_xa_yb_z - a_xa_zb_y\)
++ \(a_ya_zb_x - a_ya_xb_z\)
++ \(a_za_xb_y - a_za_yb_x\)
+= 0
+$$
+Yet we could also have chosen the opposite signs
+$$
+\sv a * \(\sv a \x \sv b\)
+=
+- \(a_xa_yb_z - a_xa_zb_y\)
+- \(a_ya_zb_x - a_ya_xb_z\)
+- \(a_za_xb_y - a_za_yb_x\)
+= 0
+$$
+
+Either of these choices corresponds to a cross product that is perpendicular
+to $\sv a$. By symmetry or direct computation it can be demonstrated that both
+options are perpendicular to $\sv b$ as well. We therefore have
+$$
+\sv a \x \sv b =
+\[
+\matrix{%
+a_yb_z - a_zb_y \cr
+a_zb_x - a_xb_z \cr
+a_xb_y - a_yb_x \cr
+}
+\]
+\mskip20mu
+\({\rm or}\)
+\mskip20mu
+\sv a \x \sv b =
+\[
+\matrix{%
+a_zb_y - a_yb_z \cr
+a_xb_z - a_zb_x \cr
+a_yb_x - a_xb_y \cr
+}
+\]
+$$
+Each of these forms is the negation of the other. Both hold good to the area
+formula found in the previous section, and both are perpendicular to both $\sv
+a$ and $\sv b$. When working with cross products we must choose one of these
+two definitions and then stick to it consistently. We will usually work with
+the first of the two because it yields the elegant property $$(1, 0, 0) \x (0,
+1, 0) = (0, 0, 1)$$ whereas to the second definition yields the more unusual
+property $$(1, 0, 0) \x (0, 1, 0) = (0, 0, -1)$$
+
+\paperheading{Determinant Notation}
+
+\noindent
+The cross product can be written as the pseudo determinant
+$$
+\sv a \x \sv b
+=
+\left|
+\matrix{
+\ihat & \jhat & \khat \cr
+a_x & a_y & a_z \vrule depth 7pt width 0pt\cr
+b_x & b_y & b_z \cr
+}
+\right|
+=
+\matrix{
+\ihat*\(a_yb_z - a_zb_y\) \vrule depth 7pt width 0pt\cr
+\jhat*\(a_zb_x - a_xb_z\) \vrule depth 7pt width 0pt\cr
+\khat*\(a_xb_y - a_yb_x\) \cr
+}
+$$
+
+\paperheading{Chained Cross Products}
+
+\noindent
+The chained expression $\sv a \x \(\sv b \x \sv c\)$ turns out to have a very
+useful identity. To discover this identity we will first expand things out
+component wise
+$$
+\sv a \x \(\sv b \x \sv c\)
+\,=\,
+\sv a\, \x
+\[
+\matrix{
+b_y c_z - b_z c_y \cr
+b_z c_x - b_x c_z \cr
+b_x c_y - b_y c_x \cr
+}
+\]
+=
+\[
+\matrix{
+a_y\(b_x c_y - b_y c_x\) - a_z\(b_z c_x - b_x c_z\) \cr
+a_z\(b_y c_z - b_z c_y\) - a_x\(b_x c_y - b_y c_x\) \cr
+a_x\(b_z c_x - b_x c_z\) - a_y\(b_y c_z - b_z c_y\) \cr
+}
+\]
+$$
+This can then be rearranged to
+$$
+\mathcramp{0.75}
+\cdots =
+\[
+\matrix{
+a_y b_x c_y - a_y b_y c_x - a_z b_z c_x + a_z b_x c_z \cr
+a_z b_y c_z - a_z b_z c_y - a_x b_x c_y + a_x b_y c_x \cr
+a_x b_z c_x - a_x b_x c_z - a_y b_y c_z + a_y b_z c_y \cr
+}
+\]
+=
+\[
+\matrix{
+b_x\(a_yc_y + a_zc_z\) - c_x\(a_yb_y + a_zb_z\) \cr
+b_y\(a_zc_z + a_xc_x\) - c_y\(a_zb_z + a_xb_x\) \cr
+b_z\(a_xc_x + a_yc_y\) - c_z\(a_xb_x + a_yb_y\) \cr
+}
+\]
+$$
+We can now play a clever trick and rewrite this as
+$$
+\cdots =
+\[
+\matrix{
+b_x\(\sv a * \sv c - a_xc_x\) - c_x\(\sv a * \sv b - a_xb_x\) \cr
+b_y\(\sv a * \sv c - a_yc_y\) - c_y\(\sv a * \sv b - a_yb_y\) \cr
+b_z\(\sv a * \sv c - a_zc_z\) - c_z\(\sv a * \sv b - a_zb_z\) \cr
+}
+\]
+=
+\[
+\matrix{
+b_x\(\sv a * \sv c\) - c_x\(\sv a * \sv b\) \cr
+b_y\(\sv a * \sv c\) - c_y\(\sv a * \sv b\) \cr
+b_z\(\sv a * \sv c\) - c_z\(\sv a * \sv b\) \cr
+}
+\]
+$$
+We have thus arrived at the identity
+$$
+\sv a \x \(\sv b \x \sv c\)
+= \sv b \(\sv a * \sv c\)
+- \sv c \(\sv a * \sv b\)
+$$
+
+\bye

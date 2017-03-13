@@ -1,0 +1,606 @@
+\input ../paper.tex
+
+\papertitle{Vector Curl}
+
+\paperheading{Discovery (2D)}
+
+Let us consider a vector function $\sv F(x, y)$ of two-dimensional space.
+Place a square at the origin with width $\Delta x$ and height $\Delta y$. The
+lower left and upper right corners will be at $(x_0, y_0)$ and $(x, y)$. Let
+the square's center be at the origin. The midpoints of the square's sides will
+be $x_m = 0$ and $y_m = 0$. We could write these midpoints using the literal
+number $0$, but we will keep the notation $x_m$ and $y_m$ to keep the
+meaning explicit.
+
+Our goal is to find an approximate answer for the line integral of $\sv F$
+over this square. We can do this by sampling the vector function at the
+midpoints of the sides:
+$$
+\eqalign{
+\oint \sv F * {\rm d}\sv c \approx
+&\Bigl[\sv F(x_m, y_0) * (\Delta x, 0)\Bigr]
++ \Bigl[\sv F(x, y_m) * (0, \Delta y)\Bigr]  + \cr
+&\Bigl[\sv F(x_m, y) * (-\Delta x, 0)\Bigr]
++ \Bigl[\sv F(x_0, y_m) * (0, -\Delta y)\Bigr] \cr
+}
+$$
+We can rearrange this approximation to
+$$
+\eqalign{
+\oint \sv F * {\rm d}\sv c \approx
+&-\Bigl[
+\sv F(x_m, y) 
+- \sv F(x_m, y_0)
+\Bigr] * (\Delta x, 0)
+\cr
+&
++\Bigl[
+\sv F(x, y_m)
+- \sv F(x_0, y_m) \Bigr] * (0, \Delta y)
+\cr
+}
+$$
+Next we can take a first order approximation for the difference terms
+$$
+\eqalign{
+\sv F(x, y_m) - \sv F(x_0, y_m)
+\approx \q{\p \sv F}{\p x}\biggl(x_0, y_m\biggr) * \Delta x
+\cr
+\sv F(x_m, y) - \sv F(x_m, y_0)
+\approx \q{\p \sv F}{\p y}\biggl(x_m, y_0\biggr) * \Delta y
+}
+$$
+Given the above we can now write
+$$
+\eqalign{
+\oint \sv F * {\rm d}\sv c \approx
+&
+-\[ \q{\p \sv F}{\p y}\Delta y \] * (\Delta x, 0)
++\[ \q{\p \sv F}{\p x}\Delta x \] * (0, \Delta y)
+\cr
+\noalign{\vskip4pt}
+&=
+\(\q{\p F_y}{\p x} -\q{\p F_x}{\p y}\)\Delta x\?\Delta y
+}
+$$
+
+This combination of partial derivatives is called the curl. For the curl to be
+well defined at $(x_m, y_m)$ the functions $\p F_y/\p x$ and $\p F_x/\p y$
+should be well defined at the point $(x_m, y_m)$, since this is the point
+where we end up evaluating the partials as the differential square shrinks. At
+the very least, the partials should approach some sensible value in the limit
+as $(x, y)$ goes to $(x_m, y_m)$.
+
+\paperheading{Discovery (3D)}
+
+We now wish to generalize the previous analysis to three dimensions. We need
+to formulate an expression for vector rotation. We want to take a vector $\sv
+r$ and rotate it by angle $\theta$ about some unit axis $\sv{\hat\omega}$. You
+can verify for yourself that the following expression serves exactly this
+purpose:
+$$
+\sv R(\sv r)
+=
+-\?\sv{\hat\omega} \x (\sv{\hat\omega} \x \sv r) * \cos\theta
++ (\sv{\hat\omega} \x \sv r) * \sin\theta
++ \sv{\hat\omega} * \sv r
+$$
+This function is complicated, but fortunately we will not need to manipulate
+it much in the work to come. We will only need to refer to its general
+properties.
+
+We can now use this function $\sv R$ to calculate the path integral over a
+square that is rotated in some arbitrary way (and not just in the $xy$-plane).
+What's more, $\sv F$ can now be a function of three inputs $\sv F(x, y, z)$:
+$$
+\eqalign{
+\oint \sv F * {\rm d}\sv c \approx
+&\Bigl[\sv F(\sv R(x_m, y_0, 0)) * \sv R(\Delta x, 0, 0)\Bigr]
++ \Bigl[\sv F(\sv R(x, y_m, 0)) * \sv R(0, \Delta y, 0)\Bigr]  + \cr
+&\Bigl[\sv F(\sv R(x_m, y, 0)) * \sv R(-\Delta x, 0, 0)\Bigr]
++ \Bigl[\sv F(\sv R(x_0, y_m, 0)) * \sv R(0, -\Delta y, 0)\Bigr] \cr
+}
+$$
+Note that $\sv R$ obeys the property
+$$
+\sv R(-\sv r) = -\sv R(\sv r)
+$$
+We can therefore rearrange the approximation just like before:
+$$
+\eqalign{
+\oint \sv F * {\rm d}\sv c \approx
+&- \Bigl[ \sv F(\sv R(x_m, y, 0)) - \sv F(\sv R(x_m, y_0, 0)) \Bigr]
+* \sv R(\Delta x, 0, 0)
+\cr
+&+ \Bigl[ \sv F(\sv R(x, y_m, 0)) - \sv F(\sv R(x_0, y_m, 0)) \Bigr]
+* \sv R(0, \Delta y, 0)
+\cr
+}
+$$
+The first order approximation of these differences are not as simple as
+before. The function~$\sv F$ is now a function of three inputs as opposed to
+just two, and it is now being evaluated over the function~$\sv R$ instead of
+directly over Cartesian space. However, the aggregate $\sv F \circ \sv R$ is
+evaluated with only $x$ or $y$ varying, while its other inputs remain fixed.
+We thus have functions of just one variable in each case. Perhaps the first
+order approximations are not so difficult after all. We can now rewrite our
+approximation as
+$$
+\eqalign{
+\oint \sv F * {\rm d}\sv c \approx
+&-
+\[
+\q{\p}{\p y}\biggl[\sv F \circ \sv R\biggr]
+\circ \biggl(x_m, y_0, 0\biggr)
+\]
+\Delta y
+* \sv R(\Delta x, 0, 0)
+\cr
+&+ \[
+\q{\p}{\p x}\biggl[\sv F \circ \sv R\biggr]
+\circ \biggl(x_0, y_m, 0\biggr)
+\]
+\Delta x
+* \sv R(0, \Delta y, 0)
+\cr
+}
+$$
+The partial derivatives in this expression come out to
+$$
+\displaylines{
+\q{\p}{\p x}\biggl[\sv F \circ \sv R\biggr]
+=
+\(\q{\p \sv F}{\p x} \circ \sv R\)
+\q{\p R_x}{\p x}
++
+\(\q{\p \sv F}{\p y} \circ \sv R\)
+\q{\p R_y}{\p x}
++
+\(\q{\p \sv F}{\p z} \circ \sv R\)
+\q{\p R_z}{\p x}
+\cr
+\noalign{\vskip6pt minus 6pt}
+\q{\p}{\p y}\biggl[\sv F \circ \sv R\biggr]
+=
+\(\q{\p \sv F}{\p x} \circ \sv R\)
+\q{\p R_x}{\p y}
++
+\(\q{\p \sv F}{\p y} \circ \sv R\)
+\q{\p R_y}{\p y}
++
+\(\q{\p \sv F}{\p z} \circ \sv R\)
+\q{\p R_z}{\p y}
+}
+$$
+Let us now look at the partial derivatives of $\sv R$ that appear in this
+result. For example, consider the derivative $\p R_y/\p x$:
+$$
+\eqalign{
+\q{\p R_y}{\p x}
+=
+\left.
+\q{\p}{\p x}
+\middle[R_y(\sv r)\right]
+=
+\left.
+\q{\p}{\p x}
+\middle[\sv R(\sv r) * \jhat\right]
+=
+\sv R\(\q{\p \sv r}{\p x}\) * \jhat
+=
+\sv R(\ihat) * \jhat
+}
+$$
+This is just $\jhat$ dotted with the rotation of $\ihat$ about
+$\sv{\hat\omega}$. In summary we have:
+$$
+\q{\p R_y}{\p x} = \sv R(\?\ihat\?) * \jhat
+$$
+We can work out the other partial derivatives on $\sv R$ in a similar way to
+get
+$$
+\displaylines{
+\q{\p R_x}{\p x} = \sv R(\?\ihat\?) * \ihat
+\hskip20pt
+\q{\p R_y}{\p x} = \sv R(\?\ihat\?) * \jhat
+\hskip20pt
+\q{\p R_z}{\p x} = \sv R(\?\ihat\?) * \khat
+\cr
+\noalign{\vskip6pt minus 6pt}
+\noalign{\vskip4pt}
+\q{\p R_x}{\p y} = \sv R(\?\jhat\?) * \ihat
+\hskip20pt
+\q{\p R_y}{\p y} = \sv R(\?\jhat\?) * \jhat
+\hskip20pt
+\q{\p R_z}{\p y} = \sv R(\?\jhat\?) * \khat
+}
+$$
+The partial derivatives thus reduce out
+$$
+\eqalign{
+\left.\q{\p}{\p x}\middle[\sv F \circ \sv R\right]
+&=
+\left(\q{\p \sv F}{\p x} \circ \sv R\middle)
+\middle(\sv R(\?\ihat\?) * \ihat\right)
++
+\left(\q{\p \sv F}{\p y} \circ \sv R\middle)
+\middle(\sv R(\?\ihat\?) * \jhat\right)
++
+\left(\q{\p \sv F}{\p z} \circ \sv R\middle)
+\middle(\sv R(\?\ihat\?) * \khat\right)
+\cr
+\noalign{\vskip6pt minus 6pt}
+\left.\q{\p}{\p y}\middle[\sv F \circ \sv R\right]
+&=
+\left(\q{\p \sv F}{\p x} \circ \sv R\middle)
+\middle(\sv R(\?\jhat\?) * \ihat\right)
++
+\left(\q{\p \sv F}{\p y} \circ \sv R\middle)
+\middle(\sv R(\?\jhat\?) * \jhat\right)
++
+\left(\q{\p \sv F}{\p z} \circ \sv R\middle)
+\middle(\sv R(\?\jhat\?) * \khat\right)
+}
+$$
+For brevity let us omit writing out the nested calls to $\sv R$. If we are
+being strict about our notation we should leave it in, but doing that would
+coming algebra would quickly become intractable. From here onward you should
+simply remember that each partial derivative of $\sv F$ is to be evaluated
+over $\sv R$. Our notation will now be:
+$$
+\eqalign{
+\left.\q{\p}{\p x}\middle[\sv F \circ \sv R\right]
+&=
+\left(\sv R(\?\ihat\?) * \ihat\middle)
+\q{\p \sv F}{\p x}\right.
++
+\left(\sv R(\?\ihat\?) * \jhat\middle)
+\q{\p \sv F}{\p y}\right.
++
+\left(\sv R(\?\ihat\?) * \khat\middle)
+\q{\p \sv F}{\p z}\right.
+\cr
+\noalign{\vskip6pt minus 6pt}
+\left.\q{\p}{\p y}\middle[\sv F \circ \sv R\right]
+&=
+\left(\sv R(\?\jhat\?) * \ihat\middle)
+\q{\p \sv F}{\p x}\right.
++
+\left(\sv R(\?\jhat\?) * \jhat\middle)
+\q{\p \sv F}{\p y}\right.
++
+\left(\sv R(\?\jhat\?) * \khat\middle)
+\q{\p \sv F}{\p z}\right.
+}
+$$
+We can now write our approximation as
+$$
+\eqalign{
+\oint \sv F * {\rm d}\sv c
+\approx
+&-\[
+\left(\sv R(\?\jhat\?) * \ihat\middle)
+\q{\p \sv F}{\p x}\right.
++
+\left(\sv R(\?\jhat\?) * \jhat\middle)
+\q{\p \sv F}{\p y}\right.
++
+\left(\sv R(\?\jhat\?) * \khat\middle)
+\q{\p \sv F}{\p z}\right.
+\]
+\Delta y * \sv R(\Delta x, 0, 0)
+\cr
+&+
+\[
+\left(\sv R(\?\ihat\?) * \ihat\middle)
+\q{\p \sv F}{\p x}\right.
++
+\left(\sv R(\?\ihat\?) * \jhat\middle)
+\q{\p \sv F}{\p y}\right.
++
+\left(\sv R(\?\ihat\?) * \khat\middle)
+\q{\p \sv F}{\p z}\right.
+\]
+\Delta x * \sv R(0, \Delta y, 0)
+}
+$$
+Next notice that $\sv R$ obeys
+$$
+\sv R(c\?\sv r) = c\?\sv R(\sv r)
+$$
+and thus that
+$$
+\eqalign{
+\sv R(0, \Delta y, 0)
+&=
+\sv R(0, 1, 0) \, \Delta y
+= \sv R(\jhat) \, \Delta y
+\cr
+\sv R(\Delta x, 0)
+&=
+\sv R(1, 0, 0) \, \Delta x
+=
+\sv R(\ihat) \, \Delta x \cr
+}
+$$
+The next logical iteration of our approximation is therefore
+$$
+\eqalign{
+\oint \sv F * {\rm d}\sv c
+\approx
+&-\[
+\left(\sv R(\?\jhat\?) * \ihat\middle)
+\q{\p \sv F}{\p x}\right.
++
+\left(\sv R(\?\jhat\?) * \jhat\middle)
+\q{\p \sv F}{\p y}\right.
++
+\left(\sv R(\?\jhat\?) * \khat\middle)
+\q{\p \sv F}{\p z}\right.
+\]
+* \sv R(\?\ihat\?) \; \Delta y \, \Delta x
+\cr
+&+
+\[
+\left(\sv R(\?\ihat\?) * \ihat\middle)
+\q{\p \sv F}{\p x}\right.
++
+\left(\sv R(\?\ihat\?) * \jhat\middle)
+\q{\p \sv F}{\p y}\right.
++
+\left(\sv R(\?\ihat\?) * \khat\middle)
+\q{\p \sv F}{\p z}\right.
+\]
+* \sv R(\?\jhat\?) \; \Delta x \, \Delta y
+}
+$$
+We can now do some trivial vector algebra to pull out the partials of $\sv F$:
+$$
+\eqalign{
+\oint \sv F * {\rm d}\sv c
+\hskip2pt\approx\hskip4pt
+&+
+\q{\p \sv F}{\p x}
+*\[
+\Bigl[\sv R(\?\ihat\?) * \ihat\Bigr] \sv R(\?\jhat\?)
+-
+\Bigl[\sv R(\?\jhat\?) * \ihat\Bigr] \sv R(\?\ihat\?)
+\]
+\Delta x \, \Delta y
+\cr
+&+
+\q{\p \sv F}{\p y}
+*
+\[
+\Bigl[\sv R(\?\ihat\?) * \jhat\Bigr] \sv R(\?\jhat\?)
+-
+\Bigl[\sv R(\?\jhat\?) * \jhat\Bigr] \sv R(\?\ihat\?)
+\]
+\Delta x \, \Delta y
+\cr
+&+
+\q{\p \sv F}{\p z}
+*
+\[
+\Bigl[\sv R(\?\ihat\?) * \khat\Bigr] \sv R(\?\jhat\?)
+-
+\Bigl[\sv R(\?\jhat\?) * \khat\Bigr] \sv R(\?\ihat\?)
+\]
+\Delta x \, \Delta y
+\cr
+}
+$$
+The inner terms involving the $\sv R$'s and the basis vectors are really just
+triple cross products. According to $\sv A \x (\sv B \x \sv C) = \sv B(\sv A *
+\sv C) - \sv C(\sv A * \sv B)$ we can reduce things down to
+$$
+\eqalign{
+\oint \sv F * {\rm d}\sv c
+\hskip2pt\approx\hskip4pt
+&+
+\left.
+\q{\p \sv F}{\p x}
+*\middle[
+\hskip1pt \sv{\hat\imath} \hskip2pt
+\x \middle(\sv R(\?\jhat\?) \x \sv R(\?\ihat\?)\middle)
+\right]
+\Delta x \, \Delta y
+\cr
+&+
+\left.
+\q{\p \sv F}{\p y}
+*\middle[
+\hskip1pt \sv{\hat\jmath} \hskip2pt
+\x \middle(\sv R(\?\jhat\?) \x \sv R(\?\ihat\?)\middle)
+\right]
+\Delta x \, \Delta y
+\cr
+&+
+\left.
+\q{\p \sv F}{\p z}
+*\middle[
+\hskip1pt \sv{\hat k} \hskip2pt
+\x \middle(\sv R(\?\jhat\?) \x \sv R(\?\ihat\?)\middle)
+\right]
+\Delta x \, \Delta y
+\cr
+}
+$$
+The cross product $\sv R(\jhat) \x \sv R(\ihat)$ is just a cross of the second
+and first basis the vectors of our rotated coordinate system, namely $\sv
+R(\jhat) \x \sv R(\ihat) = \sv R(\sv{\hat k})$. It must
+therefore be the third basis vector of that rotated system, but negated. When
+we take this into account we get
+$$
+\eqalign{
+\oint \sv F * {\rm d}\sv c
+\approx
+\left.
+\q{\p \sv F}{\p x}
+*\middle[
+\sv{\hat\imath}
+\x \sv R(\sv{\hat k})
+\right]
+\Delta x \, \Delta y
++
+\left.
+\q{\p \sv F}{\p y}
+*\middle[
+\sv{\hat\jmath}
+\x \sv R(\sv{\hat k})
+\right]
+\Delta x \, \Delta y
++
+\left.
+\q{\p \sv F}{\p z}
+*\middle[
+\sv{\hat k}
+\x \sv R(\sv{\hat k})
+\right]
+\Delta x \, \Delta y
+\cr
+}
+$$
+We can do more with this if we rearrange how the triple products are
+organized, such that $\sv R(\sv{\hat k})$ appears as the outermost term. We can also
+pull out the factors of $\Delta x \? \Delta y$:
+$$
+\eqalign{
+\oint \sv F * {\rm d}\sv c
+\approx
+\(\left.
+\sv R(\sv{\hat k})
+*\middle[
+\q{\p \sv F}{\p x}
+\x \sv{\hat\imath}
+\right]
++
+\left.
+\sv R(\sv{\hat k})
+*\middle[
+\q{\p \sv F}{\p y}
+\x \sv{\hat\jmath}
+\right]
++
+\left.
+\sv R(\sv{\hat k})
+*\middle[
+\q{\p \sv F}{\p z}
+\x \sv{\hat k}
+\right]
+\)
+\Delta x \, \Delta y
+\cr
+}
+$$
+In fact, we can now factor out the $\sv R(\sv{\hat k})$ term altogether:
+$$
+\eqalign{
+\oint \sv F * {\rm d}\sv c
+\approx
+\(\left.
+\middle[
+\q{\p \sv F}{\p x}
+\x \sv{\hat\imath}
+\right]
++
+\left.
+\middle[
+\q{\p \sv F}{\p y}
+\x \sv{\hat\jmath}
+\right]
++
+\left.
+\middle[
+\q{\p \sv F}{\p z}
+\x \sv{\hat k}
+\right]
+\)
+*
+\sv R(\sv{\hat k})
+\,
+\Delta x \, \Delta y
+\cr
+}
+$$
+When we expand out the cross products we get
+$$
+\oint \sv F * {\rm d}\sv c
+\approx
+\[
+\q{\p F_y}{\p x}\khat
+- \q{\p F_z}{\p x}\jhat
++ \q{\p F_z}{\p y}\ihat
+- \q{\p F_x}{\p y}\khat
++ \q{\p F_x}{\p z}\jhat
+- \q{\p F_y}{\p z}\ihat
+\]
+* \sv R(\sv\khat)
+\, \Delta x \, \Delta y
+$$
+Next we can group the terms around their basis vectors:
+$$
+\oint \sv F * {\rm d}\sv c
+\approx
+\[
+\(\q{\p F_z}{\p y}
+- \q{\p F_y}{\p z}\)\ihat \:
++ \(\q{\p F_x}{\p z}
+- \q{\p F_z}{\p x}\)\jhat \:
++ \(\q{\p F_y}{\p x}
+- \q{\p F_x}{\p y}\)\khat \,
+\]
+* \sv R(\sv\khat)
+\, \Delta x \, \Delta y
+$$
+When we take the square to be differentially small the result goes from
+approximate to exact and we write $\Delta x \, \Delta y$ as the differential
+area $dx\,dy$:
+$$
+\oint \sv F * {\rm d}\sv c
+=
+\[
+\(\q{\p F_z}{\p y}
+- \q{\p F_y}{\p z}\)\ihat \:
++ \(\q{\p F_x}{\p z}
+- \q{\p F_z}{\p x}\)\jhat \:
++ \(\q{\p F_y}{\p x}
+- \q{\p F_x}{\p y}\)\khat \,
+\]
+* \sv R(\sv\khat)
+\, dx \, dy
+$$
+For brevity let us define a notation for this new vector quantity
+$$
+\nabla \x \sv F = 
+\(\q{\p F_z}{\p y}
+- \q{\p F_y}{\p z}\)\ihat \:
++ \(\q{\p F_x}{\p z}
+- \q{\p F_z}{\p x}\)\jhat \:
++ \(\q{\p F_y}{\p x}
+- \q{\p F_x}{\p y}\)\khat \,
+$$
+The vector $\sv R(\khat)\, dx \, dy$ is normal to the surface of the square,
+and it has a magnitude equal to the square's area. We can denote it more
+concisely as $d^2\!\?\sv A$:
+$$
+d^2\!\?\sv A = \sv R(\khat)\,\Delta x\Delta y
+$$
+Our path integral can now be written as
+$$
+\oint \sv F * {\rm d}\sv c
+=
+\(\nabla \x \sv F\) * d^2\!\,\sv A
+$$
+After much work we finally have our answer. It appears that taking a path
+integral of $\sv F$ around a very small square is equivalent to taking the dot
+product of that square's are vector with this new vector $\nabla \x \sv F$,
+which is composed of various partials of $\sv F$. Since the path integral
+depends on $\sv R(\khat)$ the result will differ when taken over two squares
+which are centered at the same point but oriented differently. However, the
+vector $\nabla \x \sv F$ is clearly independent of the orientation of the
+square around which the path integral is being taken. The path integral's
+value will be maximized when $d^2{\sv A}$ points in the direction of $\nabla
+\x \sv F$.
+
+\bye

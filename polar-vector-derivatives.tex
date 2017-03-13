@@ -1,0 +1,131 @@
+\input ../paper.tex
+
+\papertitle{Polar Vector Derivatives}
+
+\paperheading{Summary}
+
+\noindent
+The first order derivative of a vector in polar coordinates is
+$$
+\dot\sv r = \dot r\sv{\hat r} + r\omega\?\sv{\hat\theta}
+$$
+The second order derivative of a vector in polar coordinates is
+$$
+\ddot\sv r
+= \(\ddot r - r\?\omega^2\)\sv{\hat r}
++ \(r\alpha + 2\?\dot r\?\omega\)\sv{\hat\theta}
+$$
+This can also be written as
+$$
+\sv{\ddot r}
+= \(\ddot r - r\?\omega^2\)\sv{\hat r}
++ \q1r \q d{dt}\Bigl[{r^2\omega}\Bigr]\,\sv{\hat\theta}
+$$
+
+%% This final anti-differentiation shows that the $\hat\theta$ component
+%% is proportional to the torque on a body moving with the path $\sv r$.
+
+\paperheading{Discovery of the First Derivative}
+
+\noindent Let us consider a vector function $\sv r(t)$ at times $t_0$ and $t$.
+We will use the abbreviation $\sv r = \sv r(t)$ and $\sv r_0 = \sv r(t_0)$. We
+split $\sv r$ into parts $\sv\sigma$ and $\sv\gamma$ that are respectively
+parallel and perpendicular to $\sv r_0$
+$$
+\eqalign{
+\sv\sigma
+&=
+r\cos\theta\,\sv{\hat r_0}
+\cr
+\sv\gamma
+&=
+r\sin\theta\,\sv{\hat\theta_0}
+}
+$$
+The vector $\sv{\hat\theta}$ here is a unit vector defined as
+$$
+\sv{\hat\theta} = \sv{\hat r} \x \khat
+$$
+The derivative of $\sv r$ is then
+$$
+\eqalign{
+\sv{\dot r} &= \q d{dt}\mathinner{\Bigl[\sv\sigma + \sv\gamma\Bigr]}\cr
+&= \dot r\cos\theta\,\sv{\hat r_0}
+- r\?\omega\sin\theta\,\sv{\hat r_0}
++ \dot r\sin\theta\,\sv{\hat\theta_0}
++ r\?\omega\cos\theta\,\sv{\hat\theta_0}
+\cr
+}
+$$
+We are most interested in the derivative at time $t_0$ because at
+this time we will have $\theta = 0$, which simplifies things greatly
+to
+$$
+\dot{\sv r}
+= \dot r\?\sv{\hat r} + r\?\omega\?\sv{\hat\theta}
+$$
+Note that we have written $\sv{\hat r}$ in place of $\sv{\hat r_0}$ and
+$\sv{\hat\theta}$ in place of $\sv{\hat \theta_0}$ since at time $t = t_0$
+these are the same.
+
+\paperheading{Discovery of the Second Derivative}
+
+\noindent One approach to finding the second derivative of $\sv r$ at time
+$t_0$ would be to start from the point in the previous section before we set
+$\theta = 0$. We could simply forgo setting $\theta = 0$ and instead take
+another derivative with repsect to time. Afterward we could then eventually
+set $\theta = 0$, and this would grant us our result. However, we will not do
+this. We will instead opt for a more novel approach. Consider the following
+$$
+\eqalign{
+\sv{\ddot r}
+&= \q d{dt}\[\dot r\?\sv{\hat r} + r\?\omega\?\sv{\hat\theta}\]
+\cr
+&=
+\ddot r\,\sv{\hat r}
++ \dot r\,\q{d\sv{\hat r}}{dt}
++ \dot r\?\omega\,\sv{\hat\theta}
++ r\?\dot\omega\,\sv{\hat\theta}
++ r\?\omega\?\q{d\sv{\hat\theta}}{dt}
+}
+$$
+In order to proceed further we must find $d\sv{\hat r}/dt$ and
+$d\sv{\hat\theta}/dt$. These are both first order vector derivatives
+themselves, and so we can make use the result from the previous section.
+$$
+\eqalign{
+\q{d\sv{\hat r}}{dt}
+&=
+\omega\?\sv{\hat\theta}
+\cr
+\q{d\sv{\hat\theta}}{dt}
+&=
+\q d{dt}\mathinner{\Bigl[\sv{\hat r} \x \khat\Bigr]}
+= \q{d\sv{\hat r}}{dt} \x \khat
+= \omega\?\sv{\hat\theta} \x \khat
+= -\omega\?\sv{\hat r}
+\cr
+}
+$$
+The second derivative of $\sv r$ is then
+$$
+\eqalign{
+\cdots
+&=
+\ddot r\?\sv{\hat r} + \dot r\?\omega\?\sv{\hat\theta}
++ \dot r\?\omega\?\sv{\hat\theta}
++ r\?\dot\omega\?\sv{\hat\theta}
+- r\?\omega^2\?\sv{\hat r} \cr
+&=
+\(\ddot r - r\?\omega^2\)\sv{\hat r}
++ \(r\alpha + 2\dot r\?\omega\)\sv{\hat\theta}
+}
+$$
+This result can also be written as
+$$
+\ddot \sv r =
+\(\ddot r - r\?\omega^2\)\?\sv{\hat r}
++ \q1r\q d{dt}\mathinner{\Bigl[{r^2\omega}\Bigr]}\sv{\hat\theta}
+$$
+
+\bye

@@ -1,0 +1,266 @@
+\input ../paper.tex
+
+\prot\def\matBigStrut{\vrule width 0pt height 11.5pt depth 6.5pt}
+
+\papertitle{Perspective Projection}
+
+\paperheading{Summary}
+
+The projection matrix is
+$$
+\left[\dmatrix{
+\matBigStrut
+\cot\(\q{\gamma}{2}\)\big/\,\sigma & 0 & 0 & 0 \cr
+\matBigStrut
+0 & \cot\(\q{\gamma}{2}\) & 0 & 0 \cr
+0 & 0 &
+\q{\alpha + \beta}{\alpha - \beta} &
+\matBigStrut
+\q{2\alpha\beta}{\alpha - \beta} \cr
+\matBigStrut
+0 & 0 & -1 & 0 \cr
+}\right]
+$$
+In this matrix $\gamma$ is the vertical field of view angle, $\sigma$ is the
+width-to-heigh ratio, and $\alpha$ and $\beta$ are the distances of the
+clipping planes from the origin. The values of $\alpha$ and $\beta$ are always
+positive, though the clipping planes themselves sit on the negative $z$-axis.
+For this matrix to work the incoming vector must have its fourth component set
+to $1$.
+
+\paperheading{Discovery}
+
+In a typical graphics system all geometry must end up inside of the normalized
+space
+$$
+{\rm NDC} = [-1, 1] \x [-1, 1] \x [-1, 1]
+$$
+The acronym NDC is short for ``normalized device coordinates.'' The range
+$[-1, 1]$ on the $x$-axis is mapped to the viewport's horizontal pixel space,
+and $[-1, 1]$ on the $y$-axis is mapped to the vertical pixel space. The range
+$[-1, 1]$ on the $z$ axis is mapped to the depth buffer.
+
+We need to find a method of projecting all visible geometry into this small
+NDC cube, and in a perspective-correct way. Let us say that the eye sits at
+the origin and looks down the negative $z$-axis. We will place the near
+clipping plane down the negative $z$-axis at a distance of $\alpha$ from the
+origin, and the far clipping plane at a distance of $\beta$. Note that the
+clipping planes are located on the negative $z$-axis, but the values $\alpha$
+and $\beta$ are always taken to be positive.
+
+A given point $\sv Q$ has a vector that connects it to the eye. We need to
+intersect that vector with the near and far clipping planes. We will consider
+the near clipping plane first. Let $\sv A$ be the point at which $\sv Q$
+intersects the near clipping plane. It will then have to be the case that
+$$
+\eqalign{
+A_z &= -\alpha \cr
+\sv Q \x \sv A &= 0 \cr
+}
+$$
+The first equation expresses that $\sv A$ lies on the near clipping plane, and
+the second expresses that $\sv A$ is collinear with $\sv Q$. If we expand out
+the second equation we get
+$$
+\eqalign{
+Q_yA_z - Q_zA_y &= 0 \cr
+Q_zA_x - Q_xA_z &= 0 \cr
+Q_xA_y - Q_yA_z &= 0 \cr
+}
+$$ 
+But we already know that $A_z = -\alpha$, so let us rewrite the above with
+this taken into account:
+$$
+\eqalign{ -Q_y\alpha - Q_zA_y &= 0 \cr Q_zA_x + Q_x\alpha &= 0 \cr Q_xA_y -
+Q_yA_x &= 0 \cr } $$ We can now rearrange these to solve for the other
+components of $\sv A$. We will drop the third equation, because we can solve
+for $\sv A$ with just the first two:
+$$
+\eqalign{
+A_y &= -\alpha * Q_y/ Q_z \cr
+A_x &= -\alpha * Q_x / Q_z \cr
+}
+$$
+
+Recall that we have to map these $x$ and $y$ values into the range $[-1, 1]$.
+Let's start with $A_y$. Think of the near clipping plane as being cut into two
+pieces, one above the $xz$-plane and one below. If $\gamma$ is the field of
+view angle then the height $h$ of either half can be computed by treating the
+value $\tan(\gamma / 2)$ as a slope, and taking
+$$
+h = \alpha * \tan(\gamma / 2)
+$$
+We need only divide $A_y$ by this value in order to map it into the range
+$[-1, 1]$. We will call the mapped result $N_y$ ($N$ for NDC):
+$$
+N_y
+= A_y / h
+= \q{-\alpha * Q_y / Q_z}{\alpha * \tan(\gamma / 2)}
+= -\q{Q_y * \cot(\gamma / 2)}{Q_z}
+$$
+Unless the viewport is a square $A_x$ will have to be divided by a different
+value. Let us give the name $\sigma$ to the width-to-height ratio of the
+viewport. The relevant width will then be
+$$
+w = \sigma h
+$$
+The relevant $N_x$ value will then be
+$$
+N_x
+= A_x / w
+= \q{-\alpha * Q_y / Q_z}{\sigma * \alpha * \tan(\gamma / 2)}
+= -\q{Q_x * \cot(\gamma / 2)}{\sigma * Q_z}
+$$
+
+At this point we can't help but notice that this relation isn't linear, and so
+it can't be represented as a matrix. The division by $-1/Q_x$ is the key
+problem. We fix this non-linearity in the following way. Let us define a new
+intermediate coordinate system. We will say the transformation of $\sv Q$ into
+this coordinate system is called $\sv C$, where $\sv C$ is given by the
+following transformation (ignore the unknown elements for now):
+$$
+\sv C
+= \left[\dmatrix{
+\matBigStrut
+\cot\(\q{\gamma}{2}\)\big/\,\sigma & 0 & 0 & 0 \cr
+\matBigStrut
+0 & \cot\(\q{\gamma}{2}\) & 0 & 0 \cr
+\matBigStrut
+? & ? & ? & ? \cr
+\matBigStrut
+0 & 0 & -1 & 0 \cr
+}\middle]
+\middle[\matrix{
+\matBigStrut
+Q_x \cr
+\matBigStrut
+Q_y \cr
+\matBigStrut
+Q_z \cr
+\matBigStrut
+?
+}\right]
+$$
+We will then say that the final point in NDC space $\sv N$ is given by
+$$
+\sv N = \sv C / C_w
+$$
+Notice, of course, that the matrix we used ensures that $C_w = -Q_z$. This
+forced non-linear operation is called ``perspective division,'' and it is
+widely supported across many graphics systems.
+
+Next let us focus on calculating $N_z$. We have to find some expression for
+$C_z$ which will divide sensibly by $-Q_z$ to yield a depth value in the range
+$[-1, 1]$. On the extreme ends we want to obtain $-1$ when $Q_z = -\alpha$ and
+$+1$ when $Q_z = -\beta$. Thus $C_z$ must be in the range $[-\alpha,
+\beta\?]$. Observe that our point $\sv Q$ can be expressed as
+$$
+\sv Q = \sv A + d * (\sv B - \sv A)
+$$
+where $d$ is some value between $0$ and $1$. Let us consider this the
+$z$-components of this equation so that we can solve for $d$:
+$$
+\eqalign{
+Q_z &= A_z + d * (B_z - A_z) \cr
+Q_z &= -\alpha + d * (-\beta + \alpha) \cr
+Q_z + \alpha &= d * (-\beta + \alpha) \cr
+d &= \q{Q_z + \alpha}{\alpha - \beta} \cr
+}
+$$
+Since we desire that $C_z$ be in the range $[-\alpha, \beta\?]$ we can set
+$$
+\eqalign{
+C_z &= -\alpha + d\(\alpha + \beta\) \cr
+&= -\alpha + \(\alpha + \beta\) * \q{Q_z + \alpha}{\alpha - \beta} \cr
+&=
+\q
+{-\alpha\(\alpha - \beta\) + \(\alpha + \beta\)\(Q_z + \alpha\)}
+{\alpha - \beta}
+\cr
+&=
+\q
+{-\alpha^2 + \alpha\beta + Q_z\(\alpha + \beta\) + \alpha\beta + \alpha^2}
+{\alpha - \beta}
+\cr
+&=
+\q
+{\alpha\beta + Q_z\(\alpha + \beta\) + \alpha\beta}
+{\alpha - \beta}
+\cr
+&=
+Q_z
+\q
+{\alpha + \beta}
+{\alpha - \beta}
++
+\q
+{2\alpha\beta}
+{\alpha - \beta}
+}
+$$
+Here we have again derived an expression that doesn't look like a typical
+matrix-vector multiplication. In a general matrix-vector multiplication every
+term will have one element from the matrix and one element from the vector.
+Yet here we have this stray term~$2\alpha\beta/(\alpha - \beta)$. Fortunately
+we can fit this term into the matrix multiplication if we require that $Q_w =
+1$. Our final result is thus
+$$
+\sv C
+= \left[\dmatrix{
+\matBigStrut
+\cot\(\q{\gamma}{2}\)\big/\,\sigma & 0 & 0 & 0 \cr
+\matBigStrut
+0 & \cot\(\q{\gamma}{2}\) & 0 & 0 \cr
+0 & 0 &
+\q{\alpha + \beta}{\alpha - \beta} &
+\matBigStrut
+\q{2\alpha\beta}{\alpha - \beta} \cr
+\matBigStrut
+0 & 0 & -1 & 0 \cr
+}\middle]
+\middle[\matrix{
+\matBigStrut
+Q_x \cr
+\matBigStrut
+Q_y \cr
+\matBigStrut
+Q_z \cr
+\matBigStrut
+1
+}\right]
+$$
+
+There is one aspect of this matrix which we have so far neglected to mention,
+which is important in some graphics systems. Recall that the expression for
+$A_x$ was
+$$
+A_x = -\alpha * Q_x / Q_z
+$$
+As we continued on from this we chose to construct the matrix such that we
+would have
+$$
+C_w = -Q_z
+$$
+We could have just as easily set flipped the $-1$ on the last row to a $1$, in
+which case we would have
+$$
+C_w = Q_z
+$$
+In this case we would have to negate terms like $\cot(\gamma/2)/\sigma$ to get
+the negative sign back into the expression for $A_x$. Now, recall that visible
+points will have negative values for $Q_z$, since the eye looks down the
+negative $z$-axis. This will mean that the choice \hbox{$C_w = -Q_z$} will
+make $C_w$ positive. This is important because OpenGL will automatically clip
+away points for which any of following inequalities fail:
+$$ 
+\displaylines{
+-C_w \le C_x \le C_w \cr
+-C_w \le C_y \le C_w \cr
+-C_w \le C_z \le C_w \cr
+}
+$$
+These inequalities would be false by definition if $C_w$ were to be assigned a
+negative value. This is exactly why we chose to have $-1$ on the fourth row of
+our matrix, as opposed to~$1$.
+
+\bye

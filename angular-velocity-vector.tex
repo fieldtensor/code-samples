@@ -1,0 +1,102 @@
+\input ../paper.tex
+
+\papertitle{The Angular Velocity Vector}
+
+\vskip\baselineskip
+
+Let us consider a rotation about the vector $\sv\omega = (\omega_x, \omega_y,
+\omega_z)$ by $\omega$ radians. Notice that a rotation about
+$\ihat$ by $\omega_x$ radians, followed by a rotation about
+$\jhat$ by $\omega_y$ radians, followed by a rotation about $\khat$ by
+$\omega_z$ radians is not ultimately the same as a rotation about $\sv\omega$
+by $\omega$ radians.
+
+To see why these rotations are not equivalent, at least in one case, take a
+any household object and rotate it $\pi/2$ radians about some $x$-axis, and
+then $\pi/2$ radians about some $y$-axis. Next do this again in the reverse
+order: rotate the object about the $y$-axis first and the $x$-axis second. You
+will notice that the object ends up in a different orientation depending on
+the order of the rotations.  Finally, notice that both of these are completely
+different from a rotation about the vector $(\pi/2, \pi/2)$ by $\pi/\sqrt{2}$
+radians (which is the length of that vector).
+
+It would therefore seem that rotations do not break cleanly into components,
+nor do they add together cleanly. However, it turns out that rotations
+actually do both of these things under one special circumstance: namely when
+the rotation angles are differentially small. The rest of this section proves
+that this is indeed the case.
+
+We know that the rotation of a vector $\sv r$ around some unit
+vector $\hat\sv a$ through an angle $\phi$ can be obtained from the below
+equation
+$$
+\sv R(\sv r, \hat\sv a, \phi)
+= \hat\sv a \(\hat\sv a * \sv r \) 
++ \cos\phi\[\sv r - \hat\sv a\(\hat\sv a * \sv r \)\]
++ \sin\phi\[\hat\sv a \x \sv r\]
+$$
+When the angle $\phi$ is very small we will have
+$$
+\eqalign{
+\sv R(\sv r, \hat\sv a, d\phi)
+&= \(\sv r * \hat\sv a\) * \hat\sv a 
++ \sv r - \(\sv r * \hat\sv a\) * \hat\sv a
++ d\phi\[\hat\sv a \x \sv r\] \cr
+&= \sv r + d\phi\[\hat\sv a \x \sv r\] \cr
+}
+$$
+We might likewise have a rotation about some other unit vector $\hat\sv c$
+through an angle $\psi$. When $\psi$ is small this will be
+$$
+\sv R(\sv r, \hat\sv c, d\psi)
+= \sv r + d\psi\[\hat\sv c \x \sv r\]
+$$
+We now wish to see what happens when we composite these two small rotations
+$$
+\eqalign{
+\sv R(\sv R(\sv r, \hat\sv a, d\phi), \hat\sv c, d\psi)
+&=
+\sv r + d\psi\[\hat\sv c \x \sv r\]
++ d\phi\[\hat\sv a \x \(\sv r + d\psi\[\hat\sv c \x \sv r\]\)\]
+\cr
+&=
+\sv r + d\psi\[\hat\sv c \x \sv r\]
++ d\phi\[\hat\sv a \x \sv r\]
++ \hat\sv a \x d\phi \, d\psi\[\hat\sv c \x \sv r\]
+\cr
+&=
+\sv r + d\psi\[\hat\sv c \x \sv r\]
++ d\phi\[\hat\sv a \x \sv r\]
+\cr
+}
+$$
+We can immediately see that a composition in the opposite order would
+come out to
+$$
+\sv R(\sv R   (\sv r, \hat\sv c, d\psi), \hat\sv a, d\phi)
+= \sv r + d\phi\[\hat\sv a \x \sv r\]
++ d\psi\[\hat\sv c \x \sv r\]
+$$
+This proves that composite rotations through small angles are
+commutative. Next we notice that either of these results can be
+rearranged to
+$$
+\sv r + \(\hat\sv a \, d\phi + \hat\sv c \, d\psi\) \x \sv r
+$$
+If we were to put another rotation into the composition it would simply add
+another term to sum within the cross product. We can therefore ultimately
+write
+$$
+d\sv r = d\sv\theta \x \sv r
+$$
+where $d\sv\theta$ is the sum of all the small rotation vectors, even if there
+are more than just two. This result is usually divided through by $dt$ and
+written as
+$$
+\sv v = \sv\omega \x \sv r
+$$
+The vector $\sv\omega$ is called the angular velocity vector, since at
+any instant the vector $\sv r$ is rotating about it with angular
+velocity $\omega$.
+
+\bye

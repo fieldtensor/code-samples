@@ -1,0 +1,52 @@
+\input ../paper.tex
+
+\papertitle{The Dot Product}
+
+\paperheading{Summary}
+
+\noindent
+The dot product of two vectors $\sv a$ and $\sv b$ is defined as
+$$
+\sv a * \sv b = a_xb_x + a_yb_y + a_zb_z
+$$
+The dot product has the property that
+$$
+\sv a * \sv b = ab * \cos\theta
+$$
+where $\theta$ is the angle between $\sv a$ and $\sv b$.
+
+\paperheading{Discovery}
+
+\noindent
+We know from the law of cosines that for a triangle with sides
+$a$, $b$, and $c$ we will hold to the relation
+$$
+c^2 = a^2 + b^2 - 2\? ab \cos\theta
+$$
+where $\theta$ is the angle between sides $a$ and $b$. Yet, if we
+allow this triangle to live in an $n$-dimensional space where $n \ge
+2$ then we can represent it with the vectors $\sv a$, $\sv b$, and
+$\sv c = \sv b - \sv a$. The squared length of $\sv c$ will be
+$$
+\eqalign{
+\sv c^2
+= \(\sv b - \sv a\)^2
+&=
+\(b_x - a_x\)^2 + \(b_y - a_y\)^2 + \(b_z - a_z\)^2
+\cr
+&=
+\(b_x^2 - 2\?b_xa_x + a_x^2\) + \(b_y^2 - 2\?b_ya_y + a_y^2\) + \(b_z^2 - 2\?b_za_z + a_z^2\) \cr
+&=
+a^2 + b^2 -2\(a_xb_x + a_yb_y + a_zb_z\)
+}
+$$
+Setting this result equal to $c^2$ from before shows us that
+$$
+ab * \cos\theta = a_x b_x + a_y b_y + a_z b_z
+$$
+We define this quantity to be the dot product of $\sv a$ and $\sv b$
+$$
+\sv a * \sv b = ab * \cos\theta = a_x b_x + a_y b_y + a_z b_z
+$$
+
+\bye

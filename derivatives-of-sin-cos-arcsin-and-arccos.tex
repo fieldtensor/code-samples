@@ -1,0 +1,135 @@
+\input ../paper.tex
+
+\papertitle{The Derivatives of sin, cos, arcsin, and arccos}
+
+\paperheading{Summary}
+
+\noindent
+The derivatives of $\sin$ and $\cos$ are
+$$
+\eqalign{
+\sin' &= \cos \cr
+\cos' &= -\sin \cr
+}
+$$
+The derivatives of $\arcsin$ and $\arccos$ are
+$$
+\eqalign{
+\arcsin'x &= \q{1}{\sqrt{1 - x^2}} \cr
+\noalign{\vskip6pt}
+\arccos'(x) &= -\q{1}{\sqrt{1 - x^2}} \cr
+}
+$$
+
+\paperheading{Derivation}
+
+Consider the function that draws the upper half of the unit circle:
+$$
+f(x) = \sqrt{1 - x^2}
+$$
+To every $x$ we can assign some angle $\theta = \arccos(x)$. To that $\theta$
+we can assign some \hbox{pie-shaped} slice of the unit circle, and this slice
+will have area $A = \theta/2$. It also possible to define a function $A(x)$
+which gives the area of that very same slice, but only in terms of~$x$:
+$$
+\eqalign{
+A(x) &= \q12xf(x) + \int_x^1 f(x) \; dx
+\cr
+&= \q12x\sqrt{1 - x^2} + \int_x^1 \sqrt{1 - x^2} \; dx
+\cr
+}
+$$
+Let us explore this function $A(x)$ by finding its derivative
+$$
+\eqalign{
+A'(x)
+&= \q12\[\sqrt{1 - x^2} + x*\q12\(1 - x^2\)^{-1/2}*-2x\] - \sqrt{1 - x^2}
+\cr
+&= \q12\[\sqrt{1 - x^2} - \q{x^2}{\sqrt{1-x^2}} - 2\sqrt{1 - x^2}\] 
+\cr
+&= -\q12\[\sqrt{1 - x^2} + \q{x^2}{\sqrt{1-x^2}}\]
+\cr
+&= -\q12\[\q{1 - x^2 + x^2}{\sqrt{1 - x^2}}\]
+\cr
+&= -\q12\q{1}{\sqrt{1 - x^2}}
+}
+$$
+Now, consider the expression
+$$
+A(\cos\theta)
+$$
+On the one hand we can evaluate this as
+$$
+A(\cos(\theta))
+= \q12*\cos\theta*f(\cos\theta) + \int_{\cos\theta}^1 f(\cos\theta) \; dx
+$$
+Yet on the other hand when we look at $A(\cos\theta)$ we see that an angle is
+going in and an area is coming out, and so we know immediately that
+$$
+A(\cos\theta) = \theta/2
+$$
+We thus have
+$$
+\q12\theta
+= \q12*\cos\theta*f(\cos\theta) + \int_{\cos\theta}^1 f(x) \; dx
+$$
+Differentiating this will yield a novel result, and most of the work has
+already been done:
+$$
+\eqalign{
+\q12 &= A'(\cos\theta)*\cos'\theta
+\cr
+\q12 &= -\q12\q{1}{\sqrt{1 - \cos^2\theta}}\cos'\theta
+\cr
+1 &= -\q{1}{\sqrt{1 - \cos^2\theta}}\cos'\theta
+\cr
+\cos'\theta &= -\sin\theta
+}
+$$
+This completes the proof. Finding $\sin'$ is then easy:
+$$
+\eqalign{
+1 &= \sin^2 + \cos^2 \cr
+0 &= 2\sin\sin' + 2\cos\cos' \cr
+-2\sin\sin' &=  2\cos\cos' \cr
+-\sin\sin' &=  - \cos\sin' \cr
+\sin' &= \cos \cr
+}
+$$
+
+\paperheading{The derivative of arccos and arcsin}
+
+Notice that in the previous section we had
+$$
+A(\cos\theta) = \q12\theta
+$$
+If we simply set $\theta = \arccos(x)$ then we have
+$$
+A(x) = \q12\arccos(x)
+$$
+We can then differentiate this using the tools we have already developed:
+$$
+\eqalign{
+A'(x) &= \q12\arccos'(x)
+\cr
+-\q12\q{1}{\sqrt{1 - x^2}} &= \q12\arccos'(x)
+}
+$$
+And so we see that
+$$
+\arccos'(x) = -\q{1}{\sqrt{1 - x^2}}
+$$
+The derivative $\arcsin'$ is then easy to find:
+$$
+\eqalign{
+\sin(\arcsin x) &= x \cr
+\sin'(\arcsin x) * \arcsin'x &= 1 \cr
+\arcsin'x &= \q{1}{\sin'(\arcsin x)} \cr
+\arcsin'x &= \q{1}{\cos(\arcsin x)} \cr
+\arcsin'x &= \q{1}{\sqrt{1 - \sin^2(\arcsin x)}} \cr
+\arcsin'x &= \q{1}{\sqrt{1 - x^2}} \cr
+}
+$$
+
+
+\bye

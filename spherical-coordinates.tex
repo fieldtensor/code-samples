@@ -1,0 +1,441 @@
+\input ../paper.tex
+
+\def\ccr{\cr\noalign{\vskip3pt}}
+
+\papertitle{Spherical Coordinates}
+
+\paperheading{The Basis Vectors}
+
+In the calculus of non-Cartesian coordinate systems we typically define the
+basis vectors in terms of the gradients of the coordinates themselves. In
+spherical coordinates this means that
+$$
+\eqalign{
+\sv{\hat r} &= \norm\del r \cr
+\sv{\hat \theta} &= \norm\del \theta \cr
+\sv{\hat \varphi} &= \norm\del \phi
+}
+$$
+The gradients themselves might not be of unit length. If we want basis vectors
+of unit length we must explicitly perform a normalization, which is why we
+have written $\norm \del r$ instead of just $\del r$ (though it just so
+happens that $\del r$ comes out normalized by default).
+
+The gradient $\del\theta$ will point in the direction of increasing $\theta$.
+Defining $\sv{\hat\theta}$ in this way ensures that it points in the direction
+of increasing $\theta$. This goes likewise for $r$ and $\sv{\hat r}$,
+$\varphi$ and $\sv{\hat\varphi}$, and even $x$ and $\sv{\hat x}$ in Cartesian
+coordinates. It should make immediate sense that $\sv{\hat r}$ points in the
+direction of increasing $r$, but take a moment and try to convince yourself of
+this for $\sv{\hat\theta}$ and $\sv{\hat\varphi}$ as well (for their
+respective coordinates). This gradient-based definition of the basis vectors
+works in other systems too, like for example cylindrical and polar. The basis
+vectors used for curved space-times in general relativity are defined in a
+similar manner, though the situation there is more complicated, and the basis
+vectors are usually not normalized.
+
+Let us try to find the basis vectors in the spherical system by taking the
+gradients of $r$, $\theta$, and $\varphi$. The mapping from spherical
+coordinates to Cartesian coordinates is
+$$
+\eqalign{
+x &= r\cos\varphi\sin\theta \cr
+y &= r\sin\varphi\sin\theta \cr
+z &= r\cos\theta \cr
+}
+$$
+The inverse mapping is
+$$
+r = \sqrt{x^2 + y^2 + z^2} \hskip18pt
+\theta = \arctan\(\q{\sqrt{x^2 + y^2}}{z}\,\) \hskip18pt
+\varphi = \arctan\(\q{y}{x}\)
+$$
+For brevity let us borrow some notation from the cylindrical system and write
+$$
+\rho = \sqrt{x^2 + y^2} = r\sin\theta
+$$
+The inverse mapping can then be written more compactly in terms of $\rho$ as
+$$
+r = \sqrt{x^2 + y^2 + z^2} \hskip18pt
+\theta = \arctan\(\q{\rho}{z}\) \hskip18pt
+\varphi = \arctan\(\q{y}{x}\)
+$$
+Now there is noting left to do but to manually turn the crank and produce the
+gradients. We start by finding the gradient of $r$:
+$$
+\eqalignno{
+\del r
+&=
+\q{\p r}{\p x}\,\ihat
++ \q{\p r}{\p y}\,\jhat
++ \q{\p r}{\p z}\,\khat
+\ccr
+&=
+\q{x}{r}\,\ihat
++ \q{y}{r}\,\jhat
++ \q{z}{r}\,\khat
+\ccr
+&=
+\q{r\cos\varphi\sin\theta}{r}\,\ihat
++ \q{r\sin\varphi\sin\theta}{r}\,\jhat
++ \q{r\cos\theta}{r}\,\khat
+\ccr
+&=
+\cos\varphi\sin\theta\,\ihat
++ \sin\varphi\sin\theta\,\jhat
++ \cos\theta\,\khat
+}
+$$
+Next we find gradient of $\theta$:
+$$
+\eqalignno{
+\del\theta
+&=
+\q{\p \theta}{\p x}\,\ihat
++ \q{\p \theta}{\p y}\,\jhat
++ \q{\p \theta}{\p z}\,\khat
+\ccr
+&=
+\q{\p}{\p x}\arctan\(\q{\rho}{z}\)\ihat
++ \q{\p}{\p y}\arctan\(\q{\rho}{z}\)\jhat
++ \q{\p}{\p z}\arctan\(\q{\rho}{z}\)\khat
+\ccr
+&=
+\q{1}{1 + \rho^2/z^2}\q{\p}{\p x}\(\q{\rho}{z}\)\ihat
++ \q{1}{1 + \rho^2/z^2}\q{\p}{\p y}\(\q{\rho}{z}\)\jhat
++ \q{1}{1 + \rho^2/z^2}\q{\p}{\p z}\(\q{\rho}{z}\)\khat
+\ccr
+&=
+\q{1}{1 + \rho^2/z^2}\(\q{x}{z\rho}\)\ihat
++ \q{1}{1 + \rho^2/z^2}\(\q{y}{z\rho}\)\jhat
+- \q{1}{1 + \rho^2/z^2}\(\q{\rho}{z^2}\)\khat
+\ccr
+&=
+\q{xz}{\rho r^2}\,\ihat
++ \q{yz}{\rho r^2}\,\jhat
+- \q{\rho}{r^2}\,\khat
+\ccr
+&=
+\q{r\cos\varphi\sin\theta*r\cos\theta}{r\sin\theta * r^2}\,\ihat
++ \q{r\sin\varphi\sin\theta*r\cos\theta}{r\sin\theta*r^2}\,\jhat
+- \q{r\sin\theta}{r^2}\,\khat
+\ccr
+&=
+\q{\cos\varphi\cos\theta}{r}\,\ihat
++ \q{\sin\varphi\cos\theta}{r}\,\jhat
+- \q{\sin\theta}{r}\,\khat
+}
+$$
+Finally we find the gradient of $\varphi$:
+$$
+\eqalignno{
+\del\varphi
+&=
+\q{\p \varphi}{\p x}\,\ihat
++ \q{\p \varphi}{\p y}\,\jhat
++ \q{\p \varphi}{\p z}\,\khat
+\ccr
+&=
+\q{\p}{\p x}\arctan\(\q{y}{x}\)\ihat
++ \q{\p}{\p y}\arctan\(\q{y}{x}\)\jhat
++ \q{\p}{\p z}\arctan\(\q{y}{x}\)\khat
+\ccr
+&=
+\q{1}{1 + y^2/x^2}\q{\p}{\p x}\(\q{y}{x}\)\ihat
++ \q{1}{1 + y^2/x^2}\q{\p}{\p y}\(\q{y}{x}\)\jhat
+\ccr
+&=
+- \q{1}{1 + y^2/x^2}\(\q{y}{x^2}\)\ihat
++ \q{1}{1 + y^2/x^2}\(\q{1}{x}\)\jhat
+\ccr
+&=
+- \q{y}{x^2 + y^2}\,\ihat
++ \q{x}{x^2 + y^2}\,\jhat
+\ccr
+&=
+- \q{y}{\rho}\,\ihat
++ \q{x}{\rho}\,\jhat
+\ccr
+&=
+- \q{\sin\varphi\sin\theta}{r\sin\theta}\,\ihat
++ \q{\cos\varphi\sin\theta}{r\sin\theta}\,\jhat
+\ccr
+&=
+- \q{\sin\varphi}{r}\,\ihat
++ \q{\cos\varphi}{r}\,\jhat
+}
+$$
+In summary the gradients are:
+$$
+\eqalignno{
+\del r &= 
+\cos\varphi\sin\theta\,\ihat
++ \sin\varphi\sin\theta\,\jhat
++ \cos\theta\,\khat
+\ccr
+\noalign{\vskip3pt}
+\del\theta &= 
+\q{\cos\varphi\cos\theta}{r}\,\ihat
++\q{\sin\varphi\cos\theta}{r}\,\jhat
+-\q{\sin\theta}{r}\,\khat
+\ccr
+\del\varphi &=
+-\q{\sin\varphi}{r}\,\ihat
++\q{\cos\varphi}{r}\,\jhat
+}
+$$
+As mentioned earlier we must normalize these gradients to get the associated
+basis vectors:
+$$
+\eqalignno{
+\sv{\hat r} &= 
+\cos\varphi\sin\theta\,\ihat
++ \sin\varphi\sin\theta\,\jhat
++ \cos\theta\,\khat
+\ccr
+\sv{\hat\theta} &= 
+\cos\varphi\cos\theta\,\ihat
++\sin\varphi\cos\theta\,\jhat
+-\sin\theta\,\khat
+\ccr
+\sv{\hat\varphi} &=
+-\sin\varphi\,\ihat
++\cos\varphi\,\jhat
+}
+$$
+We could have perhaps found these vectors by circumscribing circles in a
+sphere and working out the trigonometry, but it is nonetheless satisfying to
+see that the formal gradient definitions really do work.
+
+\paperheading{The Velocity}
+
+Now that we have our basis vectors we can work out an expression for velocity
+in spherical coordinates. The position vector in spherical coordinates is just
+$\sv r = r\sv{\hat r}$. The velocity is therefore
+$$
+\eqalign{
+\sv v
+=
+\q{d\sv r}{dt}
+&=
+\q{d}{dt}\Bigl[r\?\sv{\hat r}\Bigr]
+\ccr
+&=
+\dot r\sv{\hat r}
++ r\q{d\sv{\hat r}}{dt}
+\ccr
+&=
+\dot r\sv{\hat r}
++ \q{d}{dt}\Bigl[
+\cos\varphi\sin\theta\,\ihat
++ \sin\varphi\sin\theta\,\jhat
++ \cos\theta\,\khat
+\Bigr]
+\ccr
+&=
+\dot r\sv{\hat r}
++ \dot\theta\Bigl[
+\cos\varphi\cos\theta\,\ihat
++ \sin\varphi\cos\theta\,\jhat
+- \sin\theta\,\khat
+\Bigr]
+\cr
+&
+\hskip30pt
++ \dot\varphi\Bigl[
+- \sin\varphi\sin\theta\,\ihat
++ \cos\varphi\sin\theta\,\jhat
+\Bigr]
+\ccr
+&=
+\dot r\?\sv{\hat r}
++ r\?\dot\theta\?\sv{\hat\theta}
++ r\sin\theta\,\dot\varphi\?\sv{\hat\varphi}
+}
+$$
+In summary this is
+$$
+\sv v
+=
+\dot r\?\sv{\hat r}
++ r\?\dot\theta\?\sv{\hat\theta}
++ r\sin\theta\,\dot\varphi\?\sv{\hat\varphi}
+$$
+Before we go on take note that that the velocity was especially easy to
+formulate in spherical coordinates because the position vector was just $\sv r
+= r\?\sv{\hat r}$. In cylindrical coordinates the position vector is $\sv r =
+\rho\sv{\hat\rho} + z\?\sv{\hat z}$, and in other systems the position might
+be a yet more complicated mixture of the basis vectors and their coordinates.
+
+\paperheading{The Gradient}
+
+Consider a scalar function $\psi$ of euclidean space and some associated
+gradient $\del\psi$. Recall that the projection of some vector $\sv b$ onto
+some unit vector $\sv{\hat a}$ is defined as $\sv{\hat a}\(\sv{\hat a} * \sv
+b\)$. We can use this projection method to split $\del\psi$ into its component
+parts on the spherical basis vectors:
+$$
+\del \psi
+=
+\Bigl(\del\psi * \sv{\hat r}\Bigr)\,\sv{\hat r}
++ \Bigl(\del\psi * \sv{\hat\theta}\Bigr)\,\sv{\hat\theta}
++ \Bigl(\del\psi * \sv{\hat\varphi}\Bigr)\,\sv{\hat\varphi}
+$$
+For brevity let us write this as 
+$$
+\del \psi
+=
+G_r\,\sv{\hat r}
++ G_\theta\,\sv{\hat\theta}
++ G_\varphi\,\sv{\hat\varphi}
+$$
+where $G_r = \del\psi * \sv{\hat r}$, $G_\theta = \del\psi * \sv{\hat\theta}$,
+and $G_\varphi = \del\psi * \sv{\hat\varphi}$. The values of $G_r$,
+$G_\theta$, and $G_\varphi$ are still unknown to us. It is the goal of this
+section to figure out what they should be. We will find these terms by moving
+down some path in space and computing $d\psi/dt$ as we go. We will make this
+computation of $d\psi/dt$ twice, each time using a different method. We will
+then say that both methods must give the same answer, because physically there
+is only one $d\psi/dt$ down any given path. Formally equating these two
+methods will give us the information we seek about $G_r$, $G_\theta$, and
+$G_\varphi$.
+
+For the first method consider moving along some path in Cartesian coordinates
+and measuring $\psi$ as you go. We can take time derivative of $\psi$ over our
+path in the usual way:
+$$
+\q{d\psi}{dt}
+= \q{d}{dt}\psi(x, y, z)
+= \q{\p \psi}{\p x}\q{dx}{dt}
++ \q{\p \psi}{\p y}\q{dy}{dt}
++ \q{\p \psi}{\p z}\q{dz}{dt}
+= \del\psi * \sv v
+$$
+In summary we have:
+$$
+\q{d\psi}{dt} = \del\psi * \sv v
+$$
+In the previous section we found a spherical expression for the velocity $\sv
+v$. We can apply this to our expression for $d\psi/dt$:
+$$
+\eqalign{
+\q{d\psi}{dt}
+= \del\psi * \sv v
+&= \(G_r\,\sv{\hat r}
++ G_\theta\,\sv{\hat\theta}
++ G_\varphi\,\sv{\hat\varphi}\)
+*
+\(\dot r\?\sv{\hat r}
++ r\?\dot\theta\?\sv{\hat\theta}
++ r\sin\theta\,\dot\varphi\?\sv{\hat\varphi}\)
+\cr
+&=
+\dot r \? G_r
++ r\?\dot\theta \? G_\theta
++ r\sin\theta\,\dot\varphi \? G_\varphi
+}
+$$
+In summary we have
+$$
+\q{d\psi}{dt}
+=
+\dot r \? G_r
++ r\?\dot\theta \? G_\theta
++ r\sin\theta\,\dot\varphi \? G_\varphi
+$$
+That concludes the first method. Now for the second method. If we are working
+in spherical coordinates then presumably we have an expression for $\psi$ in
+terms of $r$, $\theta$, and $\varphi$. We can use spherical coordinates to
+express both $\psi$ and the path along which we measure $\psi$. When we do so
+we find that
+$$
+\eqalign{
+\q{d\psi}{dt}
+&=
+\q{d}{dt}\psi(r, \theta, \varphi)
+\ccr
+&=
+\q{\p \psi}{\p r}\q{dr}{dt}
++ \q{\p \psi}{\p\theta}\q{d\theta}{dt}
++ \q{\p \psi}{\p\varphi}\q{d\varphi}{dt}
+\ccr
+&=
+\q{\p \psi}{\p r}\dot r
++ \q{\p \psi}{\p\theta}\dot\theta
++ \q{\p \psi}{\p\varphi}\dot\varphi
+}
+$$
+These two lines of calculus are hardly necessary to summarize, but let us
+write a summary anyway:
+$$
+\q{d\psi}{dt}
+=
+\q{\p \psi}{\p r}\dot r
++ \q{\p \psi}{\p\theta}\dot\theta
++ \q{\p \psi}{\p\varphi}\dot\varphi
+$$
+That concludes the second method. The form of the answer in this second method
+is different from the form in the first because it does not involve the $G$
+terms, nor does it involve the expression for $\sv v$ in spherical
+coordinates. Rather, this new form looks almost like a dot product between
+$$\(\q{\p \psi}{dr}, \q{\p \psi}{d\theta}, \q{\p \psi}{d\psi}\) \hskip6pt {\rm
+and} \hskip6pt \(\dot r, \dot\theta, \dot\varphi\)$$ These look almost like a
+gradient vector and a velocity vector. Yet the left one is not actually a
+gradient vector, and the right one is plainly not a velocity vector. Some of
+its terms do not even have units of meters per second!
+
+We have now computed $d\psi/dt$ in two
+separate ways. Both methods must give the same answer, numerically speaking,
+and so we must have
+$$
+\dot r \? G_r
++ r\?\dot\theta \? G_\theta
++ r\sin\theta\,\dot\varphi \? G_\varphi
+=
+\q{\p \psi}{\p r}\dot r
++ \q{\p \psi}{\p\theta}\dot\theta
++ \q{\p \psi}{\p\varphi}\dot\varphi
+$$
+After some shuffling and factoring we can express this relation as
+$$
+\dot r\(G_r
+- \q{\p \psi}{\p r}\)
++ \dot\theta\(r \? G_\theta
+- \q{\p \psi}{\p\theta}\)
++ \dot\varphi\(r\sin\theta\, \? G_\varphi
+- \q{\p \psi}{\p\varphi}\)
+=
+0
+$$
+The derivatives $\dot r$, $\dot\theta$, and $\dot\varphi$ are characteristic
+of the path along which we are measuring $d\psi/dt$. For example, if we are
+measuring $d\psi/dt$ along a path moving radially outward then we have only
+$\dot r$, while $\dot\theta$ and $\dot\varphi$ vanish. If we are measuring
+$d\psi/dt$ while moving in an azimuthal circle then perhaps we have only
+$\dot\varphi$, while $\dot r$ and $\dot\theta$ vanish. The point is that the
+above sum must come out to $0$ for any and all paths, and thus we must have
+$$
+G_r - \q{\p \psi}{\p r} = 0
+\hskip18pt
+r \? G_\theta - \q{\p \psi}{\p\theta} = 0
+\hskip18pt
+r\sin\theta\, \? G_\varphi - \q{\p \psi}{\p\varphi} = 0
+$$
+These relations let us compute the $G$ values without too much more effort:
+$$
+G_r = \q{\p \psi}{\p r}
+\hskip18pt
+G_\theta = \q1r \q{\p \psi}{\p\theta}
+\hskip18pt
+G_\varphi = \q{1}{r\sin\theta}\q{\p \psi}{\p\varphi}
+$$
+The gradient in spherical coordinates is therefore
+$$
+\del\psi
+=
+\q{\p \psi}{\p r}\,\sv{\hat r}
++ \q1r \q{\p \psi}{\p\theta}\,\sv{\hat\theta}
++ \q{1}{r\sin\theta}\q{\p \psi}{\p\varphi}\,\sv{\hat\varphi}
+$$
+
+\bye

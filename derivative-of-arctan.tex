@@ -1,0 +1,93 @@
+\input ../paper.tex
+
+\papertitle{The Derivative of arctan}
+
+\paperheading{Summary}
+
+\noindent
+The derivative of $\arctan$ is
+$$
+\arctan' = \q{1}{1 + x^2}
+$$
+
+\paperheading{Derivation}
+
+\noindent
+Consider that
+$$
+\tan\theta = \q{\sin\theta}{\cos\theta} = \q{\sin\theta}{\sqrt{1 -
+\sin^2\theta}}
+$$
+If we set $\theta = \arcsin(x)$ we then have
+$$
+\tan(\arcsin x)=
+\q{x}{\sqrt{1 - x^2}}
+$$
+At this point it is easy to isolate $x$ in terms of $\tan(\arcsin x)$
+$$
+\eqalign{
+\tan(\arcsin x)\sqrt{1 - x^2} &= x \cr
+\tan^2(\arcsin x)\(1 - x^2\) &= x^2 \cr
+\tan^2(\arcsin x) &= x^2\(1 + \tan^2(\arcsin x)\) \cr
+x &= \[\q{\tan^2(\arcsin x)}{1 + \tan^2(\arcsin x)}\]^{1/2} \cr
+}
+$$
+Now we can set $x = \sin(\theta)$ to recover the previous relationship between
+the arguments:
+$$
+\sin\theta = \[\q{\tan^2\theta}{1 + \tan^2\theta}\]^{1/2}
+$$
+Next we can apply $\arcsin$ to both sides
+$$
+\theta = \arcsin\(\[\q{\tan^2\theta}{1 + \tan^2\theta}\]^{1/2}\)
+$$
+Finally we can set $\theta = \arctan(x)$:
+$$
+\arctan(x) = \arcsin\(\[\q{x^2}{1 + x^2}\]^{1/2}\)
+$$
+This function can then be differentiated directly. This is a bit laborious,
+but it is worth the effort
+$$
+\eqalign{
+\arctan'(x)
+&= \arcsin'\(\[\q{x^2}{1 + x^2}\]^{1/2}\)
+* \q12\[\q{x^2}{1 + x^2}\]^{-1/2}
+* \left.\q{d}{dx}\middle[\q{x^2}{1 + x^2}\right]
+\cr
+&= \q{1}{\sqrt{1 - x^2/(1 + x^2)}}
+* \q12\[\q{x^2}{1 + x^2}\]^{-1/2}
+* \left.\q{d}{dx}\middle[\q{x^2}{1 + x^2}\right]
+\cr
+&= \q{1}{\sqrt{1 - x^2/(1 + x^2)}}
+* \q12\[\q{x^2}{1 + x^2}\]^{-1/2}
+* \q{2x(1 + x^2) - x^2(2x)}{{(1 + x^2)}^2}
+\cr
+&= \q{1}{\sqrt{1 - x^2/(1 + x^2)}}
+* \q12\[\q{x^2}{1 + x^2}\]^{-1/2}
+* \q{2x}{{(1 + x^2)}^2}
+\cr
+&= \q{1}{\sqrt{1 - x^2/(1 + x^2)}}
+* \q{\sqrt{1 + x^2}}{2x}
+* \q{2x}{{(1 + x^2)}^2}
+\cr
+&= \q{1}{\sqrt{1 - x^2/(1 + x^2)}}
+* \q{\sqrt{1 + x^2}}{{(1 + x^2)}^2}
+\cr
+&= \q{\sqrt{1 + x^2}}{\sqrt{1 + x^2}}
+* \q{1}{\sqrt{1 - x^2/(1 + x^2)}}
+* \q{\sqrt{1 + x^2}}{{(1 + x^2)}^2}
+\cr
+&= \sqrt{1 + x^2}
+* \q{1}{\sqrt{1 + x^2 - x^2}}
+* \q{\sqrt{1 + x^2}}{{(1 + x^2)}^2}
+\cr
+&=
+\q{1}{1 + x^2}
+}
+$$
+This completes the proof. We have found that
+$$
+\arctan' = \q{1}{1 + x^2}
+$$
+
+\bye

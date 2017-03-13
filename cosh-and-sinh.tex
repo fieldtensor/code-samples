@@ -1,0 +1,202 @@
+\input ../paper.tex
+
+\papertitle{The Hyperbolic Functions}
+
+\paperheading{Summary}
+
+The hyperbolic functions take hyperbolic areas as inputs, and they return the
+locations on the hyperbola which produce those areas. They are
+$$
+\eqalign{
+\cosh(x) &= \q{e^x + e^{-x}}{2} \cr
+\sinh(x) &= \q{e^x - e^{-x}}{2} \cr
+}
+$$
+These functions obey the identity
+$$
+\cosh{}^2 - \sinh{}^2 = 1
+$$
+Additionally, they are each others derivatives:
+$$
+\eqalign{
+\cosh{}' &= \sinh{} \cr
+\sinh{}' &= \cosh{} \cr
+}
+$$
+It is not difficult to show by manually expanding out the exponentials that
+$$
+\eqalign{
+\cosh(x + y) &= \cosh(x)\cosh(y) + \sinh(x)\sinh(y) \cr
+\sinh(x + y) &= \cosh(x)\sinh(y) + \cosh(y)\sinh(x) \cr
+}
+$$
+The inverses of these functions are
+$$
+\eqalign{
+\arccosh(x) &= \log\(x \pm \sqrt{x^2 - 1}\;\) \cr
+\arcsinh(x) &= \log\(x - \sqrt{1 + x^2}\;\) \cr
+}
+$$
+Note that either $+$ or $-$ is allowed inside of the $\log$ for $\arccosh$,
+but not for $\arcsinh$.
+
+\paperheading{Discovery}
+
+Consider a function $f(x)$ which gives the unit hyperbola:
+$$
+f(x) = \sqrt{x^2 - 1}
+$$
+Now, let us consider the area
+$$
+A(x)
+= xf - 2\int_1^x f(x) \; dx
+= \(x\sqrt{x^2 - 1}\;\) + 2\int_1^x \sqrt{x^2 - 1} \; dx
+$$
+The derivative of this is
+$$
+A'(x) = \[\sqrt{x^2 - 1} + \q{x^2}{\sqrt{x^2 - 1}}\] - 2\sqrt{x^2 - 1}
+= \q{x^2 - 1 + x^2 - 2\(x^2 - 1\)}{\sqrt{x^2 - 1}}
+= \q{1}{\sqrt{x^2 - 1}}
+$$
+Now, let us call the inverse of $A$ by the name $f(x)$. We know that $f(x)$
+must obey
+$$
+\q{d}{dx}\biggr[A(f(x))\biggl]
+= A'(f(x)) * f'(x)
+= \q{1}{\sqrt{f(x)^2 - 1}} * f'(x) = 1
+$$
+or in other words
+$$
+f' = \sqrt{f^2 - 1}
+$$
+Let us square this:
+$$
+{f'}^2 = f^2 - 1
+$$
+and then take another derivative:
+$$
+2f'f'' = 2ff'
+$$
+We now have
+$$
+f'' = f
+$$
+We know from any basic study of differential equations that the solution to
+this is
+$$
+f(x) = \alpha e^x + \beta e^{-x}
+$$
+for some values $\alpha$ and $\beta$. Now, we know that the area function will
+have $A(1) = 0$, and so we have $f(0) = 1$. Moreover, we know from $f' =
+\sqrt{f^2 - 1}$ that $f'(0) = 0$, since $f(0) = 1$. Based on this we know that
+$$
+\eqalign{
+1 &= \alpha + \beta \cr
+0 &= \alpha - \beta
+}
+$$
+and so $\alpha$ and $\beta$ are both $1/2$. The inverse function of $A$ is
+therefore
+$$
+f(x) = \q{e^x + e^{-x}}{2}
+$$
+This function $f$ is usually called $\cosh$:
+$$
+\cosh(x) = \q{e^x + e^{-x}}{2}
+$$
+The $\cosh$ function takes a hyperbolic area as an input, and it identifies
+which $x$-axis location on the parabola will create the given area. Since
+$\cosh$ is a horizontal location on the parabola we can expect that there be
+some other function $\sinh$ which obeys
+$$
+\cosh^2 - \sinh^2 = 1
+$$
+From this we can derive an expression for $\sinh$:
+$$
+\sinh
+= \sqrt{\cosh^2 - 1}
+= \sqrt{\q{e^{2x} + 2 + e^{-2x}}{4} - 1}
+= \sqrt{\q{e^{2x} - 2 + e^{-2x}}{4}}
+= \q{e^{x} - e^{-x}}{2}
+$$
+
+\paperheading{Derivatives}
+
+It is immediately apparent that $\cosh$ and $\sinh$ are derivatives of each
+other:
+$$
+\eqalign{
+\cosh'
+&= \q{d}{dx}\biggl[\q{e^x + e^{-x}}{2}\biggr]
+= \q{e^x - e^{-x}}{2}
+= \sinh
+\cr
+\sinh'
+&= \q{d}{dx}\biggl[\q{e^x - e^{-x}}{2}\biggr]
+= \q{e^x + e^{-x}}{2}
+= \cosh
+}
+$$
+
+\paperheading{Inverses}
+
+The inverse of $\cosh$ is not difficult to find
+$$
+\eqalign{
+\cosh{} &= \q{e^x + e^{-x}}{2} \cr
+2\cosh{} &= e^x + e^{-x} \cr
+e^x2\cosh{} &= {e^x}^2 + 1 \cr
+0 &= {e^x}^2 - e^x2\cosh{} + 1 \cr
+e^x &= \q{2\cosh{}\pm\sqrt{4\cosh{}^2 - 4\;}}{2} \cr
+e^x &= \cosh{}\pm\sqrt{\cosh{}^2 - 1} \cr
+x &= \log\(\cosh{}\pm\sqrt{\cosh{}^2 - 1}\;\)
+}
+$$
+The inverse of $\cosh$ is therefore
+$$
+\arccosh(x) = \log\(x \pm \sqrt{x^2 - 1}\;\)
+$$
+Typically the $\pm$ is resolved to $+$, but $-$ is allowable as well. The
+inverse of $\sinh$ is easy to find as well
+$$
+\eqalign{
+\sinh{} &= \q{e^x - e^{-x}}{2} \cr
+2\sinh{} &= e^x - e^{-x} \cr
+e^x2\sinh{} &= {e^x}^2 - 1 \cr
+0 &= {e^x}^2 - e^x2\sinh{} - 1 \cr
+e^x &= \q{2\sinh{}\pm\sqrt{4\sinh{}^2 + 4\;}}{2} \cr
+e^x &= \sinh{}\pm\sqrt{\sinh{}^2 + 1} \cr
+x &= \log\(\sinh{}\pm\sqrt{\sinh{}^2 + 1}\;\)
+}
+$$
+The inverse of $\sinh$ is therefore
+$$
+\arcsinh(x) = \log\(x + \sqrt{1 + x^2}\;\)
+$$
+Note that we must resolve the $\pm$ to $+$, unlike with $\arccosh$ where $-$
+is allowed as well. Resolving $\pm$ to $-$ for $\arcsinh$ would mean taking
+the log of a negative value.
+
+\paperheading{An Oddity of arccosh}
+
+Recall that $\arccosh$ is
+$$
+\arccosh(x) = \log\(x \pm \sqrt{x^2 - 1}\;\)
+$$
+and that its derivative is
+$$
+\arccosh'(x) = \q{1}{\sqrt{x^2 - 1}}
+$$
+Now, as $x$ goes to $\infty$ we see that $\arccosh$ approaches
+$$
+\arccosh(x) \approx \log\(2x\)
+$$
+and that its derivative approches 
+$$
+\arccosh'(x) \approx \q{1}{x}
+$$
+How can this be? Should it not be the case that the derivative approaches
+$1/2x$, since the function itself becomes $\log(2x)$? So far, this remains a
+mystery to me.
+
+\bye

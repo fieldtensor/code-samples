@@ -1,0 +1,74 @@
+\input ../paper.tex
+
+\papertitle{Surface Integrals}
+
+\paperheading{Summary}
+
+\noindent
+Let us consider a vector function $\sv S(x, y)$ which describes a
+parameterized surface in space. The surface integral of a vector
+function $\sv F$ over $\sv S$ can be evaluated as follows:
+$$
+\int_S \sv F * d\sv S
+=
+\int_{x_1}^{x_2} \!\;\!\;
+\int_{y_1}^{y_2}
+\sv F \? * \[\q{\p S}{\p x} \x \q{\p S}{\p y}\] dx \, dy
+$$
+The surface integral of a scalar function $f$ can be evaluated in a
+similar manner:
+$$
+\int_S f * d\sv S
+=
+\int_{x_1}^{x_2} \!\;\!\;
+\int_{y_1}^{y_2}
+f * \vlen{\q{\p \sv S}{\p x} \x \q{\p \sv S}{\p y}} \, dx \, dy
+$$
+
+\paperheading{Discovery}
+
+\noindent
+Let us consider a vector function $\sv S(x, y)$ which describes a
+parameterized surface in space. We will shift each parameter by a
+differential amount and observe the offsets that this creates on the
+surface $\sv S$.
+$$
+\eqalign{
+d_x\sv S &= \sv S(x + dx, y) - \sv S(x, y) \cr
+d_y\sv S &= \sv S(x, y + dy) - \sv S(x, y) \cr
+}
+$$
+These offset vectors together define a differential parallelogram on
+the surface. The normal vector of this parallelogram can be obtained
+with a cross product
+$$
+d\sv S = d_x\sv S \x d_y\sv S
+$$
+The right side of this equation can be manipulated to create concrete
+partial derivatives
+$$
+d\sv S\? = \(\q{\p \sv S}{\p x} \x \q{\p \sv S}{\p y}\)  dx \, dy
+$$
+The surface integral of a vector function $\sv F$ over $\sv S$
+can therefore be evaluated as follows:
+$$
+\int_S \sv F * d\sv S
+=
+\int_{x_1}^{x_2} \!\;\!\;
+\int_{y_1}^{y_2}
+\sv F \? * \[\q{\p\sv S}{\p x} \x \q{\p\sv S}{\p y}\] dx \, dy
+$$
+The surface integral of a scalar function $f$ over $\sv S$ can be
+evaluated in a similar manner:
+$$
+\int_S \sv F * d\sv S =
+\int_{x_1}^{x_2} \!\;\!\;
+\int_{y_1}^{y_2}
+f * \vlen{\q{\p\sv S}{\p x} \x \q{\p\sv S}{\p y}} dx \, dy
+$$
+Recall that within these integrals the functions $\sv F$ and $f$ must
+be evaluated as $\sv F(\sv S(x, y, z))$ and $f(\sv S(x, y, z))$. We
+must be careful to evaluate them over the surface, and not over the
+surface's parameter space.
+
+\bye

@@ -1,0 +1,161 @@
+\input ../paper.tex
+
+\papertitle{The Properties of a Rigid Body}
+
+\paperheading{Summary}
+
+\noindent
+A rigid body's angular momentum is
+$$
+\sv L = \sv R \x M\sv V + \sv I\?\sv\omega
+$$
+A rigid body's kinetic energy is
+$$
+{\rm KE} = \q12 MV^2 + \q12 \(\sv I\?\sv\omega * \sv\omega\)
+$$
+If a small departure from the usual order of operations can be
+forgiven then this can be written more mnemonically as
+$$
+{\rm KE} = \q12 MV^2 + \q12 \sv I\?\sv\omega^2
+$$
+
+\paperheading{Angular Momentum}
+
+\noindent The angular momentum held by a rigid body can be split into
+translational and rotational components. Let us denote the body's center of
+mass as $\sv R$ and the velocity of the center of mass as $\sv V$. We will
+express the position of a given particle in the body as an offset $\sv\rho_i$
+from the body's center of mass. We can then express $\sv r_i$ and $\sv v_i =
+\sv{\dot r}_i$ in terms of $\sv\rho_i$ and $\sv V\!\? = \dot\sv R$
+$$
+\eqalign{
+\sv r_i &= \sv R + \sv\rho_i \cr
+\sv v_i &= \sv V + \sv{\dot\rho}_i
+}
+$$
+The body's angular momentum then comes out to
+$$
+\eqalign{
+\sv L
+&=
+\sum \sv r_i \x m_i\sv v_i
+\cr
+&=
+\sum
+\[
+\mathinner{\Bigl(\sv R + \sv \rho_i\Bigr)}
+\x m_i\mathinner{\Bigl(\sv V + \sv{\dot\rho}_i\Bigr)}
+\]
+\cr
+&=
+\sum
+\mathinner{\Bigl[
+\sv R \x m_i\sv V
++ \sv R \x m_i\sv{\dot\rho}_i
++ m_i\sv\rho_i \x \sv V
++ \sv\rho_i \x m_i\sv{\dot\rho}_i
+\Bigr]}
+\cr
+&=
+\sv R \x M\sv V
++ \sv R \x \(\sum m_i\sv{\dot\rho}_i\)
++ \(\sum m_i\sv\rho_i\) \x \sv V
++ \sum\mathinner{\Bigl(\sv\rho_i \x m_i\sv{\dot\rho}_i\Bigr)}
+\cr
+&=
+\sv R \x M\sv V
++ \sum\mathinner{\Bigl(\sv\rho_i \x m_i\sv{\dot\rho}_i\Bigr)}
+\cr
+&=
+\sv R \x M\sv V
++ \sum \sv I_i\?\sv\omega \cr
+&=
+\sv R \x M\sv V
++ \sv I\?\sv\omega
+}
+$$
+Note that in the fourth line we relied on certain sums coming out to $\sv 0$,
+specifically  $\sum m_i\sv{\dot\rho}_i = \sv 0$ and $\sum m_i\sv\rho_i = \sv
+0$. We know this to be true because the sums express the position and velocity
+of the center of mass in the very coordinate system of the center of mass.
+The symbol $\sv I_i$ denotes the tensor of inertia about the center of mass of
+a given particle, and $\sv I$ is then the sum of those tensors. This brings us
+to our next section, which is very brief.
+
+\paperheading{The Aggregate Tensor of Inertia}
+
+\noindent
+A rigid body has a tensor of inertia $\sv I$ defined as
+$$
+\sv I = \sum \sv I_i
+$$
+This tensor plays a key role is expressing both the body's angular momentum
+and energy. Note that the tensor is dependent not just on the body's shape,
+but also on its orientation in space. For this reason the tensor of inertia is
+usually time dependent. As the body rotates, the tensor changes.
+
+\paperheading{Kinetic Energy}
+
+\noindent The kinetic energy held by a rigid body can be split into
+translational and rotational components. To make this split we will make use
+of the $\sv\rho_i$ notation from the previous section on angular momentum.
+Also as before, we will drop any terms which express the position or velocity
+of the center of mass in the very coordinate system of the center of mass,
+because such terms evaluate to $\sv 0$ by definition.
+$$
+\eqalign{
+{\rm KE}
+&=
+\sum \q12\? m_i \cs v_i^2
+\cr
+&=
+\sum \q12\? m_i \mathinner{\Bigl(\sv V + \sv{\dot\rho}_i\Bigr)^2}
+\cr
+&=
+\sum \q12\? m_i \sv V^2
++ m_i\mathinner{\Bigl(\sv V * \sv{\dot\rho}_i\Bigr)}
++ \q12\? m_i \cs \sv{\dot\rho}_i^2
+\cr
+&=
+\q12 MV^2
++ \sv V * \sum m_i \sv{\dot\rho}_i
++ \q12 \sum m_i\mathinner{\bigl(\sv \omega \x \sv \rho_i\bigr)}^2
+\cr
+&=
+\q12 MV^2
++
+\q12
+\sum
+m_i
+\mathinner{
+\Bigl(
+\sv \omega * \mathinner{\Bigl(\sv\rho_i \x \mathinner{\Bigl(\sv \omega \x \sv\rho_i\Bigr)}\Bigr)}
+\Bigr)
+}
+\cr
+&=
+\q12 MV^2
++ \q12\? \sv\omega * \sum\Bigl(
+\sv\rho_i \x m_i\sv{\dot\rho}_i\Bigr)
+\cr
+&=
+\q12 MV^2 + \q12 \mathinner{\Bigl(\sv\omega * \sv L\Bigr)}
+\cr
+}
+$$
+The move from the fourth line to the fifth line here might seem mysterious.
+If so, recall the vector identity $\sv A * \(\sv B \x \sv C\) = \sv C * \(\sv
+A \x \sv B\)$, and with this in mind it should make more sense.
+
+\vskip\baselineskip
+
+\noindent If a small departure from the usual order of operations can be
+forgiven then this can be written as
+$$
+{\rm KE} = \q12 MV^2 + \q12 \sv I\?\sv\omega^2
+$$
+Be careful to remember that in this mnemonic form the term $\sv
+I\?\sv\omega^2$ should not be read as $\sv I\vlen{\sv\omega}^2$, but rather as
+$\sv I\?\sv\omega * \sv\omega$
+
+\bye

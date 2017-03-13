@@ -1,0 +1,91 @@
+\input ../paper.tex
+
+\papertitle{Volume Integrals}
+
+\def\jdet{%
+\vcenter{
+  \vskip-3pt
+  \everycr{\noalign{\vskip6pt}}
+  \halign{
+    $\displaystyle ##$&&\hskip6pt$\displaystyle ##$\cr
+    \q{\p S_x}{\p x} & \q{\p S_y}{\p x} & \q{\p S_z}{\p x}
+    \cr
+    \q{\p S_x}{\p y} & \q{\p S_y}{\p y} & \q{\p S_z}{\p y}
+    \cr
+    \q{\p S_x}{\p z} & \q{\p S_y}{\p z} & \q{\p S_z}{\p z}
+    \cr}
+  \vskip-3pt
+}}
+
+\paperheading{Summary}
+
+\noindent
+Let us consider a vector function $\sv V(x, y, z)$ which describes a
+parameterized volume. The volume integral of a function $f$
+over $\sv V$ can be evaluated as follows
+$$
+\int_V f \, dV
+=
+\int_V f *
+\vlen{
+\q{\p \sv V}{\p x} * \[\q{\p \sv V}{\p y} \x \q{\p \sv V}{\p z}\]
+} \, dx \, dy \, dz
+$$
+When this triple product is expanded out it makes what is called a
+Jacobian determinant, which takes the form below
+$$
+\q{\p \sv V}{\p x} * \(\q{\p \sv V}{\p y} \x \q{\p \sv V}{\p z}\)
+=
+\left|\;\jdet\;\right|
+$$
+
+\paperheading{Discovery}
+
+\noindent
+Let us consider a vector function $\sv V(x, y, z)$ which
+describes a parameterized volume. We will shift each parameter by a
+differential amount and observe the total offset that this creates
+within the volume.
+$$
+\eqalign{
+d_x\!\?\sv V &= \sv V(x + dx, y, z) - \sv V(x, y, z) \cr
+d_y\!\?\sv V &= \sv V(x, y + dy, z) - \sv V(x, y, z) \cr
+d_z\!\?\sv V &= \sv V(x, y, z + dz) - \sv V(x, y, z) \cr
+}
+$$
+These offset vectors taken together define a differential
+parallelepiped within $\sv V$. The volume of this parallelepiped can
+be obtained with a triple product
+$$
+dV = \vlen{d_x\!\?\sv V * \(d_y\!\?\sv V \x d_z\!\?\sv V\) \vrule height 10pt width 0pt}
+$$
+The right side of this equation can be manipulated to create concrete
+partial derivatives
+$$
+dV
+=
+\vlen{\q{\p \sv V}{\p x} * \[\q{\p \sv V}{\p y} \x \q{\p \sv V}{\p z}\]}
+\, dx \, dy \, dz
+$$
+When this this triple product of partial derivatives is expanded out
+it makes what is called a Jacobian determinant, and this
+produces the form below
+$$
+dV = \abs\(\det\[\jdet\]\) \, dx \, dy \, dz
+$$
+The volume integral of a function $f$ over $\sv V$ can then be
+evaluated as follows
+$$
+\int_{V} f \, dV
+=
+\int_{x_1}^{x_2} \!\;\!\;
+\int_{y_1}^{y_2} \!\;\!\;
+\int_{z_1}^{z_2}
+f * \abs\(\det\[\jdet\]\) \, dx \, dy \, dz
+$$
+Recall that the functions $\sv F$ and $f$ are actually $\sv F(\sv V(x, y, z))$
+and $f(\sv V(x, y, z))$ when taken in the context of these integrals. We must
+be careful to evaluate them over the volume itself, and not over the volume's
+parameter space.
+
+\bye

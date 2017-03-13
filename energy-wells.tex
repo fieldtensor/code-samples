@@ -1,0 +1,80 @@
+\input ../paper.tex
+
+\papertitle{Harmonic Oscillation in Energy Wells}
+
+\paperheading{Summary}
+
+An object sitting at the bottom of an energy well, when slightly perturbed,
+will experience harmonic oscillation about the bottom of the well. If the
+bottom of the well is at $x_0$ then the frequency of the oscillation will be
+$$
+\omega = \sqrt{\left.\q{1}{m}\q{\partial^2 U}{{\partial x}^2}\right|_{x_0}}
+$$
+
+\paperheading{Discovery}
+
+Consider some potential energy function $U(x)$. Let us take a Taylor expansion
+of this function about some point $x_0$:
+$$
+U(x)
+=
+U(x_0)
++ \left.\q{\partial U}{\partial x}\right|_{x_0}(x - x_0)
++ \left.\q12\q{\partial^2 U}{{\partial x}^2}\right|_{x_0}(x - x_0)^2
++ {\cal O}\Bigl((x-x_0)^3\Bigr)
+$$
+If we take $x_0$ to be a local minimum of $U(x)$ then we must have
+$$
+\left.\q{\partial U}{\partial x}\right|_{x_0} = 0
+\hskip18pt
+\left.\q{\partial^2 U}{{\partial x}^2}\right|_{x_0} \ge 0
+$$
+This reduces the Taylor expansion to
+$$
+U(x)
+=
+U(x_0)
++ \left.\q12\q{\partial^2 U}{{\partial x}^2}\right|_{x_0}(x - x_0)^2
++ {\cal O}\Bigl((x-x_0)^3\Bigr)
+$$
+If we also stipulate that $x$ never strays too far from $x_0$ then we can
+throw away higher order terms in $x - x_0$. The potential is now just
+$$
+U(x)
+=
+U(x_0)
++ \left.\q12\q{\partial^2 U}{{\partial x}^2}\right|_{x_0}(x - x_0)^2
+$$
+We can get the related force by taking the negated gradient:
+$$
+F(x)
+=
+-\left.\q{\p}{\p x}\middle[U(x)\right]
+=
+-\left.\q{\p}{\p x}\middle[
+U(x_0)
++ \left.\q12\q{\partial^2 U}{{\partial x}^2}\right|_{x_0}(x - x_0)^2
+\right]
+=
+\left.-\q{\partial^2 U}{{\partial x}^2}\right|_{x_0}(x - x_0)
+$$
+In summary we have
+$$
+F(x)
+=
+\left.-\q{\partial^2 U}{{\partial x}^2}\right|_{x_0}(x - x_0)
+$$
+It might feel odd that this force seems to depend on the negated {\it second}
+derivative of $U$, when forces typically depend on negated {\it first}
+derivatives of $U$. The key point here is that we are using $U''(x_0)$ as a
+constant, so this is nothing like the usual relationship $\sv F = -\nabla U$.
+Since $U''(x_0) \ge 0$ this equation of motion is clearly a harmonic
+oscillation with angular frequency
+$$
+\omega = \sqrt{\left.\q1m\q{\partial^2 U}{{\partial x}^2}\right|_{x_0}}
+$$
+We have thus shown that an object sitting at the bottom of an energy well,
+when slightly perturbed, will experience harmonic motion about the bottom of
+the well.
+
+\bye

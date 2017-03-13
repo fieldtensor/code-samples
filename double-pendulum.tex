@@ -1,0 +1,352 @@
+\input ../paper.tex
+
+\papertitle{The Double Pendulum}
+
+\paperheading{Summary}
+
+\noindent
+Consider a double pendulum composed of masses $m_1$ and $m_2$. Let us say that
+mass $m_1$ has polar coordinates $(\alpha, \theta)$ with respect to the
+origin, and that mass $m_2$ has polar coordinates $(\beta, \phi)$ with respect
+to mass $m_1$.
+
+\vskip\baselineskip
+
+\noindent The system of differential equations governing the motion of double
+pendulum is as follows (note that we use the shorthand $M = m_1 + m_2$).
+$$
+\eqalign{
+\[M\alpha^2\]\ddot\theta
++\[\alpha\beta\cos(\theta - \phi)\]\ddot\phi
+&=
+-m_2\alpha\beta{\dot\phi}^2\sin(\theta - \phi)
+-Mg\alpha\cos\theta
+\cr
+\[m_2\alpha\beta\cos(\theta - \phi)\]\ddot\theta
++\[m_2\beta^2\]\ddot\phi
+&=
+m_2\alpha\beta\dot\theta^2\sin(\theta - \phi)
+-m_2g\beta\cos\phi
+}
+$$
+
+\noindent From the above equations can derive the separate generalized forces
+acting on each mass. These forces are complicated to such a degree that they
+are beyond intuitive human understanding. Nonetheless, we give them here:
+$$
+\eqalign{
+\ddot\theta &=
+\biggl[
+\(\mathop{-}m_2\alpha\beta{\dot\phi}^2\sin(\theta - \phi) - Mg\alpha\cos\theta\)
+\(m_2\beta^2\)
+\cr
+&\phantom{=}\,-
+\(m_2\alpha\beta\cos(\theta - \phi)\)
+\(m_2\alpha\beta\dot\theta^2\sin(\theta - \phi) - m_2g\beta\cos\phi\)
+\biggr]\cr
+&\phantom{=}\,* {1 / \[
+\(M\alpha^2\)\(m_2\beta^2\)
+-\(m_2\alpha\beta\cos(\theta - \phi)\)\(m_2\alpha\beta\cos(\theta - \phi)\)
+\]}
+\cr
+\noalign{\medskip}
+\ddot\phi &=
+\biggl[
+\(M\alpha^2\)
+\(m_2\alpha\beta\dot\theta^2\sin(\theta - \phi) - m_2g\beta\cos\phi\)
+\cr
+&\phantom{=}\,-
+\(\mathop{-}m_2\alpha\beta{\dot\phi}^2\sin(\theta - \phi) - Mg\alpha\cos\theta\)
+\(m_2\alpha\beta\cos(\theta - \phi)\)
+\biggr]\cr
+&\phantom{=}\,* {1 / \[
+\(M\alpha^2\)
+\(m_2\beta^2\)
+-\(m_2\alpha\beta\cos(\theta - \phi)\)
+\(m_2\alpha\beta\cos(\theta - \phi)\)
+\]}
+}
+$$
+
+\paperheading{Discovery}
+
+Consider a double pendulum composed of masses $m_1$ and $m_2$. Let us say that
+mass $m_1$ has polar coordinates $(\alpha, \theta)$ with respect to the
+origin, and that mass $m_2$ has polar coordinates $(\beta, \phi)$ with respect
+to mass $m_1$.  Our goal is to find a formula for the forces on each body,
+such that we can numerically integrate the forces and produce a computer
+simulation of a swinging double-pendulum.
+
+To begin, we say that the location of the first body is
+$$
+\eqalign{
+x_1 &= \alpha \cos(\theta) \cr
+y_1 &= \alpha \sin(\theta) \cr
+}
+$$
+Next we say that the location of the second body is
+$$
+\eqalign{
+x_2
+&= x_1 + \beta \cos\phi \cr
+&= \alpha \cos\theta + \beta \cos\phi
+\cr
+\noalign{\medskip}
+y_2
+&= y_1 + \beta \sin\phi \cr
+&= \alpha \sin\theta + \beta \sin\phi \cr
+}
+$$
+The squared velocity of the first body is then
+$$
+\cs v_1^2 = \alpha^2\dot\theta^2
+$$
+and the squared velocity of the second body is
+$$
+\eqalign{
+\dot\cs x_1^2
+&=
+\(
+-\alpha\dot\theta\sin\theta
+-\beta\dot\phi\sin\phi
+\)
+^2
+\cr
+&=
+\alpha^2\dot\theta^2\sin^2\theta
++2\alpha\beta\dot\theta\dot\phi\sin\theta\sin\phi
++\beta^2{\dot\phi}^2\sin^2\phi
+\cr
+\noalign{\medskip}
+\dot\cs y_1^2
+&=
+\(
++\alpha\dot\theta\cos\theta
++\beta\dot\phi\cos\phi
+\)^2
+\cr
+&=
+\alpha^2\dot\theta^2\cos^2\theta
++2\alpha\beta\dot\theta\dot\phi\cos\theta\cos\phi
++\beta^2{\dot\phi}^2\cos^2\phi
+\cr
+\noalign{\vskip 9pt plus 2pt minus 2pt}
+\cs v_2^2
+&=
+\dot\cs x_1^2 + \dot\cs y_1^2
+\cr
+&=
+\alpha^2{\dot\theta^2}
++ \beta^2{\dot\phi^2}
++ 2\alpha\beta\dot\theta\dot\phi
+\[
+\sin\theta\sin\phi
++\cos\theta\cos\phi
+\]
+\cr
+&=
+\alpha^2{\dot\theta^2}
++ \beta^2{\dot\phi^2}
++ 2\alpha\beta\dot\theta\dot\phi\cos(\theta - \phi)
+}
+$$
+The kinetic energy of the system can then be written as follows. Note that we
+use the shorthand $M = m_1 + m_2$
+$$
+\eqalign{
+T &=
+\q12m_1\alpha^2\dot\theta^2
++ \q12m_2\alpha^2\dot\theta^2
++ \q12m_2\beta^2{\dot\phi}^2
++ m_2\alpha\beta\dot\theta\dot\phi\cos(\theta - \phi)
+\cr
+\noalign{\smallskip}
+&=
+\q12M\alpha^2\dot\theta^2
++ \q12m_2\beta^2{\dot\phi}^2
++ m_2\alpha\beta\dot\theta\dot\phi\cos(\theta - \phi)
+}
+$$
+
+\noindent
+The total potential energy of the system is just the usual
+gravitational potential 
+$$
+\eqalign{
+U
+&=
+m_1g\alpha\sin\theta + m_2g\[\alpha\sin\theta + \beta\sin\phi\]
+\cr
+\noalign{\smallskip}
+&=
+Mg\alpha\sin\theta + m_2g\beta\sin\phi
+}
+$$
+The Lagrangian of the system is then simply
+$$
+{\cal L} = T - U
+$$
+The system's generalized momenta are then
+$$
+\eqalign{
+p_\theta
+&=
+\q{\p {\cal L}}{\p \dot\theta}
+=
+M\alpha^2\dot\theta
++ m_2\alpha\beta\dot\phi\cos(\theta - \phi)
+\cr
+\noalign{\smallskip}
+p_\phi
+&=
+\q{\p {\cal L}}{\p \dot\phi}
+=
+m_2\beta^2\dot\phi
++ m_2\alpha\beta\dot\theta\cos(\theta - \phi)
+}
+$$
+and the system's generalized forces are
+$$
+\eqalign{
+\q{\p {\cal L}}{\p \theta}
+&=
+\mathop{-}m_2\alpha\beta\dot\theta\dot\phi
+\sin(\theta - \phi)
+-Mg\alpha\cos\theta
+\cr
+\noalign{\smallskip}
+\q{\p {\cal L}}{\p \phi}
+&=
+\mathop{+}m_2\alpha\beta\dot\theta\dot\phi
+\sin(\theta - \phi)
+-m_2g\beta\cos\phi
+}
+$$
+In order to apply the Euler-Lagrange equations we must differentiate the
+momenta with respect to time
+$$
+\eqalign{
+\dot p_\theta
+&=
+M\alpha^2\ddot\theta
++ m_2\alpha\beta\ddot\phi\cos(\theta - \phi)
+- m_2\alpha\beta\dot\phi\sin(\theta - \phi)
+\[\dot\theta - \dot\phi\]
+\cr
+\dot p_\phi
+&=
+m_2\beta^2\ddot\phi
++ m_2\alpha\beta\ddot\theta\cos(\theta - \phi)
+- m_2\alpha\beta\dot\theta\sin(\theta - \phi)
+\[\dot\theta - \dot\phi\]
+}
+$$
+Recall that the Euler-Lagrange equations for this system are
+$$
+\q{\p {\cal L}}{\p \theta} = \q{d}{dt}\mathinner{\Bigl[{\p {\cal L}}/{\p\dot\theta}\Bigr]}
+\hskip25pt
+\q{\p {\cal L}}{\p \phi} = \q{d}{dt}\mathinner{\Bigl[{\p {\cal L}}/{\p\dot\phi}\Bigr]}
+$$
+We have already calculated all of these terms, and so we can immediately
+proceed
+$$
+\eqalign{
+\mathop{-}m_2\alpha\beta\dot\theta\dot\phi
+\sin(\theta - \phi)
+-Mg\alpha\cos\theta
+&=
+M\alpha\ddot\theta + m_2\alpha\beta\ddot\phi\cos(\theta - \phi)
+\cr
+&\phantom{=}\mskip8mu
+\mathop{-}m_2\alpha\beta\dot\phi\sin(\theta - \phi)
+\[\dot\theta - \dot\phi\]
+\cr
+m_2\alpha\beta\dot\theta\dot\phi
+\sin(\theta - \phi)
+-m_2g\beta\cos\phi
+&=
+m_2\beta\ddot\phi
++ m_2\alpha\beta\ddot\theta\cos(\theta - \phi)
+\cr
+&\phantom{=}\mskip8mu
+\mathop{-} m_2\alpha\beta\dot\theta\sin(\theta - \phi)
+\[\dot\theta - \dot\phi\]
+}
+$$
+Thankfully, some simplification here is possible
+$$
+\eqalign{
+\mathop{-}Mg\alpha\cos\theta
+&=
+M\alpha^2\ddot\theta
++ m_2\alpha\beta\ddot\phi\cos(\theta - \phi)
++ m_2\alpha\beta{\dot\phi}^2\sin(\theta - \phi)
+\cr
+\mathop{-}m_2g\beta\cos\phi
+&=
+m_2\beta^2\ddot\phi
++ m_2\alpha\beta\ddot\theta\cos(\theta - \phi)
+- m_2\alpha\beta\dot\theta^2\sin(\theta - \phi)
+}
+$$
+We can view the above result as a pair of linear equations in $\ddot\theta$
+and $\ddot\phi$.
+$$
+\eqalign{
+\[M\alpha^2\]\ddot\theta
++\[m_2\alpha\beta\cos(\theta - \phi)\]\ddot\phi
+&=
+\mathop{-}m_2\alpha\beta{\dot\phi}^2\sin(\theta - \phi)
+-Mg\alpha\cos\theta
+\cr
+\[m_2\alpha\beta\cos(\theta - \phi)\]\ddot\theta
++\[m_2\beta^2\]\ddot\phi
+&=
+m_2\alpha\beta\dot\theta^2\sin(\theta - \phi)
+-m_2g\beta\cos\phi
+}
+$$
+These equations can be solved for $\ddot\theta$ and $\ddot\phi$ by using
+Cramer's rule.
+$$
+\eqalign{
+\ddot\theta &=
+\biggl[
+\(\mathop{-}m_2\alpha\beta{\dot\phi}^2\sin(\theta - \phi) - Mg\alpha\cos\theta\)
+\(m_2\beta^2\)
+\cr
+&\phantom{=}\,-
+\(m_2\alpha\beta\cos(\theta - \phi)\)
+\(m_2\alpha\beta\dot\theta^2\sin(\theta - \phi) - m_2g\beta\cos\phi\)
+\biggr]\cr
+&\phantom{=}\,* {1 / \[
+\(M\alpha^2\)\(m_2\beta^2\)
+-\(m_2\alpha\beta\cos(\theta - \phi)\)\(m_2\alpha\beta\cos(\theta - \phi)\)
+\]}
+\cr
+\noalign{\medskip}
+\ddot\phi &=
+\biggl[
+\(M\alpha^2\)
+\(m_2\alpha\beta\dot\theta^2\sin(\theta - \phi) - m_2g\beta\cos\phi\)
+\cr
+&\phantom{=}\,-
+\(\mathop{-}m_2\alpha\beta{\dot\phi}^2\sin(\theta - \phi) - Mg\alpha\cos\theta\)
+\(m_2\alpha\beta\cos(\theta - \phi)\)
+\biggr]\cr
+&\phantom{=}\,* {1 / \[
+\(M\alpha^2\)
+\(m_2\beta^2\)
+-\(m_2\alpha\beta\cos(\theta - \phi)\)
+\(m_2\alpha\beta\cos(\theta - \phi)\)
+\]}
+}
+$$
+
+\noindent These solutions via Cramer's rule can easily be plugged into a
+computer simulation and numerically integrated in order to show a
+visualization of the chaotic motion of a double pendulum, a chaos which arises
+from the tremendous complexity of the equations which we have derived here in
+this paper.
+
+\bye

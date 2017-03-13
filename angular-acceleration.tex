@@ -1,0 +1,525 @@
+\input ../paper.tex
+
+\papertitle{The Angular Acceleration Vector}
+
+\paperheading{Discovery}
+
+Our goal is to find the time derivative of the angular velocity vector
+$\sv\omega$ in terms of the torque on a body. We will frequently be crossing
+vectors with $\sv\omega$, so let us establish some matrix notation for this
+operation:
+$$
+\sv\omega \x \sv r =
+\left[\matrix{
+0 & -\omega_z & \omega_y \cr
+\omega_z & 0 & -\omega_x \cr
+-\omega_y & \omega_x & 0 \cr
+}\right]
+\left[\matrix{
+x \cr y \cr z
+}\right]
+=
+\Omega\?r
+$$
+
+Now posit some frame which rotates according to $\sv\omega$. There will be a
+unitary matrix $R^T$ which transforms coordinates from inertial space into
+rotating space. Taking a cross product in rotating space must yield the same
+result as taking it in inertial space and then transforming the resulting
+coordinates:
+$$
+\Omega' r' = \R R^T\Omega\? r
+$$
+Since $r' = \R R^Tr$ we can conclude that
+$$
+\Omega = \R R\Omega'\R R^T
+\hskip15pt
+\Omega' = \R R^T\Omega\R R
+$$
+These relations allow us to take a cross product with $\sv\omega$ in one frame
+given the coordinates of $\sv\omega$ in the other.
+
+We need to establish two more lemmas before we can tackle the problem at hand.
+Recall that the basis vectors of the rotating frame are the columns of the
+matrix $R$. The time derivatives of these vectors can be found by crossing
+them with $\sv\omega$, and so we have
+$$
+\dot \R R = \Omega \R R
+$$
+Finally, consider the following
+$$
+\R L = \R I\omega
+\hskip12pt
+\R L' = \R I'\omega'
+\hskip12pt
+\R L' = \R R^T\R L
+\hskip12pt
+\omega' = \R R^T\omega
+$$
+We can combine these to get
+$$
+\R I = \R R\R I'\R R^T
+$$
+Now we can proceed very rapidly:
+$$
+\tau
+=
+\left.\q{d}{dt}\middle(\R I\omega\right)
+=
+\left.\q{d}{dt}\middle(\R R\R I'\R R^T\R R\,\omega'\right)
+=
+\left.\q{d}{dt}\middle(\R R\R I'\omega'\right)
+=
+\dot \R R\R I'\omega' + \R R\R I'\dot\omega'
+=
+\Omega\R R\R I'\omega' + \R R\R I'\dot\omega'
+$$
+Next we multiply on the left by $\R R^T$:
+$$
+\R R^T\tau = \R R^T\Omega\R R\R I'\omega' + \R I'\dot\omega'
+$$
+Finally we apply $\tau' = \R R^T\tau$ and $\Omega' = \R R^T\Omega \R R$ to get
+$$
+\tau' = \Omega'\R I'\omega' + \R I'\dot\omega'
+$$
+When we expand this out in component form we get Euler's equations:
+$$
+\eqalign{
+\tau_x 
+&=
+\omega_y\omega_z\(\lambda_3 - \lambda_2\)
++ \lambda_1\dot\omega_x
+\cr
+\noalign{\vskip6pt}
+\tau_y 
+&=
+\omega_z\omega_x\(\lambda_1 - \lambda_3\)
++ \lambda_2\dot\omega_y
+\cr
+\noalign{\vskip6pt}
+\tau_z
+&=
+\omega_x\omega_y\(\lambda_2 - \lambda_1\)
++ \lambda_3\dot\omega_z
+\cr
+}
+$$
+Note that we have omitted writing the primes for brevity. Reference books
+typically omit the primes as well, and they assume that the reader is aware
+that the equations must be evaluated in the rotating frame. We can rearrange
+these to find the coordinates of the angular acceleration vector in the
+rotating frame
+$$
+\dot\omega_x
+= \q{\tau_x - \omega_y\omega_z(\lambda_3 - \lambda_2)}{\lambda_1}
+\hskip15pt
+\dot\omega_y
+= \q{\tau_y - \omega_z\omega_x(\lambda_1 - \lambda_3)}{\lambda_2}
+\hskip15pt
+\dot\omega_z
+= \q{\tau_z - \omega_x\omega_y(\lambda_2 - \lambda_1)}{\lambda_3}
+$$
+
+We will often want to translate the angular acceleration back into inertial
+coordinates. Translating a vector derivative out of a rotating frame typically
+takes great care, but in this case the process simplifies nicely. Observe that
+$$
+\R R^T\omega = \omega' 
+\hskip12pt\to\hskip12pt
+\omega = \R R\omega'
+\hskip12pt\to\hskip12pt
+\dot\omega = \dot \R R\omega' + \R R\dot\omega'
+\hskip12pt\to\hskip12pt
+\dot\omega = \Omega\R R\omega' + \R R\dot\omega'
+$$
+This then reduces to
+$$
+\dot\omega = \Omega\R\omega + \R R\dot\omega'
+$$
+But $\Omega\R\omega = 0$, and so we have
+$$
+\dot\omega = \R R\dot\omega'
+$$
+In summary, if we want to find the angular acceleration vector in inertial
+coordinates then we have to transform the torque and angular velocity into
+rotating coordinates, apply Euler's equations, and then translate the result
+back into inertial coordinates.
+
+\bye
+
+\paperheading{Discovery}
+
+Recall that the derivative of a body's rotational angular momentum is given by
+the rotational torques felt by the body:
+$$
+\sum_i \sv \rho_i \x \sv F_i = \q{d}{dt}\biggl[{\rm I}\sv\omega\biggr]
+$$
+where $\sv\rho_i$ is a vector that points from the body's center of mass to
+one of its constituent particles, and $\sv F_i$ is the force felt by the given
+particle. We will usually write this more compactly as
+$$
+\sv\tau = \q{d}{dt}\biggl[{\rm I}\sv\omega\biggr]
+$$
+We wish to find the vector $\dot{\sv\omega}$. Consider that
+$$
+\sv\tau
+=
+\q{d}{dt}\biggl[{\rm I}\sv\omega\biggr]
+=
+\[\q{d}{dt}{\rm I}\]\sv\omega
+ + \rm I\?\dot{\sv\omega}
+$$
+The only problematic term here is the time derivative $d\?{\rm I}/dt$. Now, we
+know that the tensor of inertia is
+$$
+{\rm I} = {\rm R^T}{\rm I}'{\rm R}
+$$
+where ${\rm I}'$ is a version of the tensor as seen from a frame fixed to the
+body, and $\rm R$ is a matrix used to map from inertial coordinates to body
+coordinates. By definition $\rm R$ is made up of three rows, each of which
+hold the inertial coordinates of the body's moving basis vectors
+(${\ihat}\?'$, ${\jhat}\?'$, and ${\khat}'$). The tensor ${\rm I}'$ is a
+constant, and so we have
+$$
+\q{d}{dt}{\rm I}
+=
+\[\q{d}{dt}{\rm R^T}\]{\rm I}'{\rm R}
++ {\rm R^T}{\rm I}'\[\q{d}{dt}{\rm R}\]
+$$
+When we plug this into our original equation we get
+$$
+\eqalign{
+\sv\tau
+&=
+\(
+  \[\q{d}{dt}{\rm R^T}\]{\rm I}'{\rm R} +
+  {\rm R^T}{\rm I}'\[\q{d}{dt}{\rm R}\]
+\) \sv\omega
++ {\rm I}\?\dot{\sv\omega}
+\cr
+&=
+\[\q{d}{dt}{\rm R^T}\]{\rm I}'{\rm R}\?\sv\omega
++ {\rm R^T}{\rm I}'\[\q{d}{dt}{\rm R}\]\sv\omega
++ {\rm I}\?\dot{\sv\omega}
+\cr
+&=
+\[\q{d}{dt}{\rm R^T}\]{\rm I}'\sv\omega'
++ {\rm R^T}\?{\rm I}'\[\q{d}{dt}{\rm R}\]\sv\omega
++ {\rm I}\?\dot{\sv\omega}
+\cr
+&=
+\[\q{d}{dt}{\rm R^T}\]\sv L'
++ {\rm R^T}{\rm I}'\[\q{d}{dt}{\rm R}\]\sv\omega
++ {\rm I}\?\dot{\sv\omega}
+}
+$$
+Now we have to evaluate the derivatives of $\rm R$ and ${\rm R^T}$. We know
+that
+$$
+\q{d\ihat'}{dt} = \sv\omega \x \ihat \hskip12pt
+\q{d\jhat'}{dt} = \sv\omega \x \ihat \hskip12pt
+\q{d\khat'}{dt} = \sv\omega \x \ihat
+$$
+But recall that $\rm R$ is just
+$$
+{\rm R} =
+\left[
+\matrix{
+\ihat' * \ihat & \ihat' * \jhat & \ihat' * \khat \cr
+\noalign{\vskip4pt}
+\jhat\?' * \ihat & \jhat\?' * \jhat & \jhat\?' * \khat \cr
+\noalign{\vskip4pt}
+\khat' * \ihat & \khat' * \jhat & \khat' * \khat \cr
+}\right]
+$$
+The time derivative is therefore
+$$
+\q{d}{dt}{\rm R} =
+\left[
+\matrix{
+(\sv\omega \x \ihat') * \ihat &
+(\sv\omega \x \ihat') * \jhat &
+(\sv\omega \x \ihat') * \khat \cr
+\noalign{\vskip4pt}
+(\sv\omega \x \jhat\?') * \ihat &
+(\sv\omega \x \jhat\?') * \jhat &
+(\sv\omega \x \jhat\?') * \khat \cr
+\noalign{\vskip4pt}
+(\sv\omega \x \khat') * \ihat &
+(\sv\omega \x \khat') * \jhat &
+(\sv\omega \x \khat') * \khat \cr
+}\right]
+$$
+Likewise, the transpose derivative will be
+$$
+\q{d}{dt}{{\rm R^T}} =
+\left[
+\matrix{
+(\sv\omega \x \ihat') * \ihat &
+(\sv\omega \x \jhat\?') * \ihat &
+(\sv\omega \x \khat') * \ihat \cr
+\noalign{\vskip4pt}
+(\sv\omega \x \ihat') * \jhat &
+(\sv\omega \x \jhat\?') * \jhat &
+(\sv\omega \x \khat') * \jhat \cr
+\noalign{\vskip4pt}
+(\sv\omega \x \ihat') * \khat &
+(\sv\omega \x \khat') * \khat &
+(\sv\omega \x \jhat\?') * \khat \cr
+}\right]
+$$
+Now, an interesting thing happens when we multiply inertial coordinates by the
+time derivative of $\rm R$:
+$$
+\eqalign{
+\q{d}{dt}{\rm R} * \!\,
+\left[\matrix{x \cr y \cr z}\right]
+&=
+\left[
+\matrix{
+(\sv\omega \x \ihat') * \ihat &
+(\sv\omega \x \ihat') * \jhat &
+(\sv\omega \x \ihat') * \khat \cr
+\noalign{\vskip4pt}
+(\sv\omega \x \jhat\?') * \ihat &
+(\sv\omega \x \jhat\?') * \jhat &
+(\sv\omega \x \jhat\?') * \khat \cr
+\noalign{\vskip4pt}
+(\sv\omega \x \khat') * \ihat &
+(\sv\omega \x \khat') * \jhat &
+(\sv\omega \x \khat') * \khat \cr
+}\middle]
+\middle[\matrix{
+x \cr
+\noalign{\vskip4pt}
+y \cr
+\noalign{\vskip4pt}
+z }\right]
+\cr
+\noalign{\vskip8pt}
+&=
+\matrix{
+(\sv\omega \x \ihat') * x\?\ihat +
+(\sv\omega \x \ihat') * y\?\jhat +
+(\sv\omega \x \ihat') * z\?\khat \cr
+\noalign{\vskip4pt}
+(\sv\omega \x \jhat\?') * x\?\ihat +
+(\sv\omega \x \jhat\?') * y\?\jhat +
+(\sv\omega \x \jhat\?') * z\?\khat \cr
+\noalign{\vskip4pt}
+(\sv\omega \x \khat') * x\?\ihat +
+(\sv\omega \x \khat') * y\?\jhat +
+(\sv\omega \x \khat') * z\?\khat \cr
+}
+\cr
+\noalign{\vskip8pt}
+&=
+\matrix{
+(x\?\ihat \x \sv\omega) * \ihat' +
+(y\?\jhat \x \sv\omega) * \ihat' +
+(z\?\khat \x \sv\omega) * \ihat'\cr
+\noalign{\vskip4pt}
+(x\?\ihat \x \sv\omega) * \jhat\?' +
+(y\?\jhat \x \sv\omega) * \jhat\?' +
+(z\?\khat \x \sv\omega) * \jhat\?' \cr
+\noalign{\vskip4pt}
+(x\?\ihat \x \sv\omega) * \khat' +
+(y\?\jhat \x \sv\omega) * \khat' +
+(z\?\khat \x \sv\omega) * \khat' \cr
+}
+\cr
+\noalign{\vskip8pt}
+&=
+\matrix{
+\bigl((x\?\ihat + y\?\jhat + z\?\khat) \x \sv\omega\bigr) * \ihat' \cr
+\noalign{\vskip4pt}
+\bigl((x\?\ihat + y\?\jhat + z\?\khat) \x \sv\omega\bigr) * \jhat' \cr
+\noalign{\vskip4pt}
+\bigl((x\?\ihat + y\?\jhat + z\?\khat) \x \sv\omega\bigr) * \khat' \cr
+}
+\cr
+\noalign{\vskip8pt}
+&=
+\matrix{
+\(\sv r \x \sv\omega\) * \ihat' \cr
+\noalign{\vskip4pt}
+\(\sv r \x \sv\omega\) * \jhat' \cr
+\noalign{\vskip4pt}
+\(\sv r \x \sv\omega\) * \khat' \cr
+}
+}
+$$
+And so we see that this matrix multiplication has boiled down to
+$$
+\q{d}{dt}{\rm R} * \!\,
+\left[\matrix{x \cr y \cr z}\right]
+= {\rm R}\,(\sv r \x \sv\omega)
+$$
+By very similar algebra it can also be shown that
+$$
+\eqalign{
+\q{d}{dt}{\rm R^T} *
+\left[\matrix{x' \cr y' \cr z'}\right]
+&=
+\matrix{
+\bigl(\sv\omega \x (x'\ihat' + y'\jhat\?' + z'\khat')\bigr) * \ihat \cr
+\noalign{\vskip4pt}
+\bigl(\sv\omega \x (x'\ihat' + y'\jhat\?' + z'\khat')\bigr) * \jhat \cr
+\noalign{\vskip4pt}
+\bigl(\sv\omega \x (x'\ihat' + y'\jhat\?' + z'\khat')\bigr) * \khat \cr
+}
+\cr
+\noalign{\vskip8pt}
+&=
+\matrix{
+\bigl(\sv\omega \x (x\?\ihat + y\?\jhat + z\?\khat)\bigr) * \ihat \cr
+\noalign{\vskip4pt}
+\bigl(\sv\omega \x (x\?\ihat + y\?\jhat + z\?\khat)\bigr) * \jhat \cr
+\noalign{\vskip4pt}
+\bigl(\sv\omega \x (x\?\ihat + y\?\jhat + z\?\khat)\bigr) * \khat \cr
+}
+\cr
+\noalign{\vskip8pt}
+&=
+\matrix{
+\(\sv\omega \x \sv r\) * \ihat \cr
+\noalign{\vskip4pt}
+\(\sv\omega \x \sv r\) * \jhat \cr
+\noalign{\vskip4pt}
+\(\sv\omega \x \sv r\) * \khat \cr
+}
+}
+$$
+As before, this can be more compactly written as
+$$
+\q{d}{dt}{\rm R^T}  *
+\left[\matrix{x' \cr y' \cr z'}\right]
+= \sv\omega \x \sv r
+$$
+With these results in hand we can now continue with our previous work:
+$$
+\eqalign{
+\sv\tau
+&=
+\[\q{d}{dt}{\rm R^T}\]\sv L'
++ {\rm R^T}{\rm I}'\[\q{d}{dt}{\rm R}\]\sv\omega
++ {\rm I}\?\dot{\sv\omega}
+\cr
+&=
+\sv\omega \x \sv L
++ {\rm R^T}{\rm I}'{\rm R}\,(\sv\omega \x \sv\omega)
++ {\rm I}\?\dot{\sv\omega}
+\cr
+\noalign{\vskip4pt}
+&=
+\sv\omega \x \sv L + {\rm I}\?\dot{\sv\omega}
+}
+$$
+We now have
+$$
+{\rm I}\?\dot{\sv\omega} = \sv\tau - \sv\omega \x \sv L
+$$
+In order to invert the tensor of inertia we can make use of its form in the
+body frame:
+$$
+{\rm R^T}{\rm I}'{\rm R}\,\dot{\sv\omega}
+= \sv\tau - \sv\omega \x \sv L
+$$
+Our final result then immediately follows:
+$$
+\dot{\sv\omega}
+= {\rm R^T}{{\rm I}'}^{-1}{\rm R}
+\(\sv\tau - \sv\omega \x \sv L\)
+$$
+If only $\sv\omega$ and ${\rm I}'$ are known, and $\sv L$ is unknown expect
+insofar as it is a function of these two, then it is sometimes useful to write
+$$
+\dot{\sv\omega}
+= {\rm R^T}{{\rm I}'}^{-1}{\rm R}
+\(
+  \sv\tau
+  -
+  {\rm R^T}({\rm R}\?\sv\omega \x {\rm I}'{\rm R}\?\sv\omega\?)
+\)
+$$
+The above is the most verbose possible form of this result. It has so many
+terms because it functions in the inertial coordinate system and it assumes
+that ${\rm I}'$ is not diagonalized. Let us simplify things by allowing
+ourselves to work in body coordinates:
+$$
+\eqalign{
+\dot{\sv\omega}
+&= {\rm R^T}{{\rm I}'}^{-1}{\rm R}
+\(\sv\tau - \sv\omega \x \sv L\)
+\cr
+\dot{\sv\omega}
+&= {\rm R^T}{{\rm I}'}^{-1}
+\({\rm R}\?\sv\tau - {\rm R}\?(\sv\omega \x \sv L)\)
+\cr
+{\rm I}'{\rm R}\,\dot{\sv\omega}
+&= 
+\({\rm R}\sv\tau - {\rm R}\?(\sv\omega \x \sv L)\)
+\cr
+{\rm I}'\dot{\sv\omega}'
+&= 
+\(\sv\tau' - \sv\omega'\!\, \x \sv L'\)
+\cr
+{\rm I}'\dot{\sv\omega}'
+&= 
+\(\sv\tau' - \sv\omega'\!\, \x {\rm I}'\sv\omega'\)
+\cr
+\dot{\sv\omega}'
+&= 
+{{\rm I}'}^{-1}\(\sv\tau' - \sv\omega'\!\, \x {\rm I}'\sv\omega'\)
+}
+$$
+Let us then also assume that ${\rm I}'$ is diagonalized:
+$$
+{\rm I}' =
+\left[
+\matrix{
+\lambda_1 & 0 & 0 \cr
+0 & \lambda_2 & 0 \cr
+0 & 0 & \lambda_3 \cr
+}\right]
+$$
+In this case our vector equation for $\dot\sv\omega'$ will split cleanly into
+three parts. These are called Euler's equations:
+$$
+\eqalign{
+\dot\omega_x'
+&= \q{\tau_x' - \omega_y'\omega_z'(\lambda_3 - \lambda_2)}{\lambda_1}
+\cr
+\noalign{\vskip6pt}
+\dot\omega_y'
+&= \q{\tau_y' - \omega_z'\omega_x'(\lambda_1 - \lambda_3)}{\lambda_2}
+\cr
+\noalign{\vskip6pt}
+\dot\omega_z'
+&= \q{\tau_z' - \omega_x'\omega_y'(\lambda_2 - \lambda_1)}{\lambda_3}
+\cr
+}
+$$
+Euler's equations are frequently written without the primes, and it is assumed
+that the reader is aware that they must be evaluated in body coordinates:
+$$
+\eqalign{
+\dot\omega_x
+&= \q{\tau_x - \omega_y\omega_z(\lambda_3 - \lambda_2)}{\lambda_1}
+\cr
+\noalign{\vskip6pt}
+\dot\omega_y
+&= \q{\tau_y - \omega_z\omega_x(\lambda_1 - \lambda_3)}{\lambda_2}
+\cr
+\noalign{\vskip6pt}
+\dot\omega_z
+&= \q{\tau_z - \omega_x\omega_y(\lambda_2 - \lambda_1)}{\lambda_3}
+\cr
+}
+$$
+In order to compute $\dot\sv\omega$ in inertial coordinates one must map
+$\sv\tau$ and $\sv\omega$ into body coordinates, compute the derivative
+$\dot\sv\omega$ in body coordinates via Euler's equations, and then map the
+result back into inertial coordinates.
+
+\bye

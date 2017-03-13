@@ -1,0 +1,283 @@
+\input ../paper.tex
+
+%\papertitleND{The Tensor of Inertia}
+
+\paperheading{Summary}
+
+The total angular momentum of a body is
+$$
+\sv L = \sv R \x M\sv V + \sv I\?\sv\omega
+$$
+where $\sv R$ is the location of the body's center of mass, $\sv V$ is the
+velocity of the body's center of mass, $\sv \omega$ is the body's angular
+velocity, and $\sv I$ is the body's tensor of inertia: 
+$$
+\sv I =
+\sum
+m_i\[
+\dmatrix{
+\cs \rho_y^2 + \cs \rho_z^2 & -\rho_x\rho_y & -\rho_x\rho_z \cr
+-\rho_y\rho_x & \cs \rho_x^2 + \cs \rho_z^2 & -\rho_y\rho_z \cr
+-\rho_z\rho_x & -\rho_z\rho_y & \cs \rho_x^2 + \cs \rho_y^2 \cr
+}
+\]
+$$
+where $\sv \rho_i = (\rho_x, \rho_y, \rho_z)$ denotes the vector to the
+particle $m_i$ from the center of mass. We have left out the $i$ subscripts on
+the $\rho$'s here, just for brevity. Keep in mind that $\rho_x$ needs to be
+read as $\rho_{ix}$, or the $x$-location of the $i$-th particle (and likewise
+for $\rho_y$ and $\rho_z$).
+
+%% \vs12pt
+%% \noindent
+%% The determinant of the tensor of inertia is 0, and thus it has no
+%% inverse. This means that the equation \padh{0.5pt}{$\sv L =
+%% I\sv\omega$} cannot be solved for $\sv\omega$ in the general case,
+%% which is fascinating because it allows for a given angular momentum to
+%% be expressed by a variety of different rotations.
+
+\paperheading{Derivation}
+
+Let us consider the angular momentum of a rigid body which is allowed to both
+translate and rotate. We will denote the body's center of mass by $\sv R$. We
+will say that a given particle $i$ within the body has an offset from the
+center of mass of $\sv\rho_i = \sv r_i - \sv R$, where $\sv r_i$ is the
+absolute location of the particle relative to a fixed origin. We will also say
+that $\sv V = \sv{\dot R}$ is the velocity of the center of mass, and that $M
+= \sum m_i$ is the body's mass. The body's total angular momentum is then
+$$
+\eqalign{
+\sv L
+&= \sum \sv r_i \x \sv p_i
+\cr
+&= \sum \sv r_i \x m_i{\dot\sv r}_i
+\cr
+&= \sum \(\sv \rho_i + \sv R\) \x m_i\(\sv{\dot \rho}_i + \sv V\)
+\cr
+&= \sum
+\(\sv \rho_i \x m_i \sv{\dot\rho}_i\)
++ \(\sv \rho_i \x m_i\sv V\)
++ \(\sv R \x m_i \sv{\dot\rho}_i\)
++ \(\sv R \x m_i\sv V\)
+\cr
+&= \sum
+\(\sv \rho_i \x m_i \sv{\dot\rho}_i\)
++ \(m_i\sv \rho_i \x \sv V\)
++ \(\sv R \x m_i \sv{\dot\rho}_i\)
++ m_i\(\sv R \x \sv V\)
+\cr
+&=
+\sum \Bigl(\sv \rho_i \x m_i \sv{\dot\rho}_i\Bigr)
++ \(\sum m_i\sv \rho_i\) \x \sv V
++ \(\sv R \x \sum m_i \sv{\dot\rho}_i\)
++ \Bigl(\sv R \x \sv V\Bigr)\sum m_i
+}
+$$
+Now, let us define a notation for the center of mass in a coordinate system
+where the center of mass is itself the origin:
+$$
+\sv R' = \q{\sum m_i\sv \rho_i}{\sum m_i}
+= \q{\sum m_i\sv \rho_i}{M}
+$$
+We then have
+$$
+M\sv R' = \sum m_i\sv \rho_i
+$$
+and also
+$$
+M\sv V' = \sum m_i\sv{\dot\rho}_i
+$$
+Our expression for the angular momentum is thus
+$$
+\sv L
+=
+\sum \Bigl(\sv \rho_i \x m_i \sv{\dot\rho}_i\Bigr)
++ \Bigl(M\sv R' \x \sv V\bigr)
++ \Bigl(\sv R \x M\sv V'\Bigr)
++ \Bigl(\sv R \x M\sv V\Bigr)
+$$
+But $\sv R' = 0$ and $\sv V' = 0$, since the location of the center of mass is
+0 in a coordinate system where the center of mass is itself at the origin. Two
+terms thus drop out of our expression, and this leave us with
+$$
+\sv L
+=
+\sv R \x M\sv V
++ \sum \sv \rho_i \x m_i \sv{\dot\rho}_i
+$$
+Now, a particle's distance from the center of mass $\rho_i = \vlen{\sv\rho}$
+must remain constant. The velocity of the particle can thus be described with
+an angular velocity vector:
+$$
+\sv{\dot\rho_i} = \sv\omega \x \sv\rho_i
+$$
+We thus have
+$$
+\eqalign{
+\sv L
+&=
+\sv R \x M\sv V
++ \sum m_i\[\sv \rho_i \x \(\sv\omega \x \sv\rho_i\)\]
+\cr
+&=
+\sv R \x M\sv V
++ \sum m_i\[\sv\omega\cs\rho_i^2 - \sv\rho_i\(\sv\rho_i * \sv\omega\)\]
+}
+$$
+Let us consider the interesting sum $\sv\omega\cs\rho_i^2 -
+\sv\rho_i\(\sv\rho_i * \sv\omega\)$. We can expand this vector expression into
+component form (for now we will drop the $i$ subscripts, just for brevity):
+$$
+\[
+\dmatrix{
+\omega_x\(\cs \rho_x^2 + \cs \rho_y^2 + \cs \rho_z^2\)
+- \rho_x\(\rho_x\omega_x + \rho_y\omega_y + \rho_z\omega_z\)
+\vrule width 0pt height 10pt
+\cr
+\omega_y\(\cs \rho_x^2 + \cs \rho_y^2 + \cs \rho_z^2\)
+- \rho_y\(\rho_x\omega_x + \rho_y\omega_y + \rho_z\omega_z\)
+\vrule width 0pt height 12pt
+\cr
+\omega_z\(\cs \rho_x^2 + \cs \rho_y^2 + \cs \rho_z^2\)
+- \rho_z\(\rho_x\omega_x + \rho_y\omega_y + \rho_z\omega_z\)
+\vrule width 0pt height 12pt depth 6pt
+}
+\]
+$$
+When can now expand a little bit further
+$$
+\[
+\dmatrix{
+\omega_x\cs \rho_x^2 + \omega_x\cs \rho_y^2 + \omega_x\cs \rho_z^2
+- \cs \rho_x^2\omega_x - \rho_x \rho_y\omega_y - \rho_x \rho_z\omega_z
+\vrule width 0pt height 10pt
+\cr
+\omega_y\cs \rho_x^2 + \omega_y\cs \rho_y^2 + \omega_y\cs \rho_z^2
+- \rho_y \rho_x\omega_x - \cs \rho_y^2\omega_y - \rho_y \rho_z\omega_z
+\vrule width 0pt height 12pt
+\cr
+\omega_z\cs \rho_x^2 + \omega_z\cs \rho_y^2 + \omega_z\cs \rho_z^2
+- \rho_z \rho_x\omega_x - \rho_z \rho_y\omega_y - \cs \rho_z^2\omega_z
+\vrule width 0pt height 12pt depth 6pt
+}
+\]
+$$
+Some cancellations are possible here, and carrying them out leaves us with
+$$
+\[
+\dmatrix{
+\omega_x\cs \rho_y^2 + \omega_x\cs \rho_z^2
+- \rho_x \rho_y\omega_y - \rho_x \rho_z\omega_z
+\vrule width 0pt height 10pt
+\cr
+\omega_y\cs \rho_x^2 + \omega_y\cs \rho_z^2
+- \rho_y \rho_x\omega_x - \rho_y \rho_z\omega_z
+\vrule width 0pt height 12pt
+\cr
+\omega_z\cs \rho_x^2 + \omega_z\cs \rho_y^2
+- \rho_z \rho_x\omega_x - \rho_z \rho_y\omega_y
+\vrule width 0pt height 12pt depth 6pt
+}
+\]
+$$
+We can now arrange this as a linear combination of $\omega_x$, $\omega_y$, and
+$\omega_z$. Note that all we are doing here is grouping terms with
+parenthesis:
+$$
+\[
+\dmatrix{
+\omega_x\(\cs \rho_y^2 + \cs \rho_z^2\)
++ \omega_y\(-\rho_x \rho_y\)
++ \omega_z \(-\rho_x \rho_z\)
+\vrule width 0pt height 10pt
+\cr
+\omega_y\(\cs \rho_x^2 + \cs \rho_z^2\)
++ \omega_x\(-\rho_y \rho_x\)
++ \omega_z\(-\rho_y \rho_z\)
+\vrule width 0pt height 12pt
+\cr
+\omega_z\(\cs \rho_x^2 + \cs \rho_y^2\)
++ \omega_x\(-\rho_z \rho_x\)
++ \omega_y\(-\rho_z \rho_y\)
+\vrule width 0pt height 12pt depth 6pt
+}
+\]
+$$
+This result now lends itself to being written in matrix form:
+$$
+\[
+\dmatrix{
+\cs \rho_y^2 + \cs \rho_z^2 & -\rho_x\rho_y & -\rho_x\rho_z \cr
+-\rho_y\rho_x & \cs \rho_x^2 + \cs \rho_z^2 & -\rho_y\rho_z \cr
+-\rho_z\rho_x & -\rho_z\rho_y & \cs \rho_x^2 + \cs \rho_y^2 \cr
+}
+\]
+\[
+\dmatrix{
+\omega_x \cr
+\omega_y \cr
+\omega_z \cr
+}
+\]
+$$
+We therefore have the following (recall that you should still be visualizing
+$i$ subscripts on every element of $\sv\rho$):
+$$
+\eqalign{
+\sv L
+&=
+\sv R \x M\sv V
++ \sum
+m_i\[
+\dmatrix{
+\cs \rho_y^2 + \cs \rho_z^2 & -\rho_x\rho_y & -\rho_x\rho_z \cr
+-\rho_y\rho_x & \cs \rho_x^2 + \cs \rho_z^2 & -\rho_y\rho_z \cr
+-\rho_z\rho_x & -\rho_z\rho_y & \cs \rho_x^2 + \cs \rho_y^2 \cr
+}
+\]
+\[
+\dmatrix{
+\omega_x \cr
+\omega_y \cr
+\omega_z \cr
+}
+\]
+}
+$$
+Every particle in the body moves (relative to the body) with the same angular
+velocity vector $\sv\omega$. We can therefore factor the vector $\sv\omega$
+out of the sum:
+$$
+\eqalign{
+\sv L
+&=
+\sv R \x M\sv V
++ \(\sum
+m_i\[
+\dmatrix{
+\cs \rho_y^2 + \cs \rho_z^2 & -\rho_x\rho_y & -\rho_x\rho_z \cr
+-\rho_y\rho_x & \cs \rho_x^2 + \cs \rho_z^2 & -\rho_y\rho_z \cr
+-\rho_z\rho_x & -\rho_z\rho_y & \cs \rho_x^2 + \cs \rho_y^2 \cr
+}
+\]
+\)
+\[
+\dmatrix{
+\omega_x \cr
+\omega_y \cr
+\omega_z \cr
+}
+\]
+}
+$$
+The matrix sum in this equation is usually denoted as $\sv I$, and is called
+the {\sl tensor of inertia}. The terms on the diagonal are called {\sl moments
+of inertia} and those off of the diagonal are called {\sl products of
+inertia}. The whole result is more simply written as
+$$
+\sv L = \sv R \x M\sv V + \sv I\?\sv\omega
+$$
+
+%% \paperheading{Determinant}
+
+\bye

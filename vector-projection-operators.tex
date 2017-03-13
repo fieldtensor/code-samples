@@ -1,0 +1,212 @@
+\input ../paper.tex
+
+\def\hatomega{\sv{\hat\omega}}
+
+\papertitle{Vector Projection}
+
+\paperheading{Summary}
+
+The perpendicular vector projection operator applied to $\sv r$ is
+$$
+\sv r_{\perp} = -\hatomega \x \(\hatomega \x \sv r\)
+$$
+Where $\hatomega$ is a unit vector relative to which we take the perpendicular
+component of $\sv r$. This operator can be written alternatively as follows,
+though this form is less preferable because it contains the operand $\sv r$
+twice:
+$$
+\sv r_{\perp} = \sv r - \hatomega\(\hatomega * \sv r\)
+$$
+The matrix form of the operator is
+$$
+\sv r_{\perp}
+=
+\q{1}{\omega^2}
+\left[
+\matrix{
+\cs\omega_y^2 + \cs\omega_z^2 &
+- \omega_x\omega_y &
+- \omega_x\omega_z
+\cr
+- \omega_y \omega_x &
+\cs\omega_x^2 + \cs\omega_z^2 &
+- \omega_y\omega_z
+\cr
+- \omega_z\omega_x &
+- \omega_z\omega_y &
+\cs\omega_x^2 + \cs\omega_y^2
+}
+\right]
+\left[\matrix{
+x \cr y \cr z
+}\right]
+$$
+where $\sv\omega$ need not necessarily be of unit length, so long as its
+squared length is divided out after the matrix is applied.
+
+\paperheading{Perpendicular Projection}
+
+Let us find the component of $\sv r$ that is perpendicular to some unit vector
+$\hatomega$. We will call this component $\sv r_{\perp}$. To begin, we know
+that $\hatomega \x \sv r$ will have the correct length $r\sin\theta$, which is
+what we are looking for. However, it will point perpendicular to the plane
+where $\hatomega$ and $\sv r$ live, and so it cannot satisfy $$\sv r = \sv
+r_{\parallel} + \sv r_{\perp}$$ Fortunately it is easy to project $\hatomega
+\x \sv r$ back onto the proper plane by crossing it with $\hatomega$:
+$$
+\sv r_{\perp} = \(\hatomega \x \sv r\) \x \hatomega
+$$
+This is better written in operator form
+$$
+\sv r_{\perp} = - \hatomega \x \(\hatomega \x \sv r\)
+$$
+An alternative method for finding $\sv r_{\perp}$ is by subtracting $\sv
+r_{\parallel}$ from $\sv r$. We already know that
+$$
+\sv r_{\parallel} = \hatomega\(\hatomega * \sv r\)
+$$
+and so we can construct $\sv r_{\perp}$ as
+$$
+\sv r_{\perp} = \sv r - \hatomega\(\hatomega * \sv r\)
+$$
+It is not difficult to verify that these definitions are the equivalent
+$$
+\eqalign{
+\sv r - \hatomega\(\hatomega * \sv r\)
+&= - \hatomega \x \(\hatomega \x \sv r\)
+\cr
+\sv r - \hatomega\(\hatomega * \sv r\)
+&= -\bigl[
+\hatomega\(\hatomega * \sv r\) - \sv r\(\hatomega * \hatomega\)
+\bigr]
+\cr
+\sv r - \hatomega\(\hatomega * \sv r\)
+&= -\bigl[\hatomega\(\hatomega * \sv r\) - \sv r\bigr]
+\cr
+\sv r - \hatomega\(\hatomega * \sv r\)
+&= \sv r - \hatomega\(\hatomega * \sv r\)
+}
+$$
+
+\paperheading{Perpendicular Projection (Matrix Form)}
+
+Let us find the matrix form for the projection
+$$
+\sv r_{\perp} = -\hatomega \x \(\hatomega \x \sv r\)
+$$
+Our result will come out more general if we don't assume $\omega$ to be to be
+a unit vector. We will thus opt to deal with
+$$
+\omega^2\sv r_{\perp} = -\sv\omega \x \(\sv\omega \x \sv r\)
+$$
+First we must expand out the expression component wise. Let us start by
+finding $\sv\omega \x \sv r$
+$$
+\sv\omega \x \sv r
+= \(\omega_y z - \omega_z y\)\ihat
++ \(\omega_z x - \omega_x z\)\jhat
++ \(\omega_x y - \omega_y x\)\khat
+$$
+Now we can cross this again with $\omega$:
+$$
+\sv\omega \x \(\sv\omega \x \sv r\)
+=
+\left[
+\matrix{
+\omega_y\(\omega_x y - \omega_y x\)
+- \(\omega_z x - \omega_x z\)\omega_z
+\cr
+\omega_z\(\omega_y z - \omega_z y\)
+- \(\omega_x y - \omega_y x\)\omega_x
+\cr
+\omega_x\(\omega_z x - \omega_x z\)
+- \(\omega_y z - \omega_z y\)\omega_y
+\cr
+}
+\right]
+$$
+The negation of this is then
+$$
+-\sv\omega \x \(\sv\omega \x \sv r\)
+=
+\left[
+\matrix{
+\(\omega_z x - \omega_x z\)\omega_z
+- \omega_y\(\omega_x y - \omega_y x\)
+\cr
+\(\omega_x y - \omega_y x\)\omega_x
+- \omega_z\(\omega_y z - \omega_z y\)
+\cr
+\(\omega_y z - \omega_z y\)\omega_y
+- \omega_x\(\omega_z x - \omega_x z\)
+\cr
+}
+\right]
+$$
+When we expand things out a bit we get
+$$
+\omega^2\sv r_{\perp}
+=
+\left[
+\matrix{
+\omega_z\omega_z x - \omega_x\omega_z z
+- \omega_y\omega_x y + \omega_y\omega_y x
+\cr
+\omega_x\omega_x y - \omega_y \omega_x x
+- \omega_z\omega_y z + \omega_z\omega_z y
+\cr
+\omega_y\omega_y z - \omega_z\omega_y y
+- \omega_x\omega_z x + \omega_x\omega_x z
+\cr
+}
+\right]
+$$
+Next we group terms on $x$, $y$, and $z$:
+$$
+\omega^2\sv r_{\perp}
+=
+\left[
+\matrix{
+x\(\omega_y\omega_y + \omega_z\omega_z\)
+- y\(\omega_y\omega_x\)
+- z\(\omega_x\omega_z\)
+\cr
+y\(\omega_x\omega_x + \omega_z\omega_z\)
+- x\(\omega_y \omega_x\)
+- z\(\omega_z\omega_y\)
+\cr
+z \(\omega_x\omega_x + \omega_y\omega_y\)
+- y \(\omega_z\omega_y\)
+- x \(\omega_x\omega_z\)
+\cr
+}
+\right]
+$$
+The matrix equation for perpendicular projection is therefore
+$$
+\sv r_{\perp}
+=
+\hatomega\x\(\hatomega \x \sv r\)
+=
+\q{1}{\omega^2}
+\left[
+\matrix{
+\cs\omega_y^2 + \cs\omega_z^2 &
+- \omega_x\omega_y &
+- \omega_x\omega_z
+\cr
+- \omega_y \omega_x &
+\cs\omega_x^2 + \cs\omega_z^2 &
+- \omega_y\omega_z
+\cr
+- \omega_z\omega_x &
+- \omega_z\omega_y &
+\cs\omega_x^2 + \cs\omega_y^2
+}
+\right]
+\left[\matrix{
+x \cr y \cr z
+}\right]
+$$ 
+
+\bye

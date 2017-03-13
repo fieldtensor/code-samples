@@ -1,0 +1,295 @@
+\input ../paper.tex
+
+\papertitle{The Transport Theorem}
+
+\paperheading{Summary}
+
+\noindent Given a fluid motion described by
+$$
+\sv u(\sv\phi(\sv r, t),t) = \q{\p \sv\phi}{\p t}
+$$
+the transport theorem tell us that
+$$
+\q{\p}{\p t} \iiint_{V_\phi} f(x,y,z,t) \; d^3V
+= \iiint_{V_\phi} \q{Df}{Dt} + f \[\nabla * \sv u\] \; d^3V
+$$
+
+\paperheading{Discovery}
+
+\noindent We will observe the motion of a fluid particle which starts at $\sv
+r$, the future position of which we shall denote as $\sv\phi(\sv{r},t)$. We
+will then use this function to define a vector field $\sv u$ representing the
+fluid's velocity. This velocity field will obey the identity
+$$
+\sv u(\sv\phi(\sv r, t),t) = \q{\p \sv\phi}{\p t}
+$$
+We can observe a cluster of such fluid particles all at their initial
+positions. We will say that this cluster makes a volume $V_0$. After some time
+$t$ every fluid particle moves as per $\sv\phi(\sv{r},t)$ and the volume $V_0$
+is transformed into $V_\phi$. Now, we wish to find the time derivative of some
+function $f(x,y,z,t)$ over the volume $V_\phi$ as the volume moves:
+$$
+\q{\p}{\p t} \iiint_{V_\phi} f(x,y,z,t) \; d^3V
+$$
+In order to do this we will make use of the Jacobian determinant $J$ of
+$\sv\phi$, for some fixed time $t$:
+$$
+J(x,y,z,t) = \det\left[
+\dmatrix{
+\noalign{\kern4pt}
+\q{\p \phi_x}{\p x} & \q{\p \phi_x}{\p y} & \q{\p \phi_x}{\p z} \cr
+\noalign{\kern4pt}
+\q{\p \phi_y}{\p x} & \q{\p \phi_y}{\p y} & \q{\p \phi_y}{\p z} \cr
+\noalign{\kern4pt}
+\q{\p \phi_z}{\p x} & \q{\p \phi_z}{\p y} & \q{\p \phi_z}{\p z} \cr
+\noalign{\kern4pt}
+}
+\right]
+$$
+This allows us to change our integral to
+$$
+\eqalign{
+\cdots\:
+&=\q{\p}{\p t} \iiint_{V_\phi} f(x,y,z,t) \; d^3V
+\cr
+&= \q{\p}{\p t} \iiint_{V_0} f(\sv\phi,t) * J \;\? d^3V
+\cr
+&= \iiint_{V_0}
+\q{\p}{\p t}\Bigl[f(\sv\phi,t)\Bigr] \, J
++ f(\sv\phi,t) * \q{\p J}{\p t}
+\;\? d^3V
+\cr
+&= \iiint_{V_0}
+\[\nabla f(\sv\phi, t) * \q{\p\sv\phi}{\p t}
++ \q{\p f}{\p t} \circ (\sv\phi, t)\] J
++ f(\sv\phi,t) * \q{\p J}{\p t}
+\;\? d^3V
+\cr
+&= \iiint_{V_0}
+\[\nabla f * \sv u \?
++ \q{\p f}{\p t}\] \circ (\sv\phi, t) * J
++ f(\sv\phi,t) * \q{\p J}{\p t}
+\;\? d^3V
+\cr
+}
+$$
+In order to proceed we must now find the time-derivative of $J$. First, let us
+expand $J$ out in full:
+\prot\def\detdiff#1#2{\q{\p\sv\phi_#1}{\p #2}}
+$$
+\eqalign{
+J =
+&+
+\detdiff xx \detdiff yy \detdiff zz -
+\detdiff xx \detdiff yz \detdiff zy
+\cr
+&+
+\detdiff xy \detdiff yz \detdiff zx -
+\detdiff xy \detdiff yx \detdiff zz
+\cr
+&+
+\detdiff xz \detdiff yx \detdiff zy -
+\detdiff xz \detdiff yy \detdiff zx
+\cr
+}
+$$
+Now, observe that taking a time derivative of any of the sub-terms in the
+above will yield a result like
+\prot\def\timediff#1#2{
+\q{\p u_#1}{\p x}\q{\p \phi_x}{\p #2}
++\q{\p u_#1}{\p y}\q{\p \phi_y}{\p #2}
++\q{\p u_#1}{\p z}\q{\p \phi_z}{\p #2}}
+$$
+\q{\p}{\p t}\detdiff xy
+= \q{\p}{\p y}\detdiff xt
+= \q{\p}{\p y}\Bigl[u_y(\phi(\sv r, t), t)\Bigr]
+= \timediff xy
+$$
+We can now take the time-derivative of $J$
+$$
+\eqalignno{
+\q{\p J}{\p t} =
+&+\[\timediff xx\] \detdiff yy \detdiff zz \cr
+&+\detdiff xx \[\timediff yy\] \detdiff zz \cr
+&+\detdiff xx \detdiff yy \[\timediff zz\] \cr
+&-\[\timediff xx\] \detdiff yz \detdiff zy \cr
+&-\detdiff xx \[\timediff yz\] \detdiff zy \cr
+&-\detdiff xx \detdiff yz \[\timediff zy\] \cr
+&+\[\timediff xy\] \detdiff yz \detdiff zx \cr
+&+\detdiff xy \[\timediff yz\] \detdiff zx \cr
+&+\detdiff xy \detdiff yz \[\timediff zx\] \cr
+&-\[\timediff xy\] \detdiff yx \detdiff zz \cr
+&-\detdiff xy \[\timediff yx\] \detdiff zz \cr
+&-\detdiff xy \detdiff yx \[\timediff zz\] \cr
+&+\[\timediff xz\] \detdiff yx \detdiff zy \cr
+&+\detdiff xz \[\timediff yx\] \detdiff zy \cr
+&+\detdiff xz \detdiff yx \[\timediff zy\] \cr
+&-\[\timediff xz\] \detdiff yy \detdiff zx \cr
+&-\detdiff xz \[\timediff yy\] \detdiff zx \cr
+&-\detdiff xz \detdiff yy \[\timediff zx\] \cr
+}
+$$
+After 12 cancellations we are left with
+\prot\def\udiff#1#2{\q{\p u_#1}{\p #2}}
+$$
+\eqalign{
+\q{\p J}{\p t} =
+&
++\udiff xx \detdiff xx \detdiff yy \detdiff zz
++\udiff yy \detdiff xx \detdiff yy \detdiff zz
++\udiff zz \detdiff xx \detdiff yy \detdiff zz \cr
+&
+-\udiff xx \detdiff xx \detdiff yz \detdiff zy
+-\udiff yy \detdiff xx \detdiff yz \detdiff zy
+-\udiff zz \detdiff xx \detdiff yz \detdiff zy \cr
+&
++\udiff xx \detdiff xy \detdiff yz \detdiff zx
++\udiff yy \detdiff xy \detdiff yz \detdiff zx
++\udiff zz \detdiff xy \detdiff yz \detdiff zx \cr
+&
+-\udiff xx \detdiff xy \detdiff yx \detdiff zz
+-\udiff yy \detdiff xy \detdiff yx \detdiff zz
+-\udiff zz \detdiff xy \detdiff yx \detdiff zz \cr
+&
++\udiff xx \detdiff xz \detdiff yx \detdiff zy
++\udiff yy \detdiff xz \detdiff yx \detdiff zy
++\udiff zz \detdiff xz \detdiff yx \detdiff zy \cr
+&
+-\udiff xx \detdiff xz \detdiff yy \detdiff zx
+-\udiff yy \detdiff xz \detdiff yy \detdiff zx
+-\udiff zz \detdiff xz \detdiff yy \detdiff zx \cr
+}
+$$
+We can then group these terms on derivatives of $\sv u$
+$$
+\eqalignno{
+\q{\p J}{\p t} =
++\udiff xx
+\biggl[
+&
++\detdiff xx \detdiff yy \detdiff zz
+-\detdiff xx \detdiff yz \detdiff zy \cr
+&
++\detdiff xy \detdiff yz \detdiff zx
+-\detdiff xy \detdiff yx \detdiff zz \cr
+&
++\detdiff xz \detdiff yx \detdiff zy
+-\detdiff xz \detdiff yy \detdiff zx
+\biggr]
+\cr
++\udiff yy
+\biggl[
+&
++\detdiff xx \detdiff yy \detdiff zz
+-\detdiff xx \detdiff yz \detdiff zy \cr
+&
++\detdiff xy \detdiff yz \detdiff zx
+-\detdiff xy \detdiff yx \detdiff zz \cr
+&
++\detdiff xz \detdiff yx \detdiff zy
+-\detdiff xz \detdiff yy \detdiff zx
+\biggr]
+\cr
++\udiff zz
+\biggl[
+&
++\detdiff xx \detdiff yy \detdiff zz
+-\detdiff xx \detdiff yz \detdiff zy \cr
+&
++\detdiff xy \detdiff yz \detdiff zx
+-\detdiff xy \detdiff yx \detdiff zz \cr
+&
++\detdiff xz \detdiff yx \detdiff zy
+-\detdiff xz \detdiff yy \detdiff zx
+\biggr]
+\cr
+}
+$$
+We appear to have been left with Jacobian determinants, and so we can now
+write
+$$
+\eqalign{
+\q{\p J}{\p t} &= \udiff xx J + \udiff yy J + \udiff zz J \cr
+&= \[\udiff xx + \udiff yy + \udiff zz\] J \cr
+&= \Bigl[\(\nabla * \sv u\) \circ (\sv\phi, t)\Bigr] * J \cr
+}
+$$
+We can then plug this into our integral from before
+$$
+\eqalign{
+\cdots\:
+&=\iiint_{V_0}
+\[\nabla f * \sv u \?
++ \q{\p f}{\p t}\] \circ (\sv\phi, t) * J
++ f(\sv\phi,t) * \q{\p J}{\p t}
+\; d^3V
+\cr
+&= \iiint_{V_0}
+\[\nabla f * \sv u \?
++ \q{\p f}{\p t}\] \circ (\sv\phi, t) * J
++ f(\sv\phi,t) *
+\bigl(\[\nabla * \sv u\] \circ (\sv\phi, t)\bigr) * J
+\; d^3V
+\cr
+&= \iiint_{V_0}
+\[\nabla f * \sv u \?
++ \q{\p f}{\p t}
++ f\[\nabla * \sv u\]\]  \circ (\sv\phi, t) * J
+\; d^3V
+\cr
+&= \iiint_{V_\phi}
+\nabla f * \sv u \?
++ \q{\p f}{\p t}
++ f \[\nabla * \sv u\]
+\; d^3V
+\cr
+&= \iiint_{V_\phi}
+\q{Df}{Dt}
++ f \[\nabla * \sv u\]
+\; d^3V
+\cr
+}
+$$
+And so we have our final result:
+$$
+\q{\p}{\p t} \iiint_{V_\phi} f(x,y,z,t) \; d^3V
+= \iiint_{V_\phi} \q{Df}{Dt} + f \[\nabla * \sv u\] \; d^3V
+$$
+
+\paperheading{Incompressible Fluids}
+
+\noindent
+If we set $f(x,y,z,t)=1$ then the integral in the transport theorem will
+compute a fluid region's volume as it moves. If we know the fluid to be
+incompressible then the time-derivative of this volume integral should be 0,
+because an incompressible region will be able to deform, but never to change
+grow or shrink in volume. Under this circumstance the transport theorem will
+tell us that
+$$
+0 = \iiint_{V_\phi} \nabla * \sv u \;\, d^3V
+$$
+Thus we know that incompressible fluids have no velocity divergence
+$$
+\nabla * \sv u = 0
+$$
+
+\paperheading{Mass Flow}
+
+\noindent We know that volumes in all fluids will maintain a constant mass as
+they move, regardless of the type of fluid. The divergence theorem can thus
+give us some insight into how a fluid's mass density $\rho$ evolves over time
+$$
+0
+= \q{\p}{\p t} \iiint_{V_\phi} \rho \;\, d^3V
+= \iiint_{V_\phi}
+\nabla \rho * \sv u \?
++ \q{\p \rho}{\p t}
++ \rho \[\nabla * \sv u\]
+\; d^3V
+$$
+We thus know that
+$$
+\q{\p \rho}{\p t} = \(-\nabla \rho\) * \sv u \? - \rho \[\nabla * \sv u\]
+$$
+
+\bye

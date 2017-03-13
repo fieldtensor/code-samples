@@ -1,0 +1,148 @@
+\input ../paper.tex
+
+\papertitle{Fourier Series}
+
+\paperheading{Summary}
+
+Any periodic function with period $\tau$ can be written as
+$$
+f(t) =
+\sum_{n = 0}^{\infty} 
+\alpha_n \cos(\omega_n t) + \beta_n \sin(\omega_n t)
+$$
+where the coefficient are determined by
+$$
+\eqalign{
+\alpha_n 
+&=
+\q{2}{\tau}
+\int_{-\tau/2}^{\tau/2}
+f(t)*\cos\(\q{2\pi}{\tau}n * t\) \, dt
+\cr
+\noalign{\vskip6pt}
+\beta_n 
+&=
+\q{2}{\tau}
+\int_{-\tau/2}^{\tau/2}
+f(t)*\sin\(\q{2\pi}{\tau}n * t\) \, dt
+}
+$$
+
+\paperheading{Discovery}
+
+Let us examine some function $f(x)$ which is periodic over an interval $\tau$,
+meaning that
+$$
+f(t + \tau) = (t)
+$$
+We might hypothesize that this function can be approximated as a weighted sum
+of $N$ other period functions $g_n(t)$:
+$$
+f(t) \approx \sum_{n = 0}^{N} a_n g_n(t)
+$$
+But what functions should we use for~$g_n(t)$? And how should we determine the
+weights~$a_n$? The trigonometric functions might be a good place to start. The
+most general form for a sine wave is
+$$
+A\cos(\omega t - \phi)
+$$
+where $\omega$ is some angular frequency, and $\phi$ is some phase. We can
+also write this as
+$$
+\alpha \cos(\omega t) + \beta \sin(\omega t)
+$$
+where
+$$
+\eqalign{
+A &= \sqrt{\alpha^2 + \beta^2} \cr
+\phi &= \arctan(\?\beta/\alpha\?) \cr
+}
+$$
+If we want this sine wave to have the period $\tau$ then we should make sure
+that $\omega\tau$ is a multiple of $2\pi$:
+$$
+\omega \tau \bmod 2\pi = 0
+$$
+or in other words that
+$$
+\q{\omega \tau}{2\pi} \bmod 1 = 0
+$$
+or in other words that $\omega \tau/2\pi$ evaluates to some integer $n$
+$$
+\q{\omega \tau}{2\pi} = n
+$$
+Solving this for $\omega$ gives
+$$
+\omega = \q{2\pi n}{\tau}
+$$
+
+Now, from this result for $\omega$ it is obvious that there are infinitely
+many sine waves with period $\tau$, because $n$ can take on any positive
+value. Previously we had said that we were going to take $N$ function $g_n(t)$
+to make an approximation for $f(t)$. Yet now we have infinitely many choices
+for $g_n(t)$. Perhaps if we use all of them with the proper weights we will
+find an exact representation:
+$$
+f(t) = \sum_{n = 0}^{\infty} a_nA_n\cos(\omega_n t - \phi_n)
+$$
+At this point we should notice that encoding the weight as $a_nA_n$ is
+redundant. We might as well just encode the whole weight in $A_n$, and instead
+write
+$$
+f(t) = \sum_{n = 0}^{\infty} A_n\cos(\omega_n t - \phi_n)
+$$
+or alternatively
+$$
+f(t) =
+\sum_{n = 0}^{\infty} 
+\alpha_n \cos(\omega_n t) + \beta_n \sin(\omega_n t)
+$$
+
+Keep in mind that the above equality is still just a speculation. The truth of
+the above will depend on our ability to find values for $A_n$ and $\phi_n$
+such that that the infinite sum converges to $f(x)$. It would do just as well
+to find values for $\alpha_n$ and $\beta_n$, because we know how they can
+later be transformed into $A_n$ and $\phi_n$.
+
+It turns out that finding $\alpha_n$ and $\beta_n$ is easier than finding
+$A_n$ and $\phi_n$. The method we are about to present might seem like a leap
+of genius to those readers who have not studied the mathematics of
+time-averages. Yet it will not come as surprise to those readers who are
+familiar with time-averages, and who know that many time-averages can be made
+to zero out. In order to make conditions conducive to this zeroing let us
+multiply the whole relation by $\cos(\omega_m t)$, where $m$ is some arbitrary
+integer:
+$$
+f(t)\cos(\omega_m t) =
+\sum_{n = 0}^{\infty} 
+\alpha_n \cos(\omega_n t)\cos(\omega_m t)
++ \beta_n \sin(\omega_n t)\cos(\omega_m t)
+$$
+We know that taking a time average of this equation over the period
+$\tau$ will make almost every term drop to 0, save for the term $\alpha_n
+\cos(\omega_n t)\cos(\omega_m t)$ where $m = n$, which will become
+$\cos^2(\omega_n t)$ and will time average to $\alpha_n * \tau / 2$:
+$$
+\int_{-\tau/2}^{\tau/2}
+f(t)\cos(\omega_n t) \, dt
+=
+\alpha_n \q{\tau}{2}
+$$
+And so we have
+$$
+\alpha_n 
+=
+\q{2}{\tau}
+\int_{-\tau/2}^{\tau/2}
+f(t)*\cos\(\q{2\pi}{\tau}n * t\) \, dt
+$$
+Doing the same analysis with $\sin(\omega_m t)$ then shows that
+$$
+\beta_n 
+=
+\q{2}{\tau}
+\int_{-\tau/2}^{\tau/2}
+f(t)*\sin\(\q{2\pi}{\tau}n * t\) \, dt
+$$
+
+\bye

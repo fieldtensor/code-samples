@@ -1,0 +1,120 @@
+\input ../paper.tex
+
+\papertitle{The Euler-Lagrange Equation}{}
+
+\paperheading{Summary}
+
+\noindent
+The Euler-Lagrange equation is
+$$
+\q{\p f}{\p y} = \q{d }{dt}\q{\p f}{\p \dot y}
+$$
+Any function $y$ which satisfies this equation for a given function $f$ will
+cause the following integral $S$ to be locally minimum, maximum, or at least
+stable relative to other functions in the neighborhood of $y$
+$$
+S = \int_{t_1}^{t_2} f(y, \dot y, t) \, dt
+$$
+
+\paperheading{Discovery}
+
+\noindent
+Let us examine the following integral
+$$
+S = \int_{t_1}^{t_2} f(y, \dot y, t) \, dt
+$$
+Consider the set $Y$ of all functions $y$ which have the property that $y(t_1)
+= Q$ and $y(t_2) = P$. We seek to find a specific subset of functions within
+$Y$ which put $S$ in a minimum position, maximum position, or at least in a
+stable position with respect to other functions in their immediate vicinity.
+If we perturb a function in this subset and then make use of the integral $S$
+to examine the perturbed version we should find that there has been no
+significant change in $S$ relative to the size of the perturbation.
+
+Let us now carry out this perturbation analysis. We will say that the shape of
+the perturbation is some function $\eta(t)$, and we will denote the
+differential magnitude of the perturbation by the symbol $\varepsilon$. The
+combined shape and magnitude are thus written as $\varepsilon\eta(t)$. We will
+also specify that the perturbation is such that $\eta(t_1) = 0$ and $\eta(t_2)
+= 0$, so that even once the perturbation is applied the resulting function
+still goes from $Q$ to $P$, which is required for it to be in the set $Y$. The
+integral $S$ over the perturbed function will be
+$$
+S =
+\int_{t_1}^{t_2}
+f(y + \varepsilon\eta, \dot y + \varepsilon\dot\eta, t) \, dt
+$$
+In order to shorten our notation we will call the perturbed path
+$\xi(\varepsilon, t)$, and we will set $u(\varepsilon, t) = \[\xi(\varepsilon,
+t), \dot\xi(\varepsilon, t), t\]$. We can now write the integral over the
+perturbed path as
+$$
+S =
+\int_{t_1}^{t_2} f(u(\varepsilon, t)) \, dt
+$$
+We can easily calculate the exact increase in the integral's value relative to
+the magnitude of the perturbation.
+$$
+\eqalign{
+\q{dS}{d\varepsilon}
+&=
+\int_{t_1}^{t_2}
+\q{d}{d\varepsilon}
+\mathinner{\Bigl[f(u(\varepsilon, t))\Bigr]}
+\, dt \cr
+&=
+\int_{t_1}^{t_2}
+\eta\q{\p f}{\p y}\Bigl(u(\varepsilon, t)\Bigr)
++ \dot\eta\q{\p f}{\p \dot y}\Bigl(u(\varepsilon, t)\Bigr)
+\, dt \cr
+&=
+\int_{t_1}^{t_2} \eta\q{\p f}{\p y}\Bigl(u(\varepsilon, t)\Bigr) \, dt +
+\left[
+\eta\q{\p f}{\p \dot y}\Bigl(u(\varepsilon, t)\Bigr) -
+\int \eta\q{d}{dt}\q{\p f}{\p \dot y}\Bigl(u(\varepsilon, t)\Bigr) \, dt
+\right]_{t_1}^{t_2} \cr
+&=
+\int_{t_1}^{t_2} \eta\q{\p f}{\p y}\Bigl(u(\varepsilon, t)\Bigr) \, dt +
+\left[
+\eta\q{\p f}{\p \dot y}\Bigl(u(\varepsilon, t)\Bigr)
+\right]_{t_1}^{t_2} -
+\int_{t_1}^{t_2} \eta\q{d}{dt}\q{\p f}{\p \dot y}\Bigl(u(\varepsilon, t)\Bigr) \, dt \cr
+&=
+\int_{t_1}^{t_2}
+\eta\[\q{\p f}{\p y}\Bigl(u(\varepsilon, t)\Bigr) - \q{d}{dt}\q{\p f}{\p \dot y}\Bigl(u(\varepsilon, t)\Bigr)\] dt
+}
+$$
+We wish to examine the rate of change of $S$ with respect to $\varepsilon$ as
+the perturbation is only just starting to be applied, and so we will set
+$\varepsilon=0$. This will result in $u(\varepsilon, t)$ reducing back to the
+ideal path $$u(0, t) = \[\xi(0, t), \dot\xi(0, t), t\] = \Bigl[y(t), \dot
+y(t), t\Bigr]$$ Our derivative is now
+$$
+\q{dS}{d\varepsilon}\Bigl(0\Bigr)
+=
+\int_{t_1}^{t_2}
+\eta\[\q{\p f}{\p y} - \q{d}{dt}\q{\p f}{\p \dot y}\] dt
+=
+0
+$$
+We have set this all to 0 because the integral is now being evaluated over one
+of the ideal paths $y$ from the set $Y$, which by construction is a path that
+causes $S$ to be stabilized. We now notice that the magnitude $\varepsilon$ of
+the perturbation has been eliminated from our equation, but the term $\eta$
+denoting the perturbation's shape still remains. This shape might be anything,
+and everything. It certainly need not be 0 for all $t$, and it certainly need
+not be well behaved enough to to render the integral always equal to 0. The
+only way to guarantee that the integral comes out to 0 for all $\eta$ is to
+ensure that
+$$
+\q{\p f}{\p y} - \q{d}{dt}\q{\p f}{\p \dot y} = 0
+$$
+or in other words that
+$$
+\q{\p f}{\p y} = \q{d}{dt}\q{\p f}{\p \dot y}
+$$
+This is called the Euler-Lagrange equation. Any function $y$ which satisfies
+this equation for a given function $f$ will cause the integral $S$ to be
+locally minimum, maximum, or at least stable.
+
+\bye

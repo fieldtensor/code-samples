@@ -1,0 +1,197 @@
+\input ../paper.tex
+
+\papertitle{Euler Angles}
+
+\paperheading{Summary}
+
+The orientation of a body can be specified by three angles $\theta$, $\phi$,
+and $\psi$. The first angle~$\theta$ specifies a rotation about a $\khat$ axis
+which is fixed to the body. The second angle $\phi$ specifies a rotation about
+an $\ihat$ axis which is likewise fixed to the body. The third and final angle
+$\psi$ specifies another rotation about the body's $\khat$ (which has by this
+point also been rotated by $\phi$). In order to translate a vector's
+coordinates into this body-attached system we can use the matrix below:
+$$
+\left[\matrix{
+x' \cr
+\noalign{\vskip3pt}
+y' \cr
+\noalign{\vskip3pt}
+z'
+}\right]
+=
+\left[\matrix{
++c\?\theta c\?\psi -  s\theta\? c\?\phi\? s\psi &
++s\theta c\?\psi +  c\?\theta\? c\?\phi\? s\psi &
+ s\phi\? s\psi \cr
+\noalign{\vskip3pt}
+- c\?\theta s\psi -  s\theta\? c\?\phi\? c\?\psi &
+- s\theta s\psi +  c\?\theta\? c\?\phi\? c\?\psi &
+ s\phi\? c\?\psi \cr
+\noalign{\vskip3pt}
+ s\theta\? s\phi &
+- c\?\theta\? s\phi &
+ c\?\phi\? \cr
+}\right]
+\left[\matrix{
+x \cr
+\noalign{\vskip3pt}
+y \cr
+\noalign{\vskip3pt}
+z
+}\right]
+$$
+
+\paperheading{Discovery}
+
+We need a method for translating coordinates from a set of external axes to a
+set of axes attached to a body. In order to do this we need to find the
+coordinates of the body axes in the external system. First let us rotate the
+$\ihat$ and $\jhat$ axes about the $\khat$ axis. Recall that the general
+rotation of some vector $\sv r$ about a fixed axis $\hat{\sv\omega}$ is given
+by
+$$
+\sv R
+= \(\hat{\sv\omega} \x \sv r\)\sin\theta
++ \sv r \cos\theta
++ \hat{\sv\omega}\(1 - \cos\theta\)\(\hat{\sv\omega} * \sv r\)
+$$
+The rotations of $\ihat$ and $\jhat$ about the $\khat$ axis are thus
+$$
+\eqalign{
+\ihat_1
+&= \(\?\khat \x \ihat\?\)\sin\theta + \ihat\?\cos\theta
+= \jhat\?\sin\theta + \ihat\?\cos\theta \cr
+\noalign{\vskip6pt}
+\jhat_1
+&= \(\?\khat \x \jhat\?\)\sin\theta + \jhat\?\cos\theta
+= \jhat\?\cos\theta - \ihat\?\sin\theta \cr
+\noalign{\vskip6pt}
+\khat_1 &= \khat
+}
+$$
+The rotations of these about $\ihat_1$ are then \def\st{\vrule width 0pt
+height 10pt}
+$$
+\eqalign{
+\ihat_2 &= \ihat_1
+= \(\?\khat \x \ihat\?\)\sin\theta + \ihat\?\cos\theta
+\cr
+\noalign{\vskip6pt}
+\jhat_2
+&= \(\st\?\ihat_1 \x \jhat_1\?\)\sin\phi + \jhat_1\?\cos\phi
+= \khat_1\?\sin\phi + \jhat_1\?\cos\phi \cr
+&= \khat\?\sin\phi
++ \(\st\jhat\?\cos\theta - \ihat\?\sin\theta\)\cos\phi \cr
+\noalign{\vskip6pt}
+\khat_2
+&= \(\?\ihat_1 \x \khat_1\?\)\sin\phi + \khat_1\?\cos\phi
+= \khat_1\?\cos\phi - \jhat_1\?\sin\phi \cr
+&=
+\khat\?\cos\phi
+- \(\st\jhat\?\cos\theta - \ihat\?\sin\theta\)\?\sin\phi \cr
+}
+$$
+The rotations of these about $\khat_2$ are then \def\st{\vrule width 0pt
+height 10pt}
+$$
+\eqalign{
+\ihat_3
+&= \(\st\?\khat_2 \x \ihat_2\?\)\sin\psi + \ihat_2\?\cos\psi
+= \jhat_2\?\sin\psi + \ihat_2\?\cos\psi \cr
+&= 
+\(\khat\?\sin\phi
++ \(\st\jhat\?\cos\theta - \ihat\?\sin\theta\)\cos\phi\)
+\sin\psi + 
+\(\st\jhat\?\sin\theta + \ihat\?\cos\theta\)
+\cos\psi \cr
+\noalign{\vskip6pt}
+\jhat_3
+&= \(\?\khat_2 \x \jhat_2\?\)\sin\psi + \jhat_2\?\cos\psi
+= \jhat_2\?\cos\psi - \ihat_2\?\sin\psi \cr
+&=
+\(\khat\?\sin\phi
++ \(\st\jhat\?\cos\theta - \ihat\?\sin\theta\)\cos\phi\)
+\cos\psi -
+\(\st\jhat\?\sin\theta + \ihat\?\cos\theta\)
+\sin\psi
+\cr
+\noalign{\vskip6pt}
+\khat_3 &= \khat_2 =
+\khat\?\cos\phi
+- \(\st\jhat\?\cos\theta - \ihat\?\sin\theta\)\?\sin\phi
+}
+$$
+The body axes are thus
+$$
+\eqalign{
+\ihat'
+&=
+\left[\matrix{
+\cos\theta\cos\psi - \sin\theta\cos\phi\sin\psi \cr
+\noalign{\vskip3pt}
+\sin\theta\cos\psi + \cos\theta\cos\phi\sin\psi \cr
+\noalign{\vskip3pt}
+\sin\phi\sin\psi
+}\right]
+\cr
+\noalign{\vskip6pt}
+\jhat'
+&=
+\left[\matrix{
+-\cos\theta\sin\psi - \sin\theta\cos\phi\cos\psi \cr
+\noalign{\vskip3pt}
+-\sin\theta\sin\psi + \cos\theta\cos\phi\cos\psi \cr
+\noalign{\vskip3pt}
+\sin\phi\cos\psi
+}\right]
+\cr
+\noalign{\vskip6pt}
+\khat'
+&=
+\left[\matrix{
+\sin\theta\sin\phi \cr
+\noalign{\vskip3pt}
+-\cos\theta\sin\phi \cr
+\noalign{\vskip3pt}
+\cos\phi \cr
+}\right]
+\cr
+}
+$$
+In order to project a vector $(x, y, z)$ onto these body axes we simply need
+to take three dot products, one with each body axis. These three dot products
+can be accomplished with the following matrix multiplication, in which the
+coordinates of the body axes make up the rows:
+$$
+\left[\matrix{
+x' \cr
+\noalign{\vskip3pt}
+y' \cr
+\noalign{\vskip3pt}
+z'
+}\right]
+=
+\left[\matrix{
++c\?\theta c\?\psi -  s\theta\? c\?\phi\? s\psi &
++s\theta c\?\psi +  c\?\theta\? c\?\phi\? s\psi &
+ s\phi\? s\psi \cr
+\noalign{\vskip3pt}
+- c\?\theta s\psi -  s\theta\? c\?\phi\? c\?\psi &
+- s\theta s\psi +  c\?\theta\? c\?\phi\? c\?\psi &
+ s\phi\? c\?\psi \cr
+\noalign{\vskip3pt}
+ s\theta\? s\phi &
+- c\?\theta\? s\phi &
+ c\?\phi\? \cr
+}\right]
+\left[\matrix{
+x \cr
+\noalign{\vskip3pt}
+y \cr
+\noalign{\vskip3pt}
+z
+}\right]
+$$
+
+\bye

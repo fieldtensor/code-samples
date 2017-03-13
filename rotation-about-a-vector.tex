@@ -1,0 +1,162 @@
+\input ../paper.tex
+
+\ignore{
+\nopagenumbers
+\pagesetup{1000}{3.5in}{4.5in}{0.11in}{0.11in}
+
+\hsize=\pdfpagewidth
+\vsize=\pdfpageheight
+\advance\hsize by -0.22in
+\advance\vsize by -0.22in
+
+\tolerance=1000
+}
+
+\def\rotationmatrix{%
+$$
+\sv\Psi =
+\[%
+\matrix{
+\vrule width 0pt depth 7pt
+\phantom{+\omega_x}c + \omega_x\omega_x\(1 - c\) &
+-\omega_zs + \omega_x\omega_y\(1-c\)  &
++\omega_ys + \omega_x\omega_z\(1-c\) 
+\cr
+\vrule width 0pt depth 7pt
++\omega_zs + \omega_y\omega_x\(1-c\?\)  &
+\phantom{+\omega_x}c + \omega_y\omega_y\(1 - c\) &
+-\omega_xs + \omega_y\omega_z\(1-c\) 
+\cr
+-\omega_ys + \omega_z\omega_x\(1-c\)  &
++\omega_xs + \omega_z\omega_y\(1-c\) &
+\phantom{+\omega_x}c + \omega_z\omega_z\(1 - c\) \cr
+}%
+\]
+$$
+}
+
+\papertitle{Rotation About a Vector}
+
+\paperheading{Summary}
+
+\noindent
+The rotation $\sv R$ of the vector $\sv r$ through an angle $\psi$ about some
+unit vector $\sv{\hat\omega}$ can be computed with
+$$
+\sv R(\sv r, \sv{\hat\omega}, \psi)
+= \sin\psi*\[\sv{\hat\omega} \x \sv r\]
++ \cos\psi*\sv r
++ \sv{\hat\omega}\(1-\cos\psi\)\(\sv{\hat\omega} * \sv r\)
+$$
+The matrix form of this result is $$\sv R\(\sv r, \sv{\hat\omega}, \psi\) =
+\sv\Psi\sv r$$ where $\sv\Psi$ is the rotation matrix \rotationmatrix Note that we
+have used the shorthand $c = \cos\psi$ and $s = \sin\psi$.
+
+\paperheading{Discovery}
+
+\noindent We will consider the problem of taking any point in space $\sv r$
+and rotating it through some angle $\psi$ about the unit vector
+$\sv{\hat\omega}$. To begin, let us use label $\theta$ to denote the angle
+between $\sv r$ and $\sv \omega$. We will split $\sv r$ into $\sv
+r_{\parallel}$ and $\sv r_{\perp}$. We will form $\sv r_{\parallel}$ by
+projecting $\sv r$ onto $\sv{\hat\omega}$ and we will form $\sv r_{\perp}$ by
+taking whatever is left over after the projection
+$$
+\eqalign{
+\sv r_{\parallel}
+&= r \cos\theta * \sv{\hat\omega} \cr
+&= \sv{\hat\omega}\(\sv{\hat\omega} * \sv r\) \cr
+%
+\vrule width 0pt height 15pt
+\sv r_{\perp}
+&= \sv r - \sv r_{\parallel} \cr
+&= \sv r - \sv{\hat\omega}\(\sv{\hat\omega} * \sv r\)
+}
+$$
+We now consider the plane which is perpendicular $\sv r_{\parallel}$ and drawn
+at the tip of $\sv r_{\parallel}$. We wish to find basis vectors in that
+plane. The vector $\sv r_{\perp}$ is already one such basis vector. We know
+that our second basis vector $\sv\rho$ will be perpendicular to both $\sv
+r_{\perp}$ and $\sv{\hat\omega}$. We can therefore find $\sv\rho$ as follows
+$$
+\sv\rho
+= \sv{\hat\omega} \x \sv r_{\perp}
+= \sv{\hat\omega} \x \(\sv r - \sv r_{\parallel}\)
+= \sv{\hat\omega} \x \sv r
+$$
+Notice that $\sv\rho$ is conveniently of the same magnitude as $\sv
+r_{\perp}$. To find where $\sv r$ goes when rotated about $\sv{\hat\omega}$ we
+make a circular combination of $\sv r_\perp$ and $\sv\rho$, which we then
+add back to $\sv r_\parallel$, as follows:
+$$
+\eqalign{
+\sv R(\sv r, \sv{\hat\omega}, \psi)
+&= \sv r_{\parallel} + \sv r_{\perp}\cos\psi + \sv\rho\sin\psi \cr
+&= \sv{\hat\omega}\(\sv{\hat\omega} * \sv r\)
++ \cos\psi*\[\sv r - \sv{\hat\omega}\(\sv{\hat\omega} \cdot \sv r\)\]
++ \sin\psi*\[\sv{\hat\omega} \x \sv r\]
+\cr
+&= \sin\psi*\[\sv{\hat\omega} \x \sv r\]
++ \cos\psi*\sv r
++ \sv{\hat\omega}\(1-\cos\psi\)\(\sv{\hat\omega} * \sv r\)
+}
+$$
+We give the component expansion of this result below. For the sake of
+readability we will use $c$ and $s$ for $\cos\psi$ and $\sin\psi$.
+\def\qdot{\omega_x r_x + \omega_y r_y + \omega_z r_z}
+$$
+\eqalign{
+R_x &= s\(\omega_yr_z - \omega_zr_y\) + cr_x + \omega_x\(1 - c\)\(\qdot\) \cr
+R_y &= s\(\omega_zr_x - \omega_xr_z\) + cr_y + \omega_y\(1 - c\)\(\qdot\) \cr
+R_z &= s\(\omega_xr_y - \omega_yr_x\) + cr_z + \omega_z\(1 - c\)\(\qdot\) \cr
+}
+$$
+It is clear that each of these components can be written as a linear
+combination of $r_x$, $r_y$, and $r_z$. In order to see this explicitly we
+first expand out all multiplications
+$$
+\mathcramp{0.9}
+\eqalign{
+R_x &=
+s\omega_yr_z - s\omega_zr_y
++ cr_x
++ \omega_x\omega_xr_x + \omega_x\omega_yr_y + \omega_x\omega_zr_z
+- c\omega_x\omega_xr_x - c\omega_x\omega_yr_y - c\omega_x\omega_zr_z
+\cr
+R_y &=
+s\omega_zr_x
+- s\omega_xr_z
++ cr_y
++ \omega_y\omega_xr_x + \omega_y\omega_yr_y + \omega_y\omega_zr_z
+- c\omega_y\omega_xr_x - c\omega_y\omega_yr_y - c\omega_y\omega_zr_z \cr
+R_z &=
+s\omega_xr_y - s\omega_yr_x
++ cr_z
++ \omega_z\omega_xr_x + \omega_z\omega_yr_y + \omega_z\omega_zr_z
+- c\omega_z\omega_xr_x - c\omega_z\omega_yr_y - c\omega_z\omega_zr_z
+\cr
+}
+$$
+Then we collect the terms in order to make the linear combinations stand out
+$$
+\eqalign{
+R_x &=
+r_x\(\omega_x\omega_x + c - c\?\omega_x\omega_x\)
++ r_y\(\omega_x\omega_y - c\?\omega_x\omega_y - s\?\omega_z\)
++ r_z\(\omega_x\omega_z - c\?\omega_x\omega_z + s\?\omega_y\)
+\cr
+%\scr{0pt}{6pt}
+R_y &= r_x\(\omega_x\omega_y - c\?\omega_x\omega_y + s\?\omega_z\)
++ r_y\(\omega_y\omega_y + c - c\?\omega_y\omega_y\)
++ r_z\(\omega_y\omega_z - c\?\omega_y\omega_z - s\?\omega_x\)
+\cr
+%\scr{0pt}{6pt}
+R_z &= r_x\(\omega_x\omega_z - c\?\omega_x\omega_z - s\?\omega_y\)
++ r_y\(\omega_y\omega_z - c\?\omega_y\omega_z + s\?\omega_x\)
++ r_z\(\omega_z\omega_z + c - c\?\omega_z\omega_z\)
+}
+$$
+This result is best written in matrix form as $$\sv R(\sv r, \sv{\hat\omega},
+\psi) = \sv\Psi\sv r$$ where $\sv\Psi$ is the rotation matrix \rotationmatrix
+
+\bye
