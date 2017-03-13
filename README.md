@@ -42,7 +42,7 @@ pervasively by 3D graphics systems. There is no commercial game engine in
 existence that does not include a quaternion implementation.
 
 To to give a quick summary, quaternions are a higher dimensional
-generalization of the ordinary (two dimensional) complex numbers. A complex
+generalization of the ordinary (two dimensional) complex numbers. Complex
 numbers have one real part and one imaginary part, while a quaternion has one
 real part and three complex parts. Quaternions follow an especially
 complicated multiplication rule, form which they derive all of their
