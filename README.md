@@ -358,9 +358,9 @@ trimmed down to things which are relevant to graphics programming, either
 directly or tangentially. I left out completely unrelated subjects like
 quantum mechanics or general relativity.
 
-I don't necessarily proof read these very carefully, since they're just for my
-own future reference, and the important part is always the mathematics itself.
-There maybe a good deal of type-o's and grammatical errors.
+I don't necessarily proof read these since they're just for my own future
+reference, and the important part is always the mathematics itself. There
+maybe a good deal of type-o's and grammatical errors.
 
 <a href="/rotation-about-a-vector.pdf">Rotation about a Vector</a> &mdash;
 <a href="/rotation-about-a-vector.tex">(TeX Source)</a><br>
