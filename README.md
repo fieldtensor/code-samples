@@ -111,7 +111,7 @@ place the baking time was cut down to just an hour or two.
 
 The octree works by placing the entire 3D scene into a large cube. This cube
 in then split vertically, horizontally, and depth wise into 8 smaller cubes.
-Each of this smaller cubes is then split into 8 yet smaller cubes. These are
+Each of these smaller cubes is then split into 8 yet smaller cubes. These are
 then split again into 8 more cubes each, etc... Eventually the process
 terminates when the cubes are small enough, or they are just too many (the
 number of cubes increases at the extremely fast exponential rate of 8^n, where
