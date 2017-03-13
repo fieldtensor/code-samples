@@ -321,15 +321,19 @@ their source files in TeX). As I learn a new piece of mathematics or physics I
 find it useful to type out textbook style notes as if trying to explain the
 subject to a new student. In the process of trying to teach something I often
 realize that I don't understand it as well as I thought I did. In this way I
-uncover the gaps in my knoweldge and eventually come to a more complete
+uncover the gaps in my knowledge and eventually come to a more complete
 understanding. 
 
 These notes do not represent the totality of what I understand about
 mathematics and physics. They're just a cherry picked selection of a few
 subjects that I've had time to write about. I tried to keep the selection
-trimmed down to things which are relevat to graphics programming, either
-directly or tangentally. I left out completey unrelated subjects like quantum
-mechanics or general relativity.
+trimmed down to things which are relevant to graphics programming, either
+directly or tangentially. I left out completely unrelated subjects like
+quantum mechanics or general relativity.
+
+I don't necessarily proof read these very carefully, since they're just for my
+own future reference, and the important part is always the mathematics itself.
+There maybe a good deal of type-o's and grammatical errors.
 
 **<a href="/rotation-about-a-vector.pdf">Rotation about a Vector</a>** &mdash;
 <a href="/rotation-about-a-vector.tex">(TeX Source)</a><br>
