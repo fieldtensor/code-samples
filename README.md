@@ -191,7 +191,7 @@ illusion of waves chaotically lapping around on the ocean's surfaces.
 
 This shader also implements another important aspect of water called the
 Fresnel effect. The surface of water appears transparent when you look
-straight down at it from on high, but appears reflective like a mirror when
+straight down at it from above, but appears reflective like a mirror when
 seen at an obtuse angle.
 
 For example, consider standing in a lake. If you look far away you will be
