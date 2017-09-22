@@ -211,7 +211,7 @@ following lines of vector math:
     float omc = 1.0 - max(0.0, dot(toEye, norm));
     
     // Compute R, the reflection coefficient.
-    float R = R0 + (1.0 - R0)omcomcomcomcomc;
+    float R = R0 + (1.0 - R0)omc*omc*omc*omc*omc;
     
     // Compute T, the reflection coefficient.
     float T = 1.0 - R;
